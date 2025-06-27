@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- End fonts-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemm - The Payment Platform for Influencer Marketing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* Fixed translucent header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px 100px 30px;
+        }
+
+        .logo {
+            font-size: 64px;
+            font-weight: bold;
+            color: #250F7F;
+        }
+
+        /* Left barrier */
+        .left-barrier {
+            position: absolute;
+            left: -0px;
+            top: 0;
+            z-index: 1;
+        }
+
+        /* Right barrier */
+        .right-barrier {
+            position: absolute;
+            right: -100px;
+            top: 0;
+            z-index: 1;
+        }
+
+        /* Main content */
+        .main-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            max-width: 800px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: #250F7F;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #3612c4;
+        }
+
+        .cta-button.light {
+            background: #CAFFD0;
+            color: #333;
+        }
+
+        .cta-button.light:hover {
+            background: #b8e7b5;
+        }
+
+        /* What we offer section */
+        .features {
+            text-align: center;
+            background: white;
+            margin: 100px;
+        }
+
+        .features h2 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #250F7F;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Connect section */
+        .connect-section {
+            background: linear-gradient(135deg, #250F7F 50%, #CAFFD0 100%);
+            padding: 80px 40px;
+            color: white;
+            position: relative;
+        }
+
+        .connect-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .connect-text h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #CAFFD0;
+        }
+
+        .connect-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .network-visualization {
+            position: relative;
+            height: 400px;
+        }
+
+        .profile-circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gemm-logo-circle {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #431BE5;
+        }
+
+        /* Dashboard section */
+        .dashboard-section {
+            padding: 80px 40px;
+            background: white;
+        }
+
+        .dashboard-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .dashboard-content h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .dashboard-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .dashboard-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile section */
+        .mobile-section {
+            padding: 80px 40px;
+        }
+
+        .mobile-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .mobile-features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .mobile-feature {
+            padding: 20px;
+            background: white;
+            border: 2px solid #250F7F;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #250F7F;
+            width: 350px;
+        }
+
+        .money-strong {
+            color: #CAFFD0;
+        }
+
+        .mobile-phones {
+            position: relative;
+            height: 500px;
+        }
+
+        .phone-mockup {
+            position: absolute;
+            width: 250px;
+            height: auto;
+        }
+
+        /* CTA section */
+        .final-cta {
+            background: #1a1a2e;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .final-cta p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* FAQ section */
+        .faq-section {
+            padding: 80px 40px;
+            background: white;
+        }
+
+        .faq-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .faq-content h2 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 60px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .bold-title {
+            color: #232323;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .title-inverse {
+            color: #FFFEFD
+        }
+
+        .faq-item {
+            text-align: left;
+            padding: 30px;
+            border: 1px solid #250F7F;
+            border-radius: 12px;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #431BE5;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #431BE5;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .social-link, .email-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .left-barrier {
+                left: -100px;
+                transform: scale(0.7);
+            }
+            
+            .right-barrier {
+                right: -150px;
+                transform: scale(0.7);
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .connect-content,
+            .mobile-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="logo"><img width="185" height="48" src="https://storage.googleapis.com/gemm-marketing/logo-text-small.png" alt="gemm"></div>
+    </header>
+
+    <!-- Left Barrier -->
+    <div class="left-barrier">
+        <svg width="197" height="762" viewBox="0 0 197 762" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-138.5 -146L-501 62L-252.5 713.5L104 867.5L172.5 725.5L150 481L163 382L150 240L27 124L-4 -68L-138.5 -146Z" fill="url(#paint0_linear_199_1336)" stroke="url(#paint1_linear_199_1336)" stroke-width="49" stroke-linejoin="bevel"/>
+            <defs>
+                <linearGradient id="paint0_linear_199_1336" x1="-123" y1="7.50003" x2="-123" y2="758.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#431BE5"/>
+                    <stop offset="1" stop-color="#250F7F"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear_199_1336" x1="-123" y1="11.5001" x2="-123" y2="769.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#431BE5"/>
+                    <stop offset="1" stop-color="#250F7F"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Right Barrier -->
+    <div class="right-barrier">
+        <svg width="453" height="762" viewBox="0 0 453 762" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M216 673L254.5 314L394.5 118L381.5 41.5L532 -165L811 118L923.5 940L22 1021.5L132.5 833.5L216 673Z" fill="url(#paint0_linear_199_1335)" stroke="url(#paint1_linear_199_1335)" stroke-width="49" stroke-linejoin="bevel"/>
+            <defs>
+                <linearGradient id="paint0_linear_199_1335" x1="472.75" y1="1.99999" x2="472.75" y2="762" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#431BE5"/>
+                    <stop offset="1" stop-color="#250F7F"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear_199_1335" x1="472.75" y1="1.99999" x2="472.75" y2="752.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#431BE5"/>
+                    <stop offset="1" stop-color="#250F7F"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="bold-title">The Payment Platform<br>for Influencer Marketing</h1>
+            <p>Powering the creator economy from payments to taxes, end to end.</p>
+            <button class="cta-button">Get Started</button>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2 class="bold-title">What we offer</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Automated<br>Payments</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Centralized<br>Earnings</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 10c-2.67 0-8-1.34-8-4v-2c0-2.66 5.33-4 8-4s8 1.34 8 4v2c0 2.66-5.33 4-8 4z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Payment<br>Reminders</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Split<br>Transactions</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">Track<br>Brand Deals</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h4v2zm2-3H7V6h8v2z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-title">W-9s</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section class="connect-section">
+            <div class="connect-content">
+                <div class="connect-text">
+                    <h2>Connect, Collaborate, and Manage on one platform</h2>
+                    <p>Seamlessly manage split transactions and allocations within your collaborations. Brands can keep paying it their way, but now you can control how and when you get paid.</p>
+                </div>
+                <div class="network-visualization">
+                    <div class="profile-circle" style="top: 20px; left: 50px; background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face');"></div>
+                    <div class="profile-circle" style="top: 80px; right: 100px; background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face');"></div>
+                    <div class="profile-circle" style="top: 150px; left: 20px; background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face');"></div>
+                    <div class="profile-circle" style="top: 200px; right: 150px; background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face');"></div>
+                    <div class="profile-circle" style="bottom: 100px; left: 80px; background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face');"></div>
+                    <div class="profile-circle" style="bottom: 50px; left: 200px; background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face');"></div>
+                    <div class="profile-circle" style="bottom: 20px; right: 200px; background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop&crop=face');"></div>
+                    <div class="gemm-logo-circle">g</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section class="dashboard-section">
+            <div class="dashboard-content">
+                <h2>Send & Receive Money in one UI</h2>
+                <p>Don't worry about managing multiple platforms.</p>
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-06-27%20at%202.32.54%E2%80%AFPM-tzOK9krVrNF7Zf2h5KUH1XIcv5v7dO.png" alt="Gemm Dashboard Interface" class="dashboard-image">
+            </div>
+        </section>
+
+        <!-- Mobile Section -->
+        <section class="mobile-section">
+            <div class="mobile-content">
+                <div class="mobile-features">
+                    <div class="mobile-feature">Real-time<br>split payments</div>
+                    <div class="mobile-feature">Instant ACH &<br>wire payouts</div>
+                </div>
+                <div class="mobile-phones">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-06-27%20at%202.33.03%E2%80%AFPM-6frylurJkIlvAWQ8g6B9OgKcqlXUQs.png" alt="Mobile App Interface" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta">
+            <h1 class="title-inverse">Give your team the freedom to get paid their way</h2>
+            <p>You save time and money – <span class="money-strong">everyone wins</span></p>
+            <button class="cta-button light">Get Started</button>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-content">
+                <h2 class="bold-title">FAQs</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">What is gemm?</div>
+                        <div class="faq-answer">A payment platform designed for creators, streamlining all your earnings, receivables, and payouts in one place.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What does gemm offer?</div>
+                        <div class="faq-answer">W-9 management, and secure payment handling, all in one platform tailored to the unique needs of the creator economy.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <div class="footer-logo">gemm</div>
+                <div class="footer-tagline">Everything from payment links to invoice</div>
+                <div class="footer-tagline">gemm Inc. 2025</div>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    @gemm.app
+                </a>
+                <a href="mailto:info@gemm.app" class="email-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    info@gemm.app
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Add smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add click handlers for CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('Get Started clicked');
+                // Add your signup/registration logic here
+            });
+        });
+    </script>
+</body>
+</html>
