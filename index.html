@@ -59,9 +59,10 @@
         /* Right barrier */
         .right-barrier {
             position: absolute;
-            right: -100px;
+            right: 0px;
             top: 0;
             z-index: 1;
+            overflow-x: hidden;
         }
 
         /* Main content */
@@ -72,20 +73,21 @@
 
         /* Hero section */
         .hero {
-            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             position: relative;
+            overflow-x: hidden;
+            margin-top: 320px;
         }
 
         .hero h1 {
             font-size: 52px;
             font-weight: bold;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 100px;
             max-width: 800px;
             line-height: 1.1;
         }
@@ -106,31 +108,37 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.2s ease;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         }
 
         .cta-button:hover {
-            background: #3612c4;
+            background: #CAFFD0;
+            color: #250F7F;
         }
 
         .cta-button.light {
             background: #CAFFD0;
             color: #333;
+            border: 2px solid #CAFFD0;
         }
 
         .cta-button.light:hover {
-            background: #b8e7b5;
+            background: #0A0325;
+            color: #CAFFD0;
+            border: 2px solid #CAFFD0;
         }
 
         /* What we offer section */
         .features {
             text-align: center;
             background: white;
-            margin: 100px;
+            margin-bottom: 100px;
+            margin-top: 100px;
         }
 
         .features h2 {
-            font-size: 48px;
+            font-size: 58px;
             font-weight: bold;
             color: #333;
             margin-bottom: 60px;
@@ -170,7 +178,7 @@
         .feature-title {
             font-size: 18px;
             font-weight: 600;
-            color: #333;
+            color: #232323;
         }
 
         /* Connect section */
@@ -179,19 +187,21 @@
             padding: 80px 40px;
             color: white;
             position: relative;
+            overflow-x: hidden;
         }
 
         .connect-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 80px;
             align-items: center;
+            overflow-x: hidden;
         }
 
         .connect-text h2 {
-            font-size: 24px;
+            font-size: 36px;
             font-weight: bold;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -199,15 +209,10 @@
         }
 
         .connect-text p {
-            font-size: 16px;
+            font-size: 20px;
             opacity: 0.9;
             line-height: 1.6;
             margin-bottom: 40px;
-        }
-
-        .network-visualization {
-            position: relative;
-            height: 400px;
         }
 
         .profile-circle {
@@ -220,27 +225,11 @@
             border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
-        .gemm-logo-circle {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 120px;
-            height: 120px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            font-weight: bold;
-            color: #431BE5;
-        }
-
         /* Dashboard section */
         .dashboard-section {
             padding: 80px 40px;
             background: white;
+            overflow-x: hidden;
         }
 
         .dashboard-content {
@@ -250,13 +239,13 @@
         }
 
         .dashboard-content h2 {
-            font-size: 24px;
+            font-size: 36px;
             font-weight: bold;
             color: #333;
         }
 
         .dashboard-content p {
-            font-size: 18px;
+            font-size: 20px;
             color: #666;
             margin-bottom: 60px;
         }
@@ -272,6 +261,7 @@
         /* Mobile section */
         .mobile-section {
             padding: 80px 40px;
+            overflow-x: hidden;
         }
 
         .mobile-content {
@@ -341,6 +331,7 @@
         .faq-section {
             padding: 80px 40px;
             background: white;
+            overflow-x: hidden;
         }
 
         .faq-content {
@@ -409,7 +400,7 @@
         .footer-left {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 0px;
         }
 
         .footer-logo {
@@ -439,25 +430,91 @@
             font-size: 14px;
         }
 
+        .graph-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .graph-item {
+            display: grid;
+            align-items: center;
+        }
+
+        .graph-line {
+            --tw-border-style: dashed;
+            border-style: dashed;
+            width: 400px;
+            border-color: #CAFFD0;
+            border-width: 2px;
+            min-width: 150px;
+        }
+
+        .graph-node {
+            position: absolute;
+            z-index: 5;
+            margin-left: -50px;
+            margin-top: -50px;
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 1050px) {
+            .hero {
+                margin-top: 200px;
+            }
+
             .hero h1 {
-                font-size: 40px;
+                font-size: 32px;
+                padding-left: 40px;
+                padding-right: 40px;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 12px;
             }
 
             .left-barrier {
-                left: -100px;
+                transform-origin: left top;
+                transform: scale(0.6);
+                justify-content: left;
+            }
+
+            .features h2 {
+                font-size: 32px;
+            }
+
+            .graph-container {
                 transform: scale(0.7);
+                padding: 0px;
             }
             
             .right-barrier {
-                right: -150px;
-                transform: scale(0.7);
+                transform-origin: top right;
+                transform: scale(0.6);
+                overflow-x: hidden;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+
+            .connect-text h2 {
+                font-size: 32px;
+            }
+
+            .connect-text p {
+                font-size: 16px;
+            }
+
+            .dashboard-section h2 {
+                font-size: 32px;
+            }
+
+            .dashboard-section p {
+                font-size: 16px;
             }
             
             .connect-content,
@@ -476,12 +533,36 @@
                 text-align: center;
             }
         }
+
+        @media (max-width: 600px) {
+
+            .header {
+                padding: 20px 30px 0px;
+            }
+
+            .left-barrier {
+                margin-top: 130px;
+                transform-origin: left top;
+                transform: scale(0.3);
+                justify-content: left;
+            }
+            .right-barrier {
+                margin-top: 130px;
+                transform-origin: top right;
+                transform: scale(0.3);
+                overflow-x: hidden;
+            }
+            .graph-container {
+                transform: scale(0.45);
+                padding: 0px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Fixed Header -->
     <header class="header">
-        <div class="logo"><img width="185" height="48" src="https://storage.googleapis.com/gemm-marketing/logo-text-small.png" alt="gemm"></div>
+        <div class="logo"><img width="165" src="https://storage.googleapis.com/gemm-marketing/logo-text-large.png" alt="gemm"></div>
     </header>
 
     <!-- Left Barrier -->
@@ -531,53 +612,66 @@
         <section class="features">
             <h2 class="bold-title">What we offer</h2>
             <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                    </div>
+                <div>
+                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_198_319)">
+                            <path d="M22.5019 15.3931C22.5019 14.8717 22.9364 14.459 23.4578 14.459C23.9792 14.459 24.3919 14.8717 24.3919 15.3931V15.8711C25.6736 16.0231 26.7598 16.4359 27.7592 17.0659C28.1067 17.2614 28.4109 17.5873 28.4109 18.1086C28.4109 18.7821 27.8678 19.3035 27.1943 19.3035C26.9771 19.3035 26.7598 19.2383 26.5426 19.1079C25.7823 18.6517 25.0436 18.3259 24.305 18.1521V22.3231C27.6071 23.1486 29.0192 24.4738 29.0192 26.7983C29.0192 29.188 27.1509 30.7738 24.3919 31.0345V32.338C24.3919 32.8593 23.9792 33.2721 23.4578 33.2721C22.9364 33.2721 22.5019 32.8593 22.5019 32.338V30.9911C20.8726 30.8173 19.3736 30.2307 18.0485 29.2966C17.6792 29.0576 17.4619 28.71 17.4619 28.2538C17.4619 27.5804 17.9833 27.059 18.6567 27.059C18.9174 27.059 19.1781 27.1459 19.3736 27.298C20.3947 28.0366 21.394 28.5362 22.5888 28.7535V24.4738C19.4171 23.6483 17.9398 22.4535 17.9398 19.9986C17.9398 17.6742 19.7864 16.0666 22.5019 15.8493V15.3931ZM26.4557 26.9504C26.4557 25.9945 25.9778 25.408 24.305 24.8866V28.8404C25.6954 28.6883 26.4557 27.9931 26.4557 26.9504ZM20.5033 19.8466C20.5033 20.759 20.9161 21.3238 22.5888 21.8669V18.0217C21.1985 18.1521 20.5033 18.8907 20.5033 19.8466Z" fill="#250F7F"/>
+                            <path d="M39.2932 20.1725C39.2932 12.4596 31.9986 6.20703 23.0001 6.20703C14.0017 6.20703 6.70703 12.4596 6.70703 20.1725" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round"/>
+                            <path d="M11.3621 17.0688L6.70693 20.1723L2.05176 17.0688" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M43.948 27.9312L39.2929 24.8277L34.6377 27.9312" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M39.2932 26.3792C39.2932 34.0922 31.9986 40.3447 23.0001 40.3447C14.0017 40.3447 6.70703 34.0922 6.70703 26.3792" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_198_319">
+                            <rect width="45" height="45" fill="white" transform="translate(0.5)"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
                     <div class="feature-title">Automated<br>Payments</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
+                <div>
+                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M38 22.5V15H11.75C10.7554 15 9.80161 14.6049 9.09835 13.9017C8.39509 13.1984 8 12.2446 8 11.25C8 9.1875 9.6875 7.5 11.75 7.5H34.25V15" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 11.25V33.75C8 35.8125 9.6875 37.5 11.75 37.5H38V30" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.25 22.5C33.2554 22.5 32.3016 22.8951 31.5984 23.5984C30.8951 24.3016 30.5 25.2554 30.5 26.25C30.5 28.3125 32.1875 30 34.25 30H41.75V22.5H34.25Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <div class="feature-title">Centralized<br>Earnings</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 10c-2.67 0-8-1.34-8-4v-2c0-2.66 5.33-4 8-4s8 1.34 8 4v2c0 2.66-5.33 4-8 4z"/>
-                        </svg>
-                    </div>
+                <div>
+                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23 41.25C33.3553 41.25 41.75 32.8553 41.75 22.5C41.75 12.1447 33.3553 3.75 23 3.75C12.6447 3.75 4.25 12.1447 4.25 22.5C4.25 32.8553 12.6447 41.25 23 41.25Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23 15V22.5" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23 30H23.0188" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <div class="feature-title">Payment<br>Reminders</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                        </svg>
-                    </div>
+                <div>
+                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23 39.375C26.1066 39.375 28.625 36.8566 28.625 33.75C28.625 30.6434 26.1066 28.125 23 28.125C19.8934 28.125 17.375 30.6434 17.375 33.75C17.375 36.8566 19.8934 39.375 23 39.375Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.75 16.875C14.8566 16.875 17.375 14.3566 17.375 11.25C17.375 8.1434 14.8566 5.625 11.75 5.625C8.6434 5.625 6.125 8.1434 6.125 11.25C6.125 14.3566 8.6434 16.875 11.75 16.875Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.25 16.875C37.3566 16.875 39.875 14.3566 39.875 11.25C39.875 8.1434 37.3566 5.625 34.25 5.625C31.1434 5.625 28.625 8.1434 28.625 11.25C28.625 14.3566 31.1434 16.875 34.25 16.875Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.25 16.875V18.75C34.25 19.7446 33.8549 20.6984 33.1516 21.4016C32.4484 22.1049 31.4946 22.5 30.5 22.5H15.5C14.5054 22.5 13.5516 22.1049 12.8483 21.4016C12.1451 20.6984 11.75 19.7446 11.75 18.75V16.875" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23 22.5V28.125" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <div class="feature-title">Split<br>Transactions</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/>
-                        </svg>
-                    </div>
+                <div>
+                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M39.875 22.5V11.25C39.875 10.2554 39.4799 9.30161 38.7766 8.59835C38.0734 7.89509 37.1196 7.5 36.125 7.5H9.875C8.88044 7.5 7.92661 7.89509 7.22335 8.59835C6.52009 9.30161 6.125 10.2554 6.125 11.25V37.5C6.125 39.5625 7.8125 41.25 9.875 41.25H23.9375" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30.5 3.75V11.25" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.5 3.75V11.25" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.125 18.75H39.875" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.25 39.375C35.7418 39.375 37.1726 38.7824 38.2275 37.7275C39.2824 36.6726 39.875 35.2418 39.875 33.75C39.875 32.2582 39.2824 30.8274 38.2275 29.7725C37.1726 28.7176 35.7418 28.125 34.25 28.125C32.7582 28.125 31.3274 28.7176 30.2725 29.7725C29.2176 30.8274 28.625 32.2582 28.625 33.75C28.625 35.2418 29.2176 36.6726 30.2725 37.7275C31.3274 38.7824 32.7582 39.375 34.25 39.375Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M41.75 41.25L38.9375 38.4375" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <div class="feature-title">Track<br>Brand Deals</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h4v2zm2-3H7V6h8v2z"/>
-                        </svg>
-                    </div>
+                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M27.6875 3.75H11.75C10.7554 3.75 9.80161 4.14509 9.09835 4.84835C8.39509 5.55161 8 6.50544 8 7.5V37.5C8 38.4946 8.39509 39.4484 9.09835 40.1516C9.80161 40.8549 10.7554 41.25 11.75 41.25H34.25C35.2446 41.25 36.1984 40.8549 36.9016 40.1516C37.6049 39.4484 38 38.4946 38 37.5V14.0625L27.6875 3.75Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M26.75 3.75V15H38" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18.2959 27.6963C18.6078 27.6963 18.8762 27.7766 19.0674 27.9678H19.0664C19.265 28.1583 19.3496 28.4264 19.3496 28.7393C19.3496 29.0484 19.2635 29.3146 19.0674 29.5107C18.8762 29.7019 18.6078 29.7822 18.2959 29.7822H16.6934V34.9658C16.6933 35.333 16.5961 35.646 16.3809 35.8799L16.3789 35.8828C16.1568 36.1145 15.8367 36.2139 15.4561 36.2139C15.0873 36.2138 14.775 36.1119 14.5479 35.8848L14.5459 35.8828C14.3216 35.6491 14.2197 35.3351 14.2197 34.9658V29.7822H12.6172C12.3047 29.7822 12.0353 29.7011 11.8379 29.5137L11.8301 29.5068V29.5059C11.644 29.3095 11.5625 29.0454 11.5625 28.7393C11.5625 28.4274 11.6428 28.1589 11.834 27.9678L11.8379 27.9648C12.0353 27.7774 12.3046 27.6963 12.6172 27.6963H18.2959ZM22.5771 27.5938C22.8695 27.5938 23.1327 27.6712 23.3574 27.832L23.4424 27.8965C23.5808 28.0101 23.7031 28.1563 23.8105 28.3311L23.9316 28.5547L23.9336 28.5576L26.7734 34.6699H26.7725C26.9033 34.9331 26.9585 35.1918 26.9131 35.4385C26.8752 35.6845 26.7535 35.8826 26.5498 36.0195L26.5508 36.0205C26.3607 36.1535 26.1306 36.2139 25.873 36.2139C25.5431 36.2138 25.2599 36.1393 25.0479 35.9658L25.0439 35.9639C24.8534 35.8006 24.6952 35.5502 24.5605 35.2334L24.2402 34.4805H20.9033L20.583 35.2334L20.582 35.2363C20.4411 35.5495 20.2883 35.7958 20.1182 35.957C19.9251 36.1399 19.6485 36.2139 19.3271 36.2139C19.0632 36.2138 18.8276 36.1535 18.6309 36.0225L18.625 36.0195C18.4272 35.8782 18.3014 35.6846 18.2539 35.4473V35.4463C18.2068 35.2011 18.2523 34.9409 18.3691 34.6738L18.3701 34.6699L21.21 28.5576L21.3271 28.334C21.452 28.1233 21.6004 27.9532 21.7754 27.832L21.7783 27.8301C22.0157 27.672 22.2839 27.5938 22.5771 27.5938ZM33.2168 27.5938C33.5247 27.5938 33.7947 27.6759 34.0098 27.8535H34.0088C34.2212 28.0212 34.344 28.2444 34.3721 28.5137C34.4094 28.7969 34.3081 29.0755 34.1084 29.3418L34.1074 29.3428L32.1904 31.8691L34.1621 34.4727L34.2334 34.5684C34.3894 34.7958 34.4642 35.0377 34.4297 35.2881L34.4277 35.2871C34.3986 35.5552 34.2767 35.7804 34.0664 35.9541C33.8514 36.1317 33.5822 36.2138 33.2744 36.2139C33.0313 36.2139 32.8073 36.1566 32.6084 36.0391L32.6035 36.0361C32.4085 35.9121 32.2205 35.7166 32.0381 35.4629V35.4619L30.7666 33.7041L29.5039 35.4629C29.3215 35.7166 29.1334 35.9121 28.9385 36.0361L28.9336 36.04L28.9326 36.0391C28.7329 36.1569 28.5059 36.2138 28.2568 36.2139C27.9551 36.2139 27.6897 36.131 27.4756 35.9541C27.2653 35.7804 27.1386 35.556 27.1016 35.2881L27.1006 35.2812C27.0716 35.0005 27.1713 34.7299 27.3662 34.4756L29.3398 31.8682L27.4336 29.3428L27.4326 29.3408C27.2394 29.0802 27.1401 28.8066 27.1689 28.5264L27.1699 28.5195C27.2069 28.2516 27.3337 28.0272 27.5439 27.8535C27.758 27.6767 28.0234 27.5938 28.3252 27.5938C28.5771 27.5938 28.8063 27.6556 29.0068 27.7832C29.2014 27.907 29.3853 28.098 29.5605 28.3447L30.7666 30.0205L31.9814 28.3438C32.1561 28.0904 32.3413 27.8967 32.54 27.7793V27.7803C32.7395 27.6547 32.9669 27.5938 33.2168 27.5938ZM21.7432 32.4971H23.3975L22.5664 30.5283L21.7432 32.4971Z" fill="#250F7F" stroke="#250F7F" stroke-width="0.375"/>
+                    </svg>
                     <div class="feature-title">W-9s</div>
                 </div>
             </div>
@@ -589,6 +683,56 @@
                 <div class="connect-text">
                     <h2>Connect, Collaborate, and Manage on one platform</h2>
                     <p>Seamlessly manage split transactions and allocations within your collaborations. Brands can keep paying it their way, but now you can control how and when you get paid.</p>
+                </div>
+            </div>
+            <div class="graph-container">
+                <div class="graph-item">
+                    <div class="graph-node">
+                        <img style="padding-left: 389px; padding-top: 16px;" src="https://storage.googleapis.com/gemm-marketing/avatar_1.png">
+                    </div>
+                    <div class="graph-node">
+                        <img style="padding-left: 409px; padding-top: 160px;" src="https://storage.googleapis.com/gemm-marketing/avatar_2.png">
+                    </div>
+                    <div class="graph-node">
+                        <img style="padding-left: 366px; padding-top: 349px;" src="https://storage.googleapis.com/gemm-marketing/avatar_3.png">
+                    </div>
+                    <div class="graph-node">
+                        <img style="padding-left: 167px; padding-top: 349px;" src="https://storage.googleapis.com/gemm-marketing/avatar_4.png">
+                    </div>
+                    <div class="graph-node">
+                        <img style="padding-left: 0px; padding-top: 260px;" src="https://storage.googleapis.com/gemm-marketing/avatar_5.png">
+                    </div>
+                    <div class="graph-node">
+                        <img style="padding-left: 20px; padding-top: 85px;" src="https://storage.googleapis.com/gemm-marketing/avatar_6.png">
+                    </div>
+                    <div class="graph-node">
+                        <img style="padding-left: 196px; padding-top: 0px;" src="https://storage.googleapis.com/gemm-marketing/avatar_7.png">
+                    </div>
+                    <svg width="441" height="375" viewBox="0 0 441 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M386 27.5L1.5 271M386 27.5L188 1.5M386 27.5L440 185.5M386 27.5L181 373.5M1.5 271L31.5 91M1.5 271L181 373.5M31.5 91L181 373.5M31.5 91L440 185.5M31.5 91L188 1.5M181 373.5L365 355.5M365 355.5L188 1.5M365 355.5L440 185.5M188 1.5L440 185.5" stroke="#CAFFD0" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="graph-line">
+                </div>
+                <div class="graph-item">
+                    <svg width="221" height="221" viewBox="0 0 221 221" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_301_650)">
+                            <rect x="16" y="12" width="189" height="189" rx="94.5" fill="white"/>
+                            <path d="M125.905 65.6731H147.02V135.515C147.02 136.253 146.873 136.991 146.873 137.729C145.839 155.448 130.778 169.18 112.616 169.18H103.314V148.213H112.616C119.556 148.213 125.463 142.897 125.905 136.4C125.905 136.105 125.905 128.575 125.905 128.575C123.1 131.528 119.852 133.3 118.523 133.743C114.684 135.219 110.549 135.958 106.12 135.958C86.3336 135.958 70.3867 120.011 70.3867 100.225C70.3867 80.4388 86.3336 64.3442 106.12 64.3442C110.549 64.3442 114.684 65.2302 118.523 66.7067C120.147 67.445 125.462 70.1028 128.416 75.1231C128.563 75.5661 129.006 75.7138 129.449 75.7138C130.63 75.7138 131.221 74.5325 130.63 73.6466C129.597 72.17 128.12 69.9552 125.905 68.0356V65.6731ZM108.63 117.5C118.227 117.5 125.905 109.822 125.905 100.225C125.905 90.6271 118.227 82.9489 108.63 82.9489C99.032 82.9489 91.3539 90.6271 91.3539 100.225C91.3539 109.822 99.032 117.5 108.63 117.5Z" fill="#250F7F"/>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_301_650" x="0" y="0" width="221" height="221" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="4"/>
+                            <feGaussianBlur stdDeviation="8"/>
+                            <feComposite in2="hardAlpha" operator="out"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_301_650"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_301_650" result="shape"/>
+                            </filter>
+                        </defs>
+                    </svg>
                 </div>
             </div>
         </section>
@@ -643,7 +787,9 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-left">
-                <div class="footer-logo">gemm</div>
+                <div>
+                    <img width="120" src="https://storage.googleapis.com/gemm-marketing/logo-text-small.png" alt="gemm">
+                </div>
                 <div class="footer-tagline">Everything from payment links to invoice</div>
                 <div class="footer-tagline">gemm Inc. 2025</div>
             </div>
