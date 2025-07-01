@@ -42,6 +42,24 @@
             padding: 30px 100px 30px;
         }
 
+        .title-1 {
+            line-height: 1.2;
+            font-size: 58px;
+            font-weight: bold;
+        }
+
+        .title-2 {
+            line-height: 1.2;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .title-3 {
+            line-height: 1.2;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
         .logo {
             font-size: 64px;
             font-weight: bold;
@@ -84,12 +102,9 @@
         }
 
         .hero h1 {
-            font-size: 52px;
-            font-weight: bold;
             color: #333;
-            margin-bottom: 100px;
-            max-width: 800px;
-            line-height: 1.1;
+            margin-bottom: 80px;
+            max-width: 780px;
         }
 
         .hero p {
@@ -138,8 +153,6 @@
         }
 
         .features h2 {
-            font-size: 58px;
-            font-weight: bold;
             color: #333;
             margin-bottom: 60px;
         }
@@ -184,7 +197,7 @@
         /* Connect section */
         .connect-section {
             background: linear-gradient(135deg, #250F7F 50%, #CAFFD0 100%);
-            padding: 80px 40px;
+            padding: 40px 40px;
             color: white;
             position: relative;
         }
@@ -199,18 +212,15 @@
         }
 
         .connect-text h2 {
-            font-size: 36px;
-            font-weight: bold;
             margin-bottom: 20px;
-            line-height: 1.2;
             color: #CAFFD0;
         }
 
         .connect-text p {
             font-size: 20px;
             opacity: 0.9;
-            line-height: 1.6;
-            padding-bottom: 40px;
+            line-height: 1.4;
+            padding-bottom: 20px;
         }
 
 
@@ -232,6 +242,17 @@
             border-color: #CAFFD0;
             border-width: 2px;
             min-width: 150px;
+        }
+
+        .dashed-vertical-line {
+            --tw-border-style: dashed;
+            border-style: dashed;
+            min-height: 4px;
+            border-color: #CAFFD0;
+            border-width: 2px;
+            height: 60px;
+            margin-top: -18px;
+            margin-bottom: -18px;
         }
 
         .graph-node {
@@ -258,7 +279,6 @@
             padding-left: 40px;
             padding-bottom: 30px;
             background: white;
-            overflow-x: hidden;
         }
 
         .dashboard-content {
@@ -267,27 +287,13 @@
             text-align: left;
         }
 
-        .dashboard-content h2 {
-            font-size: 36px;
-            font-weight: bold;
-            color: #333;
-        }
-
         .dashboard-content p {
             font-size: 20px;
             color: #666;
         }
 
-        .dashboard-image {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
         .mobile-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -299,7 +305,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+            gap: 20px;
         }
 
         .platform-teaser-feature {
@@ -312,8 +318,8 @@
             font-weight: 600;
             color: #250F7F;
             width: 350px;
+            font-size: 20px;
             height: 109px;
-            padding: 40px 24px;
         }
 
         .money-strong {
@@ -325,13 +331,7 @@
             align-items: center;
             display: grid;
             position: relative;
-            height: 400px;
-        }
-
-        .phone-mockup {
-            position: absolute;
-            width: 250px;
-            height: auto;
+            width: auto;
         }
 
         /* CTA section */
@@ -343,10 +343,7 @@
         }
 
         .final-cta h2 {
-            font-size: 48px;
-            font-weight: bold;
             margin-bottom: 20px;
-            line-height: 1.2;
         }
 
         .final-cta p {
@@ -369,8 +366,6 @@
         }
 
         .faq-content h2 {
-            font-size: 48px;
-            font-weight: bold;
             color: #333;
             margin-bottom: 60px;
         }
@@ -381,13 +376,14 @@
             gap: 40px;
         }
 
-        .bold-title {
+        .title-light-background {
             color: #232323;
             font-family: "Montserrat", sans-serif;
         }
 
-        .title-inverse {
-            color: #FFFEFD
+        .title-dark-background {
+            color: #FFFEFD;
+            font-family: "Montserrat", sans-serif;
         }
 
         .faq-item {
@@ -458,6 +454,15 @@
             font-size: 14px;
         }
 
+        @media (max-width: 1200px) {
+            .title-1 {
+                font-size: 46px;
+            }
+            .platform-teaser-image-container {
+                transform: scale(0.8);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 1050px) {
             .hero {
@@ -465,14 +470,15 @@
             }
 
             .hero h1 {
-                font-size: 32px;
-                padding-left: 40px;
-                padding-right: 40px;
+                padding-left: 120px;
+                padding-right: 120px;
                 margin-bottom: 20px;
             }
 
             .hero p {
                 font-size: 12px;
+                padding-left: 100px;
+                padding-right: 100px;
             }
 
             .left-barrier {
@@ -481,8 +487,16 @@
                 justify-content: left;
             }
 
-            .features h2 {
+            .title-1 {
+                font-size: 36px;
+            }
+
+            .title-2 {
                 font-size: 32px;
+            }
+
+            .title-3 {
+                font-size: 28px;
             }
 
             .graph-container {
@@ -501,20 +515,13 @@
                 gap: 40px;
             }
 
-            .connect-text h2 {
-                font-size: 32px;
-            }
-
             .connect-text p {
                 font-size: 16px;
+                padding-bottom: 0px;
             }
 
             .dashboard-section {
                 padding-bottom: 10px;
-            }
-
-            .dashboard-section h2 {
-                font-size: 32px;
             }
 
             .dashboard-section p {
@@ -523,14 +530,6 @@
 
             .platform-teaser-section {
                 transform: scale(0.9);
-            }
-
-            .faq-section h2 {
-                font-size: 32px;
-            }
-
-            .final-cta h2 {
-                font-size: 32px;
             }
             
             .connect-content,
@@ -570,8 +569,21 @@
             }
 
             .hero h1 {
-                font-size: 22px;
                 margin-bottom: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
+            .title-1 {
+                font-size: 28px;
+            }
+
+            .title-2 {
+                font-size: 26px;
+            }
+
+            .title-3 {
+                font-size: 24px;
             }
 
             .hero p {
@@ -579,7 +591,7 @@
             }
 
             .graph-container {
-                transform: scale(0.45);
+                transform: scale(0.40);
                 padding: 0px;
             }
 
@@ -588,7 +600,7 @@
             }
 
             .platform-teaser-section {
-                transform: scale(0.8);
+                transform: scale(0.9);
             }
 
             .platform-teaser-image-container {
@@ -642,14 +654,14 @@
     <div class="main-content">
         <!-- Hero Section -->
         <section class="hero">
-            <h1 class="bold-title">The Payment Platform<br>for Influencer Marketing</h1>
+            <h1 class="title-light-background title-1">The Payment Platform<br>for Influencer Marketing</h1>
             <p>Powering the creator economy from payments to taxes, end to end.</p>
             <button class="cta-button">Get Started</button>
         </section>
 
         <!-- Features Section -->
         <section class="features">
-            <h2 class="bold-title">What we offer</h2>
+            <h2 class="title-light-background title-1">What we offer</h2>
             <div class="features-grid">
                 <div>
                     <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -720,7 +732,7 @@
         <section class="connect-section">
             <div class="connect-content">
                 <div class="connect-text">
-                    <h2>Connect, Collaborate, and Manage on one platform</h2>
+                    <h2 class="title-3">Connect, Collaborate, and Manage on one platform</h2>
                     <p>Seamlessly manage split transactions and allocations within your collaborations. Brands can keep paying it their way, but now you can control how and when you get paid.</p>
                 </div>
             </div>
@@ -779,19 +791,19 @@
         <!-- Dashboard Section -->
         <section class="dashboard-section">
             <div class="dashboard-content">
-                <h2>Send & Receive Money in one UI</h2>
+                <h2 class="title-3 title-light-background">Send & Receive Money in one UI</h2>
                 <p>Don't worry about managing multiple platforms.</p>
-                <!-- <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-06-27%20at%202.32.54%E2%80%AFPM-tzOK9krVrNF7Zf2h5KUH1XIcv5v7dO.png" alt="Gemm Dashboard Interface" class="dashboard-image"> -->
             </div>
         </section>
 
         <section class="platform-teaser-section">
             <div class="mobile-content">
                 <div class="platform-teaser-image-container">
-                    <img src="https://storage.googleapis.com/gemm-marketing/dashboard.png" alt="Mobile App Interface" style="height: 400px">
+                    <img src="https://storage.googleapis.com/gemm-marketing/dashboard.png" alt="Mobile App Interface" style="height: 420px">
                 </div>
                 <div class="platform-teaser-features">
                     <div class="platform-teaser-feature">Unified dashboard for<br>brand deals</div>
+                    <div class="dashed-vertical-line"></div>
                     <div class="platform-teaser-feature">W-9 & tax automation</div>
                 </div>
             </div>
@@ -801,6 +813,7 @@
             <div class="mobile-content">
                 <div class="platform-teaser-features">
                     <div class="platform-teaser-feature">Real-time<br>split payments</div>
+                    <div class="dashed-vertical-line"></div>
                     <div class="platform-teaser-feature">Instant ACH &<br>wire payouts</div>
                 </div>
                 <div class="platform-teaser-image-container">
@@ -811,7 +824,7 @@
 
         <!-- Final CTA Section -->
         <section class="final-cta">
-            <h2 class="title-inverse">Give your team the freedom to get paid their way</h2>
+            <h2 class="title-dark-background title-2">Give your team the freedom to get paid their way</h2>
             <p>You save time and money – <span class="money-strong">everyone wins</span></p>
             <button class="cta-button light">Get Started</button>
         </section>
@@ -819,7 +832,7 @@
         <!-- FAQ Section -->
         <section class="faq-section">
             <div class="faq-content">
-                <h2 class="bold-title">FAQs</h2>
+                <h2 class="title-light-background title-1">FAQs</h2>
                 <div class="faq-grid">
                     <div class="faq-item">
                         <div class="faq-question">What is gemm?</div>
