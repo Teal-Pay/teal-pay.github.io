@@ -187,7 +187,6 @@
             padding: 80px 40px;
             color: white;
             position: relative;
-            overflow-x: hidden;
         }
 
         .connect-content {
@@ -197,7 +196,6 @@
             grid-template-columns: 2fr 1fr;
             gap: 80px;
             align-items: center;
-            overflow-x: hidden;
         }
 
         .connect-text h2 {
@@ -212,7 +210,36 @@
             font-size: 20px;
             opacity: 0.9;
             line-height: 1.6;
-            margin-bottom: 40px;
+            padding-bottom: 40px;
+        }
+
+
+        .graph-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .graph-item {
+            display: grid;
+        }
+
+        .graph-line {
+            --tw-border-style: dashed;
+            border-style: dashed;
+            width: 400px;
+            border-color: #CAFFD0;
+            border-width: 2px;
+            min-width: 150px;
+        }
+
+        .graph-node {
+            position: absolute;
+            z-index: 5;
+            margin-left: -50px;
+            margin-top: -50px;
+            overflow-x: hidden;
         }
 
         .profile-circle {
@@ -227,7 +254,9 @@
 
         /* Dashboard section */
         .dashboard-section {
-            padding: 80px 40px;
+            padding-top: 80px;
+            padding-left: 40px;
+            padding-bottom: 30px;
             background: white;
             overflow-x: hidden;
         }
@@ -247,7 +276,6 @@
         .dashboard-content p {
             font-size: 20px;
             color: #666;
-            margin-bottom: 60px;
         }
 
         .dashboard-image {
@@ -258,46 +286,46 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        /* Mobile section */
-        .mobile-section {
-            padding: 80px 40px;
-            overflow-x: hidden;
-        }
-
         .mobile-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 80px;
             align-items: center;
         }
 
-        .mobile-features {
+        .platform-teaser-features {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 40px;
         }
 
-        .mobile-feature {
-            padding: 20px;
-            background: white;
+        .platform-teaser-feature {
+            display: flex;
             border: 2px solid #250F7F;
-            border-radius: 8px;
+            border-radius: 10px;
             text-align: center;
+            justify-content: center;
+            align-items: center;
             font-weight: 600;
             color: #250F7F;
             width: 350px;
+            height: 109px;
+            padding: 40px 24px;
         }
 
         .money-strong {
             color: #CAFFD0;
         }
 
-        .mobile-phones {
+        .platform-teaser-image-container {
+            justify-content: center;
+            align-items: center;
+            display: grid;
             position: relative;
-            height: 500px;
+            height: 400px;
         }
 
         .phone-mockup {
@@ -430,34 +458,6 @@
             font-size: 14px;
         }
 
-        .graph-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-
-        .graph-item {
-            display: grid;
-            align-items: center;
-        }
-
-        .graph-line {
-            --tw-border-style: dashed;
-            border-style: dashed;
-            width: 400px;
-            border-color: #CAFFD0;
-            border-width: 2px;
-            min-width: 150px;
-        }
-
-        .graph-node {
-            position: absolute;
-            z-index: 5;
-            margin-left: -50px;
-            margin-top: -50px;
-        }
-
         /* Responsive */
         @media (max-width: 1050px) {
             .hero {
@@ -509,12 +509,28 @@
                 font-size: 16px;
             }
 
+            .dashboard-section {
+                padding-bottom: 10px;
+            }
+
             .dashboard-section h2 {
                 font-size: 32px;
             }
 
             .dashboard-section p {
                 font-size: 16px;
+            }
+
+            .platform-teaser-section {
+                transform: scale(0.9);
+            }
+
+            .faq-section h2 {
+                font-size: 32px;
+            }
+
+            .final-cta h2 {
+                font-size: 32px;
             }
             
             .connect-content,
@@ -541,20 +557,43 @@
             }
 
             .left-barrier {
-                margin-top: 130px;
+                margin-top: 150px;
                 transform-origin: left top;
                 transform: scale(0.3);
                 justify-content: left;
             }
             .right-barrier {
-                margin-top: 130px;
+                margin-top: 150px;
                 transform-origin: top right;
                 transform: scale(0.3);
                 overflow-x: hidden;
             }
+
+            .hero h1 {
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 10px;
+            }
+
             .graph-container {
                 transform: scale(0.45);
                 padding: 0px;
+            }
+
+            .dashboard-section {
+                padding-bottom: 0px;
+            }
+
+            .platform-teaser-section {
+                transform: scale(0.8);
+            }
+
+            .platform-teaser-image-container {
+                transform: scale(0.7);
+                min-width: 300px;
             }
         }
     </style>
@@ -746,23 +785,33 @@
             </div>
         </section>
 
-        <!-- Mobile Section
-        <section class="mobile-section">
+        <section class="platform-teaser-section">
             <div class="mobile-content">
-                <div class="mobile-features">
-                    <div class="mobile-feature">Real-time<br>split payments</div>
-                    <div class="mobile-feature">Instant ACH &<br>wire payouts</div>
+                <div class="platform-teaser-image-container">
+                    <img src="https://storage.googleapis.com/gemm-marketing/dashboard.png" alt="Mobile App Interface" style="height: 400px">
                 </div>
-                <div class="mobile-phones">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-06-27%20at%202.33.03%E2%80%AFPM-6frylurJkIlvAWQ8g6B9OgKcqlXUQs.png" alt="Mobile App Interface" style="width: 100%; height: auto;">
+                <div class="platform-teaser-features">
+                    <div class="platform-teaser-feature">Unified dashboard for<br>brand deals</div>
+                    <div class="platform-teaser-feature">W-9 & tax automation</div>
                 </div>
             </div>
         </section>
-        -->
+
+        <section class="platform-teaser-section">
+            <div class="mobile-content">
+                <div class="platform-teaser-features">
+                    <div class="platform-teaser-feature">Real-time<br>split payments</div>
+                    <div class="platform-teaser-feature">Instant ACH &<br>wire payouts</div>
+                </div>
+                <div class="platform-teaser-image-container">
+                    <img src="https://storage.googleapis.com/gemm-marketing/phone_notification.png" alt="Mobile App Interface" style="height: 500px">
+                </div>
+            </div>
+        </section>
 
         <!-- Final CTA Section -->
         <section class="final-cta">
-            <h1 class="title-inverse">Give your team the freedom to get paid their way</h2>
+            <h2 class="title-inverse">Give your team the freedom to get paid their way</h2>
             <p>You save time and money – <span class="money-strong">everyone wins</span></p>
             <button class="cta-button light">Get Started</button>
         </section>
