@@ -39,7 +39,7 @@
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 30px 100px 30px;
+            padding: 40px 100px 30px;
         }
 
         .title-1 {
@@ -58,12 +58,6 @@
             line-height: 1.2;
             font-size: 36px;
             font-weight: bold;
-        }
-
-        .logo {
-            font-size: 64px;
-            font-weight: bold;
-            color: #250F7F;
         }
 
         /* Left barrier */
@@ -584,6 +578,10 @@
                 padding-right: 50px;
             }
 
+            .hero p {
+                margin-bottom: 20px;
+            }
+
             .title-1 {
                 font-size: 28px;
             }
@@ -623,7 +621,11 @@
 <body>
     <!-- Fixed Header -->
     <header class="header">
-        <div class="logo"><img width="165" src="https://storage.googleapis.com/gemm-marketing/logo-text-large.png" alt="gemm"></div>
+        <div>
+            <a href="index.html">
+                <img width="165" src="https://storage.googleapis.com/gemm-marketing/logo-text-large.png" alt="gemm">
+            </a>
+        </div>
     </header>
 
     <!-- Left Barrier -->
@@ -900,8 +902,7 @@
         // Add click handlers for CTA buttons
         document.querySelectorAll('.cta-button').forEach(button => {
             button.addEventListener('click', function() {
-                console.log('Get Started clicked');
-                // Add your signup/registration logic here
+                window.location.href = 'start.html'
             });
         });
     </script>
