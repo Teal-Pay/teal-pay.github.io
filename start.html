@@ -331,7 +331,7 @@
             };
             
             // TODO: Might want to change this to point to the prod backend at some point
-            fetch("https://gemm-dev.wl.r.appspot.com/api/auth/signin", {
+            fetch("https://gemm-dev.wl.r.appspot.com/api/marketing/lead", {
                 method: "POST",
                 body: JSON.stringify({ "name": data.name, "email": data.email, "company": data.company, "message": data.message}),
             }).then(() => {
