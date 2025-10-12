@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service</title>
+    <style>
+      .terms-of-service-section {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #F9F9F9;
+      }
+
+      .heading-container {
+        display: flex;
+        width: 100%;
+        max-width: 1512px;
+        padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 7vw, 6.25rem);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+        background: #FFF;
+        box-sizing: border-box;
+      }
+
+      .heading-container h1 {
+        color: var(--Metal-400, #3B3A3A);
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 70px;
+        letter-spacing: -2.88px;
+        margin: 0;
+      }
+
+      .terms-of-service-container {
+        display: flex;
+        width: 100%;
+        max-width: 1512px;
+        padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 10vw, 9.375rem);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: clamp(1.5rem, 2.5vw, 2.5rem);
+        box-sizing: border-box;
+      }
+
+      .privacy-content {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2rem, 3vw, 3rem);
+        width: 100%;
+      }
+
+      .term-section,
+      .policy-section,
+      .service-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .term-section h2,
+      .policy-section h2,
+      .service-section h2 {
+        color: var(--Metal-400, #3B3A3A);
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1.25rem, 2vw, 2rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -1.28px;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .term-section p,
+      .policy-section p,
+      .service-section p {
+        color: var(--Metal-400, #3B3A3A);
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.24px;
+        margin-bottom: 1rem;
+      }
+
+      .term-section ul,
+      .policy-section ul,
+      .service-section ul {
+        padding-left: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .term-section li,
+      .policy-section li,
+      .service-section li {
+        color: var(--Metal-400, #3B3A3A);
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.24px;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .heading-container {
+          padding: 3rem 1.5rem;
+        }
+
+        .heading-container h1 {
+          font-size: 2.5rem;
+          line-height: 1.2;
+          letter-spacing: -1.5px;
+        }
+
+        .terms-of-service-container {
+          padding: 2rem 1.5rem;
+          gap: 1.5rem;
+        }
+
+        .privacy-content {
+          gap: 1.5rem;
+        }
+
+        .term-section h2,
+        .policy-section h2,
+        .service-section h2 {
+          font-size: 1.25rem;
+          margin-top: 1rem;
+          letter-spacing: -0.5px;
+        }
+
+        .term-section p,
+        .policy-section p,
+        .service-section p,
+        .term-section li,
+        .policy-section li,
+        .service-section li {
+          font-size: 1rem;
+          letter-spacing: 0.12px;
+        }
+      }
+
+      /* Tablet responsiveness */
+      @media (max-width: 1024px) {
+        .heading-container {
+          padding: 4rem 3rem;
+        }
+
+        .heading-container h1 {
+          font-size: 3rem;
+          line-height: 1.15;
+        }
+
+        .terms-of-service-container {
+          padding: 4rem 3rem;
+        }
+
+        .term-section h2,
+        .policy-section h2,
+        .service-section h2 {
+          font-size: 1.5rem;
+        }
+
+        .term-section p,
+        .policy-section p,
+        .service-section p,
+        .term-section li,
+        .policy-section li,
+        .service-section li {
+          font-size: 1.125rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="terms-of-service-section">
+      <div class="heading-container">
+        <h1>Terms of Service</h1>
+      </div>
+      <div class="terms-of-service-container">
+        <div class="privacy-content">
+          <div class="term-section">
+            <h2>Welcome To Gemm</h2>
+
+            <p>
+              These Terms of Service (also known as “Customer Agreement”) are a
+              legal agreement between you and Teal Pay Global, Inc. (doing
+              business as “Gemm”), a Delaware corporation. Gemm (referred to as
+              "Gemm," "we," "us," or "our," as applicable). This agreement
+              governs your use of, and access to, the Services as defined
+              herein, which include the Website, iOS and Android Applications,
+              and other related Gemm Materials.
+            </p>
+
+            <p>
+              By accessing our platform, opening, registering, or using a Gemm
+              Account, or any of our Services, you agree to be bound by this
+              Customer Agreement and consent to receive communications related
+              to the Services or your Gemm Account in electronic format (as set
+              forth in our Electronic Communications Delivery Policy - which
+              also provides for E-sign disclosures and consent), and you affirm
+              that you are of legal age in your jurisdiction, have legal
+              authorization to represent yourself and/or your business, and
+              legally capable of entering into this Customer Agreement. You also
+              agree to comply with the following additional policies and each of
+              the other agreements that apply to you:
+            </p>
+
+            <p>
+              Our Acceptable Use Policy, which sets forth the permitted uses and
+              prohibited uses of our Services.
+            </p>
+
+            <p>
+              For details on how Gemm collects, uses, and safeguards your
+              personal information, please review our Privacy Policy.
+            </p>
+
+            <p>
+              By accepting this Customer Agreement, you also agree to the User
+              Terms of our payments and custody partner, Cybrid, along with any
+              other third-party agreements necessary for Gemm to provide its
+              services
+            </p>
+
+            <p>
+              Please read carefully all of the terms of these policies and each
+              of the other agreements that apply to you. Your use of certain
+              Services may be subject to additional terms and conditions, as
+              communicated by us to you through the Service or by other means,
+              and such additional terms and conditions are incorporated into
+              this Customer Agreement.
+            </p>
+
+            <p>
+              This Customer Agreement contains several sections, and you should
+              read all of them carefully. The headings are for reference only.
+              Some capitalized terms have specific definitions that are defined
+              in the Glossary or within this Customer Agreement. Underlined
+              words in this Customer Agreement contain hyperlinks to further
+              information.
+            </p>
+
+            <p>
+              If we change the Customer Agreement in a way that reduces your
+              rights or increases your responsibilities, we will provide you
+              with 30 days prior notice, including by posting notice on Gemm’s
+              platform. Your use of the Services following any changes to this
+              Customer Agreement will constitute your acceptance of such
+              changes. The "Last Updated" legend above indicates when this
+              Customer Agreement was last changed. We may, at any time and
+              without liability, modify or discontinue all or part of the
+              Services (including access via any third-party links); charge,
+              modify or waive certain fees related to the Services; or offer the
+              Services, or certain of the Services, to some or all users.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>About Gemm</h2>
+
+            <p>
+              Gemm is a subsidiary of Teal Pay Global, Inc., incorporated in
+              Delaware, and operates as a Technology company throughout the
+              United States, using the infrastructure of its financial partners
+              to process Fiat (US Dollar) transactions for payments. Gemm does
+              not directly handle customer interactions for Fiat collections but
+              provides a platform that allows all services to be provided by a
+              range of partners. Gemm works with various licensed partners to
+              ensure our services reach end beneficiaries efficiently. Our
+              services enable currency transfers, balance maintenance, currency
+              conversion into other supported currencies, including conversions
+              from Stablecoins, including USDC to FIAT currencies, fund
+              withdrawals, and the management of other related financial
+              transactions. Gemm reserves the right to reject any user
+              registration or deny any transaction instructions, including
+              transfers, receipts, withdrawals, or conversions of funds in your
+              Gemm Account, at our sole discretion.
+            </p>
+
+            <p>
+              Gemm is a software platform and is NOT a bank or a licensed
+              financial institution. In order to facilitate payment and funds
+              management services, Gemm enters into contractual arrangements
+              with partner banks and payment partners to provide platform
+              Services. Except where required by law, Customer assets held by,
+              or transmitted through, partner banks and payment partners are not
+              the responsibility of Gemm and Gemm makes no assurances or
+              representations with respect to any such partner bank, payment
+              partner, custodian or exchange. No member of Gemm will be liable
+              for any direct or indirect losses or damages realized by customers
+              for any reason where such loss or damage is caused, directly or
+              indirectly, by a partner bank or a payment partner. 
+            </p>
+
+            <p>
+              Funds deposited into your Gemm Wallet are held in pooled custodial
+              accounts by one or more regulated financial institutions through
+              our financial infrastructure partners. These accounts are not
+              insured by the FDIC and may not offer the same protections as
+              traditional deposit accounts. Gemm does not itself hold or
+              safeguard funds.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <p>In this Customer Agreement:</p>
+
+            <ul>
+              <li>
+                API means the application programming interface provided by
+                Gemm.
+              </li>
+              <li>
+                Business Day means a day other than a Saturday, Sunday or a
+                public holiday in the United States when financial institutions
+                are open for business.
+              </li>
+              <li>Currency means any local legal tender.</li>
+              <li>
+                Convert Money means any instructions you provide to Gemm's
+                payments partners via our platform to convert, transmit, send
+                one type of legal tender/currency, and receive another type of
+                legal tender/currency, for you and/or your customer.
+              </li>
+              <li>
+                Cryptocurrency means FIAT backed fully collateralized
+                stablecoins such as USDC (subjected to changes).
+              </li>
+              <li>
+                Designed Account means any account you provide to Gemm, to
+                store, send, transfer, receive, and/or convert money.
+              </li>
+              <li>
+                Fiat means US Dollars and/or any local legal tender backed by
+                the sovereign authority of a nation-state.
+              </li>
+              <li>
+                Gemm Account means the Gemm Account on the website you have
+                opened with us in accordance with the terms of this Customer
+                Agreement for use of our Services.
+              </li>
+              <li>
+                Gemm Materials means any software (including without limitation
+                the App, API, developer tools, sample source code, and code
+                libraries), data, materials, content and printed and electronic
+                documentation (including any specifications and integration
+                guides) developed and provided by us or our affiliates to you,
+                or available for download from our Website.
+              </li>
+              <li>Partners means Gemm’s partners and vendors.</li>
+              <li>
+                Receive means the currency is received in the designed account.
+              </li>
+              <li>
+                Registered User means any clients, customers that have directly
+                registered with Gemm and have a direct contractual relationship
+                with Gemm. This excludes any customers of our registered user
+                that did not register with Gemm and/or have a direct contractual
+                relationship with us.
+              </li>
+              <li>
+                Send means providing instructions to convert money, or other
+                instructions to take any action on your Gemm Account.
+              </li>
+              <li>
+                Services means all products, services, content, features,
+                technologies or functions offered by us and all related websites
+                and services (including the Website and API).
+              </li>
+              <li>
+                Source Currency means the currency which you use to fund a
+                currency conversion.
+              </li>
+              <li>
+                Target Currency means the currency that you or your recipient
+                will receive after you convert currency.
+              </li>
+              <li>
+                Transfer means using your Gemm Account to, as part of a single
+                or multiple transactions, upload, convert and send currency.
+              </li>
+              <li>
+                Unauthorized Transaction means when money is sent from your Gemm
+                Account that you did not authorize and that did not benefit you.
+              </li>
+              <li>
+                Website means any webpage, including but not limited to
+                https://Gemm.app/ where we provide Services to you.
+              </li>
+              <li>
+                Withdraw means providing instructions to move currency out of
+                your account, your customer's account, or any designed account.
+              </li>
+            </ul>
+          </div>
+
+          <div class="term-section">
+            <h2>Using Our Services</h2>
+
+            <p>Opening a Gemm Account</p>
+
+            <p>
+              In order to use some or all of the Services, you must become a
+              Registered User by opening an account with us and our partners,
+              providing the requested information, and passing all onboarding
+              requirements here, checks and screening. Registered User means any
+              clients or customers that have directly registered with Gemm and
+              have a direct contractual relationship with Gemm. This excludes
+              any customers of our registered user that did not register with
+              Gemm and/or do not have a direct contractual relationship with us.
+              For legal reasons, all information you provide during the signup
+              process or any time thereafter must be complete, accurate and
+              truthful. You are responsible for keeping your mailing address,
+              email address, telephone number, and other contact information
+              up-to-date in your Gemm Account profile. To make changes to your
+              profile, please contact us. We may refuse to provide or may
+              discontinue providing the Services to any person or entity at any
+              time for any reason.
+            </p>
+
+            <p>
+              We treat all activities under a Gemm Account to be those of the
+              registered user. You must only use the Services to transact on
+              your own account. You may only open one Gemm Account unless we
+              explicitly approve the opening of additional accounts. We may
+              refuse the creation of duplicate accounts for the same user. Where
+              duplicate accounts are detected, Gemm may close or merge these
+              duplicate accounts without notification to you.
+            </p>
+
+            <p>
+              You will also appoint a point of contact, responsible for
+              coordinating with Gemm for anything related to your Gemm Account
+              and/or Services.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Geographical Eligibility and Client Obligations</h2>
+
+            <p>
+              Gemm’s services are currently available only to customers
+              operating within the United States. By using Gemm, you confirm
+              that your business operates within this geographic scope and that
+              you understand and accept these limitations.
+            </p>
+
+            <p>
+              For compliance and safety, certain locations are not eligible to
+              use Gemm as senders. This includes residents of Cuba, Iran, North
+              Korea, Syria, and the Crimea, Donetsk, and Luhansk regions. Other
+              jurisdictions may be restricted or require additional review
+              before access is granted. These measures help us meet regulatory
+              obligations and maintain a secure platform for all users.
+            </p>
+
+            <p>
+              We are also unable to work with individuals or entities that
+              appear on any restricted or denied party lists maintained by the
+              United States, United Kingdom, European Union, or United Nations.
+              This includes, but is not limited to, the U.S. Office of Foreign
+              Assets Control’s sanctions lists and the U.S. Department of
+              Commerce’s Denied Persons or Entity Lists.
+            </p>
+
+            <p>
+              Lastly, please note that you are prohibited from the use of Gemm
+              and its products and services for any illegal activities or other
+              restricted services. As a Gemm customer, you agree to uphold these
+              requirements.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Acoount Security</h2>
+
+            <p>
+              You, not Gemm, are responsible for maintaining adequate security
+              and control of any and all IDs, passwords, or any other details
+              that you use to access your Gemm Account and the Services. You
+              must never disclose your Gemm Account password or your customer
+              reference number. Gemm and its employees, associates, partners and
+              vendors will never request your Gemm Account password. Keep them
+              safe. Change your password regularly. Tell us if anyone asks for
+              your password, and contact us if you are not sure about this, or
+              any other security-related aspect of your Gemm Account. 
+            </p>
+
+            <p>
+              You must never let anyone access your Gemm Account or watch you
+              accessing your Gemm Account.
+            </p>
+
+            <p>
+              If you suspect your Gemm Account, login details, password or any
+              other security features are stolen, lost, used without
+              authorization or otherwise compromised, you are advised to change
+              your password. Contact us immediately if you believe your
+              credentials have been compromised or you are suspicious about the
+              security of your password or any other security features. The
+              compromise of your credentials could enable thieves to access your
+              account and attempt transactions not authorized by you.
+            </p>
+
+            <p>
+              In addition, contact us at once if your transaction history for
+              your Gemm Account shows transactions that you did not initiate. We
+              rely on you to regularly check the transaction history of your
+              Gemm Account and to contact us immediately in case you have any
+              questions or concerns. We may (but are not obligated to) suspend
+              your Gemm Account or otherwise restrict its functionality if we
+              have concerns about the security of the Gemm Account or any of its
+              security features; or potential unauthorized or fraudulent use of
+              your Gemm Account or any of its security features.
+            </p>
+
+            <p>
+              You must make sure that your email account(s) are secure and only
+              accessible by you, as your email address may be used to reset
+              passwords or to communicate with you about the security of your
+              Gemm Account. Let us know immediately if your email address
+              becomes compromised. Never use any functionality that allows login
+              details or passwords to be stored by the computer or browser you
+              are using or to be cached or otherwise recorded. Additional Gemm
+              products or Services you use may have additional security
+              requirements, as notified to you by us, and you must familiarize
+              yourself with those requirements. In the case of what you believe
+              to be any incorrect or misdirected payment, contact us
+              immediately.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Initiating a Transfer</h2>
+
+            <p>
+              All transfer requests must be made via our API following the
+              established protocols and guidelines. Gemm will establish a cut
+              off time during each business day where transfer requests will be
+              processed in accordance to the date and time the instructions were
+              received and confirmed. All Source Currency must be made in USD
+              unless otherwise agreed. You will be able to see the Target
+              Currency, the exchange rate, applicable fees, and approximate
+              processing time in your Gemm Account.
+            </p>
+
+            <p>
+              Upon submitting your Transfer request, you will have 2 business
+              days (unless otherwise agreed) to confirm the list of transactions
+              and wire the funds to Gemm for us to initiate the transfer
+              request. Any delay and/or discrepancies in the wired amount
+              received by Gemm will result in a delay in initiating the
+              transfer. If wired funds are received after the agreed business
+              days, payments to beneficiaries will be delayed. Gemm reserves the
+              right to use the latest FX rate to complete the Transfer request.
+              Any additional amount discrepancies due to the changes in FX rate
+              as a result of your or your bank's wire transfer delay will be
+              borne by you. Gemm will work with you for the recovery of the
+              additional funds owed to Gemm.
+            </p>
+
+            <p>
+              You will work with Gemm to resolve any discrepancies without
+              delays. Gemm has the right to reject, decline, or cancel in part
+              or in full any Transfer request at its discretion. Once a transfer
+              is initiated by Gemm, we will not be able to make any changes to
+              the transactions, including changing the amount, delaying,
+              canceling the transaction, changing the recipient or the Target
+              Currency.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Delay Transfer</h2>
+
+            <p>
+              We do not have any control over the time it may take to complete
+              your transfer, which is dependent on the services provided by our
+              Partners. We may delay a Transfer, in certain situations,
+              including if we need to confirm that the withdrawal has been
+              authorized by you or if other discrepancies arise. The completion
+              time of your Transfer (i.e., the date on which funds were made
+              available to the recipient) is notified to you via electronic
+              communication upon completion of the transfer request.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Currency Conversion, Exchange Rate and Fees</h2>
+
+            <p>
+              The currency conversion and exchange rate shall be determined and
+              agreed upon as specified in the contract executed during your
+              onboarding process. This agreement will also outline any
+              applicable fees and the cost of our services and/or products. Any
+              change request must be made in writing 30 days in advance to Gemm
+              for consideration. All subsequent changes will need to be
+              confirmed in writing and accepted by both parties prior to the new
+              effective date.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>We are not a currency trading platform</h2>
+
+            <p>
+              Gemm is not a currency trading platform, and accordingly, you
+              should not use our Services, including the Gemm Account or our
+              Services for this purpose. If we detect that you are using our
+              Services for this purpose, we may, at in our sole discretion, set
+              a limit on the number of transfer requests you may create, cancel
+              your orders, set a limit on the amount of money you can convert or
+              transfer in one or more currencies or in the same currency,
+              restrict your ability to use this or other features, or suspend or
+              close your Gemm Account.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Closing Your Gemm Account</h2>
+
+            <p>
+              You may end this Customer Agreement and close your Gemm Account in
+              accordance with the agreed terms of your contract with Gemm. At
+              the time of closure, if you still have money in your account, you
+              must withdraw your money within a reasonable period of time by
+              following the guidance and instructions from Gemm.
+            </p>
+
+            <p>
+              You must not close your Gemm Account to avoid an investigation. If
+              you attempt to close your Gemm Account during an investigation, we
+              may hold your money until the investigation is fully completed.
+              You agree that you will continue to be responsible for all
+              obligations related to your Gemm Account even after it is closed.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Gemm can close your Gemm Account</h2>
+
+            <p>
+              Gemm, in its sole discretion, reserves the right to suspend or
+              terminate this Customer Agreement, access to or use of its Service
+              websites, software, systems (including any networks and servers
+              used to provide any of the Services) operated by us or on our
+              behalf or some or all of the Services for any reason and at any
+              time. 
+            </p>
+
+            <p>
+              Reasons we may close your Gemm Account include, but are not
+              limited to:
+            </p>
+            <ul>
+              <li>
+                your breach of any provision of this Customer Agreement or
+                documents referred to in this Customer Agreement;
+              </li>
+              <li>
+                we are requested or directed to do so by any competent court of
+                law, government authority or agency, or law enforcement agency;
+              </li>
+              <li>
+                we have reason to believe you are in violation or breach of any
+                applicable law or regulation; or
+              </li>
+              <li>
+                we have reason to believe you are involved in any fraudulent
+                activity, money laundering, terrorism financing or other
+                criminal or illegal activity.
+              </li>
+              <li>
+                We may also suspend your Gemm Account if it has been compromised
+                or for other security reasons; or has been used or is being used
+                without your authorization or fraudulently.
+              </li>
+            </ul>
+
+            <p>
+              If we close your Gemm Account or terminate your use of the
+              Services for any reason, we'll provide you with notice of our
+              actions. You are responsible for all reversals, chargebacks, fees,
+              fines, penalties and other liability incurred by Gemm, any other
+              Gemm customer, or a third party, caused by or arising out of your
+              breach of this Customer Agreement. You agree to reimburse Gemm,
+              any Gemm customer, or a third party for any and all such
+              liability. On termination for any reason, all rights granted to
+              you in connection with your account shall cease.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Tax Compiliance and Responsibilities</h2>
+
+            <p>
+              Gemm offers optional functionality to assist in the generation and
+              collection of IRS Form W-9 from Creators for the benefit of Brands
+              or other paying parties. This service may be provided as part of a
+              paid plan, usage-based pricing model, or other monetized feature
+              of the Gemm platform. The availability and terms of this
+              functionality are subject to change and may vary based on your
+              platform tier, account status, or contractual arrangement.
+            </p>
+
+            <p>
+              Use of this feature does not constitute tax, legal, or financial
+              advice, and Gemm makes no representations regarding the accuracy,
+              sufficiency, or legal compliance of any generated or collected tax
+              information.
+            </p>
+
+            <p>
+              All users, including both Creators, Agencies, and Brands, are
+              solely responsible for:
+            </p>
+            <ul>
+              <li>
+                The accuracy and completeness of the tax information they
+                provide or receive through the Gemm platform;
+              </li>
+              <li>
+                Compliance with all applicable federal, state, and local tax
+                laws;
+              </li>
+              <li>
+                The preparation, filing, and submission of any required tax
+                documents (including IRS Forms 1099) to taxing authorities;
+              </li>
+              <li>
+                Consulting with appropriate tax professionals to determine their
+                individual or business tax obligations.
+              </li>
+            </ul>
+
+            <p>
+              Gemm does not file tax forms with the Internal Revenue Service
+              (IRS) or any other government agency on behalf of any user. By
+              using the W-9 or W-8 BEN assistance feature, you acknowledge that
+              Gemm’s role is limited to facilitating the collection and delivery
+              of tax forms between users and does not include verification,
+              submission, or legal review.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>Communications Between You and Us</h2>
+            <p>
+              Gemm may communicate with you about your Gemm Account and the
+              Services electronically as described in our Electronic
+              Communications Delivery Policy . You will be considered to have
+              received a communication from us, if it's delivered
+              electronically, 24 hours after the time we post it to our website
+              or email it to you. You will be considered to have received a
+              communication from us, if it's delivered by mail, three (3)
+              Business Days after we send it.
+            </p>
+            <p>
+              We usually contact you via email. For this reason, you must at all
+              times maintain at least one valid email address in your Gemm
+              Account profile. You are required to check for incoming messages
+              regularly and frequently, these emails may contain links to
+              further communication on our Website. If you don't maintain or
+              check your email and other methods of communications, you will
+              miss emails about your transactions and our Services. We cannot be
+              liable for any consequence or loss if you don't do this.
+            </p>
+            <p>
+              In addition to communicating via email, we may contact you via
+              letter or telephone where appropriate. If you use any mobile
+              services, we may, and you agree that we may, also communicate with
+              you via SMS. Any communications or notices sent by Text messages
+              (SMS) will be deemed received the same day. If you need a copy of
+              the current Customer Agreement or any other relevant document,
+              please contact us.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>Reversals, Chargebacks, ACH Returns and Wire Recalls</h2>
+            <p>
+              Gemm is not responsible for any reversals, chargebacks, ACH
+              returns and/or wire recalls. Once you have initiated a transfer
+              request, it is your responsibility to ensure the transaction(s)
+              are validated and funded before you confirm and wire us the funds.
+              If you receive a reversal, chargeback, ACH return or wire recall
+              after you have wired us the funds, it is your responsibility to
+              collect whatever outstanding balance from your customer. Gemm will
+              not be responsible and/or involved in your collections and
+              recovery process.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>Negative Balances</h2>
+            <p>
+              Gemm wallet balances cannot contain negative amounts. We may
+              charge you for any costs we may incur as a result of any
+              collection efforts.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>Error Resolution</h2>
+            <p>
+              You must make sure that the information you provide to us when you
+              send or convert currency, is accurate. Once a transaction is
+              processed, it cannot be reversed (except where, and to the extent,
+              required by applicable law) and, except as expressly set forth in
+              this Customer Agreement, we will not be liable in any way for any
+              loss you suffer as a result of a transaction being carried out in
+              accordance with your instructions.
+            </p>
+            <p>
+              If you believe there to be an error in connection with a
+              transaction or other problem, then you should notify Gemm in
+              writing as soon as possible, but no later than 60 days from the
+              date we disclosed to you that a transaction has been completed.
+              When you do, please tell us as much of the following information
+              as possible: (1) your name and address; (2) the error or problem
+              with the transaction, and why you believe it is an error or
+              problem; (3) the name of the recipient, and if you know it,
+              telephone number or address; (4) the dollar amount of the
+              transfer; and (5) the transfer number.
+            </p>
+            <p>The following are not considered Errors:</p>
+            <ul>
+              <li>
+                If you give someone access to your Gemm Account (by giving them
+                your login information) and they use your Gemm Account without
+                your knowledge or permission. You are responsible for
+                transactions made in this situation;
+              </li>
+              <li>
+                Invalidation and reversal of a payment or transaction as a
+                result of the actions described under Reversals, Chargebacks,
+                ACH Returns and Wire Recalls;
+              </li>
+              <li>Routine inquiries about your Gemm Account balance;</li>
+              <li>
+                Requests for duplicate documentation or other information for
+                recordkeeping purposes;
+              </li>
+              <li>
+                A change requested by the recipient of funds sent from you;
+              </li>
+              <li>
+                A change in the amount or type of currency received by a
+                designated recipient from the amount or type of currency stated
+                in the disclosure provided you, if we relied on information
+                provided by you in making the disclosure;
+              </li>
+              <li>
+                Delays that result from Gemm applying holds or limitations. Our
+                decision about holds or limitations may be based on confidential
+                risk management procedures and the protection of Gemm, our
+                customers and/or service providers. In addition, we may be
+                restricted by regulation or a governmental authority from
+                disclosing certain information to you about such decisions. We
+                have no obligation to disclose the details of our risk
+                management or security procedures to you;
+              </li>
+              <li>
+                Delays based on a review of a potentially high-risk transaction;
+              </li>
+              <li>
+                Your errors in making a transaction (for example, mistyping an
+                amount of money that you are sending or choosing an incorrect
+                Target Currency).
+              </li>
+            </ul>
+          </div>
+
+          <div class="term-section">
+            <h2>Complaints</h2>
+
+            <p>
+              If you have a question or complaint regarding the Services, please
+              send an email through our info@gemm.app.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Gemm API</h2>
+
+            <p>
+              If you access our Services via our API, we grant you a
+              non-transferable, non-exclusive license to use our API subject to
+              this Customer Agreement. We reserve all other rights.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Information Security</h2>
+
+            <p>
+              Please see Account Security above for further details on how to
+              keep your Gemm Account safe. You are responsible for configuring
+              your information technology, computer programs and platform in
+              order to access our Services. You should use your own virus
+              protection software. You must not misuse our Services by
+              introducing viruses, trojans, worms, logic bombs or other
+              materials which are malicious or technologically harmful. You must
+              not attempt to gain unauthorized access to the Services, or our
+              Website, our servers, computers or databases. You must not attack
+              the Services, including via our Website with any type of
+              denial-of-service attack. By breaching this provision, you would
+              commit a criminal offense under applicable law, including the
+              Computer Fraud and Abuse Act (18 U.S.C. § 1030). We may report any
+              such breach to the relevant law enforcement authorities and we may
+              co-operate with those authorities by disclosing your identity or
+              other information to them. In the event of such a breach, your
+              right to access and use our Website and/or our Services will cease
+              immediately without notice, and you must immediately cease all
+              such access and use.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Gemm's Right</h2>
+
+            <p>
+              Limitation on Gemm's Liability, Indemnity and Release <br />
+              In this section, we use the term "Gemm" to include our partners
+              and affiliates, and each of their respective directors, officers,
+              employees, agents, joint venturers, service providers and
+              suppliers. Our affiliates include each entity that we control, we
+              are controlled by or we are under common control with.
+            </p>
+
+            <p>
+              In no event shall Gemm be liable for lost profits or for any
+              indirect, incidental, consequential, special, exemplary or
+              punitive damages of any kind, under any contract, tort (including
+              negligence), strict liability or other theory, including damages
+              for loss of profits, use or data, loss of other intangibles, loss
+              of business, loss of security of any information or other
+              materials (including unauthorized interception by third parties of
+              any information or other materials), even if advised in advance of
+              the possibility of such damages or losses, however arising,
+              including negligence, unless and to the extent prohibited by law.
+              Our liability to you or any third parties in any circumstance is
+              limited to the actual amount of direct damages.
+            </p>
+
+            <p>
+              In addition, to the extent permitted by applicable law, Gemm is
+              not liable, and you agree not to hold Gemm responsible, for any
+              damages or losses (including, but not limited to, loss of money,
+              goodwill, or reputation, profits, or other intangible losses or
+              any special, indirect, or consequential damages) resulting
+              directly or indirectly from: (1) your use of, or your inability to
+              use, our websites, API, software, systems (including any networks
+              and servers used to provide any of the Services) operated by us or
+              on our behalf, or any of the Services; (2) delays or disruptions
+              in our Website software, API, systems (including any networks and
+              servers used to provide any of the Services) operated by us or on
+              our behalf and any of the Services; (3) viruses or other malicious
+              software obtained by accessing our websites, API, software,
+              systems (including any networks and servers used to provide any of
+              the Services) operated by us or on our behalf or any of the
+              Services or any website or service linked to our websites,
+              software or any of the Services; (4) glitches, bugs, errors, or
+              inaccuracies of any kind in our websites, software, systems
+              (including any networks and servers used to provide any of the
+              Services) operated by us or on our behalf or any of the Services
+              or in the information and graphics obtained from them; (5) the
+              content, actions, or inactions of third parties; (6) a suspension
+              or other action taken with respect to your Gemm Account; or (7)
+              your need to modify your practices, content, or behavior, or your
+              loss of or inability to do business, as a result of changes to
+              this Customer Agreement or any other Gemm policy.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>Indemnity</h2>
+            <p>
+              Except to the extent prohibited under applicable law, you agree to
+              defend, indemnify and hold harmless Gemm and its affiliates, and
+              their respective successors and assigns, from and against all
+              claims, liabilities, damages, judgments, awards, losses, costs,
+              expenses and fees (including attorneys' fees) arising out of or
+              relating to (a) your or your authorized third parties use of, or
+              activities in connection with, the Services; and (b) any violation
+              or alleged violation by you of this Customer Agreement or
+              applicable law.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>Release</h2>
+            <p>
+              If you have a dispute with any other Gemm Account holder or a
+              third party that you send money to or receive money from using the
+              Services, you release Gemm from any and all claims, demands and
+              damages (actual and consequential) of every kind and nature, known
+              and unknown, arising out of or in any way connected with such
+              disputes. In entering into this release you expressly waive any
+              protections (whether statutory or otherwise,) that would otherwise
+              limit the coverage of this release to include only those claims
+              which you may know or suspect to exist in your favor at the time
+              of agreeing to this release.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>Service Availability</h2>
+            <p>
+              We will try to make sure our Services are available to you when
+              you need them. However, we do not guarantee that our Services will
+              always be available or be uninterrupted. We have the right to
+              suspend, withdraw, discontinue or change all or any part of our
+              Service without notice. We will not be liable to you if for any
+              reason our Services are unavailable (in whole or in part) at any
+              time or for any period. You are responsible for making all
+              arrangements necessary for you to have access to the Services
+              (including all hardware and telecommunications services).
+            </p>
+          </div>
+
+          <div class="service-section">
+            <h2>Disclaimer of Warranty</h2>
+
+            <p>
+              The Services are provided "As-Is" "Where Is" and "Where Available"
+              and without any representation or warranty, whether express,
+              implied or statutory. Gemm specifically disclaims any implied
+              warranties of title, merchantability, fitness for a particular
+              purpose and non-infringement. We disclaim all warranties with
+              respect to the Services to the fullest extent permissible under
+              applicable law, including the warranties of merchantability,
+              fitness for a particular purpose, non-infringement and title.
+            </p>
+          </div>
+
+          <div class="service-section">
+            <h2>Insolvency Proceedings</h2>
+
+            <p>
+              If any type of bankruptcy or insolvency proceeding (e.g., a
+              proceeding commenced under any provision of the United States
+              Bankruptcy Code) is commenced by or against you, we'll be entitled
+              to recover all reasonable costs or expenses (including reasonable
+              attorneys' fees and expenses) incurred in connection with the
+              enforcement of this Customer Agreement or objections that we
+              supply information in connection with such proceeding.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Intellectual Property</h2>
+
+            <p>
+              "Gemm," and all logos related to the Services that are either
+              trademarks or or Gemm's licensors. You may not copy, imitate,
+              modify or use them without Gemm's prior written consent. In
+              addition, all page headers, custom graphics, button icons, and
+              scripts are service marks, trademarks, and/or trade dress of Gemm.
+              You may not copy, imitate, modify or use them without our prior
+              written consent. All right, title and interest in and to the Gemm
+              websites, any content thereon, the Services, the technology
+              related to the Services, and any and all technology and any
+              content created or derived from any of the foregoing is the
+              exclusive property of Gemm and its licensors.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Use of Artificial Intelligence (AI) and Machine Learning</h2>
+
+            <p>
+              The Services may include artificial intelligence (“AI”) or machine
+              learning functionality that generates outputs or recommendations.
+              You are solely responsible for reviewing and validating any AI
+              outputs before use and by your use of the service acknowledge they
+              may contain inaccuracies or limitations. Gemm may use Customer
+              Data to provide, improve, and develop our services, including
+              enhancements to our AI systems, in compliance with applicable
+              law. 
+            </p>
+
+            <p>
+              AI outputs are provided “as is” and without warranties of any
+              kind. Gemm is not liable for any actions taken based on such
+              outputs.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Miscellaneous Translation of This Customer Agreement</h2>
+
+            <p>
+              Any translation of this Customer Agreement is provided solely for
+              your convenience and is not intended to modify the terms of this
+              Customer Agreement. Only the English language of the Customer
+              Agreement version is an official version. In the event of a
+              conflict between the English version of this Customer Agreement
+              and a version in a language other than English, the English
+              version shall control.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Governing law and Agreement to Arbitrate</h2>
+
+            <p>
+              You agree that, except to the extent inconsistent with or
+              preempted by federal law and except as otherwise stated in this
+              Customer Agreement, the laws of the State of California, without
+              regard to principles of conflict of laws, will govern this
+              Customer Agreement and any claim or dispute that has arisen or may
+              arise between you and Gemm, and regardless of your location.
+              Except for disputes that qualify for small claims court, all
+              disputes arising out of or related to this Agreement or any aspect
+              of the relationship between you and Gemm, whether based in
+              contract, tort, statute, fraud, misrepresentation or any other
+              legal theory, will be resolved through final and binding
+              arbitration before a neutral arbitrator instead of in a court by a
+              judge or jury and you agree that Gemm and you are each waiving the
+              right to trial by a jury. You agree that any arbitration under
+              this Agreement will take place on an individual basis; class
+              arbitrations and class actions are not permitted and you are
+              agreeing to give up the ability to participate in a class action.
+            </p>
+
+            <p>
+              The arbitrator will conduct hearings, if any, by teleconference or
+              videoconference, rather than by personal appearances, unless the
+              arbitrator determines upon request by you or by us that an
+              in-person hearing is appropriate. Any in-person appearances will
+              be held at a location which is reasonably convenient to both
+              parties with due consideration of their ability to travel and
+              other pertinent circumstances. If the parties are unable to agree
+              on a location, such determination should be made by the
+              arbitrator. The arbitrator's decision will follow the terms of
+              this Agreement and will be final and binding. The arbitrator will
+              have authority to award temporary, interim or permanent injunctive
+              relief or relief providing for specific performance of this
+              Agreement, but only to the extent necessary to provide relief
+              warranted by the individual claim before the arbitrator. The award
+              rendered by the arbitrator may be confirmed and enforced in any
+              court having jurisdiction thereof. Notwithstanding any of the
+              foregoing, nothing in this Agreement will preclude you from
+              bringing issues to the attention of federal, state or local
+              agencies and, if the law allows, they can seek relief against us
+              for you.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Unlawful internet gambling notice</h2>
+
+            <p>
+              Restricted transactions as defined in Federal Reserve Regulation
+              GG are prohibited from being processed through your Gemm Account
+              or your relationship with Gemm. Restricted transactions generally
+              include, but are not limited to, transactions in which credit,
+              electronic fund transfers, checks, or drafts are knowingly
+              accepted by gambling businesses in connection with unlawful
+              Internet gambling.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Other Information About this Customer Agreement</h2>
+
+            <p>
+              You may not transfer or assign any rights or obligations you have
+              under this Customer Agreement without Gemm's prior written
+              consent. Gemm may transfer or assign this Customer Agreement or
+              any right or obligation under this Customer Agreement at any time.
+            </p>
+
+            <p>
+              Each of the paragraphs of this Customer Agreement operates
+              separately. If any court or relevant authority decides that any of
+              them are unlawful, the remaining paragraphs will remain in full
+              force and effect. If we delay in asking you to do certain things
+              or in taking action, it will not prevent us from taking steps
+              against you at a later date.
+            </p>
+
+            <p>
+              Our failure to act with respect to a breach of any of your
+              obligations under this Customer Agreement by you or others does
+              not waive our right to act with respect to subsequent or similar
+              breaches.
+            </p>
+
+            <p>
+              This Customer Agreement, including any terms and conditions
+              incorporated herein, is the entire agreement between you and us
+              relating to the subject matter hereof, and supersedes any and all
+              prior or contemporaneous written or oral agreements or
+              understandings. This Agreement does not, and shall not be
+              construed to, create any partnership, joint venture,
+              employer-employee, agency or franchisor-franchisee relationship
+              between you and us.
+            </p>
+          </div>
+
+          <div class="term-section">
+            <h2>Contact Information</h2>
+
+            <p>
+              Direct contact information of Gemm for support, legal inquiries,
+              or regulatory questions to info@gemm.app. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-section">
+        <div class="footer-container">
+          <div class="footer-section-company">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="186"
+              height="47"
+              viewBox="0 0 186 47"
+              fill="none"
+            >
+              <path
+                d="M25.3322 1.04881H34.9666V32.0544C34.9666 32.3821 34.8992 32.7099 34.8992 33.0377C34.4276 40.9038 27.5556 47 19.2687 47H15.0242V37.6918H19.2687C22.4352 37.6918 25.1301 35.3319 25.3322 32.4477C25.3322 32.3166 25.3322 28.9735 25.3322 28.9735C24.0522 30.2845 22.57 31.0711 21.9636 31.2678C20.2119 31.9233 18.3255 32.251 16.3043 32.251C7.27628 32.251 0 25.1715 0 16.3877C0 7.6039 7.27628 0.458856 16.3043 0.458856C18.3255 0.458856 20.2119 0.852161 21.9636 1.50767C22.7047 1.83543 25.1301 3.01534 26.4776 5.24407C26.545 5.44073 26.7471 5.50628 26.9492 5.50628C27.4882 5.50628 27.7577 4.98187 27.4882 4.58856C27.0166 3.93305 26.3428 2.94979 25.3322 2.09763V1.04881ZM17.4496 24.0572C21.8288 24.0572 25.3322 20.6485 25.3322 16.3877C25.3322 12.1269 21.8288 8.71827 17.4496 8.71827C13.0704 8.71827 9.56697 12.1269 9.56697 16.3877C9.56697 20.6485 13.0704 24.0572 17.4496 24.0572Z"
+                fill="#F9F9F9"
+              />
+              <path
+                d="M73.2397 16.5844C73.2397 16.9777 73.2397 17.371 73.1723 17.6987H47.9075C48.5138 21.6318 51.9498 24.7127 56.1943 24.7127C58.6198 24.7127 60.8431 23.6639 62.3253 22.0251H72.2965C70.0058 28.5146 63.6727 33.1688 56.1943 33.1688C46.7621 33.1688 39.149 25.7615 39.149 16.5844C39.149 7.40725 46.7621 0 56.1943 0C65.6266 0 73.2397 7.40725 73.2397 16.5844ZM48.6486 13.1757H63.7401C62.3927 10.4226 59.4956 8.52162 56.1943 8.52162C52.8257 8.52162 49.996 10.4226 48.6486 13.1757Z"
+                fill="#F9F9F9"
+              />
+              <path
+                d="M128.885 12.9791C129.019 13.9623 129.154 14.9456 129.154 15.9289V32.1199H119.654V16.2566C119.654 12.258 117.768 9.89819 115.275 9.24268C114.804 9.11158 114.332 9.11158 113.793 9.11158C113.658 9.11158 113.523 9.11158 113.321 9.11158C111.704 9.24268 110.29 9.96374 109.346 11.4059C108.471 12.6513 107.999 14.3556 107.999 16.5844V32.1199H98.4319V16.2566C98.4319 13.7001 97.6908 11.7992 96.4781 10.6192C95.5349 9.70153 94.3896 9.17712 93.1095 9.11158C92.9747 9.11158 92.7726 9.11158 92.6379 9.11158C89.404 9.11158 86.8438 11.537 86.8438 16.5844V32.1199H77.2768V1.04881H86.8438V2.22873C85.8332 3.08089 85.0921 4.06415 84.6879 4.71967C84.6205 4.85077 84.5531 4.98187 84.5531 5.04742C84.5531 5.04742 84.5531 5.04742 84.5531 5.11297C84.6205 5.37517 84.8226 5.57183 85.1595 5.57183C85.3616 5.57183 85.5637 5.44073 85.6984 5.24407C85.6984 5.24407 85.7658 5.17852 85.9006 5.04742C87.5849 3.21199 89.7408 1.83543 92.2336 1.17991C92.9747 0.983263 93.7832 0.852161 94.6591 0.78661C95.737 0.721058 96.8824 0.78661 98.0277 0.983263H98.0951C101.531 1.83543 103.889 3.80195 105.439 6.35844V6.22734C105.641 5.89958 105.843 5.57183 106.045 5.30962C107.527 3.14644 109.885 1.70432 112.176 1.04881C112.715 0.917713 113.254 0.852161 113.86 0.78661C114.736 0.721058 115.545 0.721058 116.421 0.852161C119.183 1.17991 121.945 2.29428 124.101 4.19526C126.661 6.35844 128.211 9.43933 128.817 12.6513C128.817 12.7824 128.885 12.9135 128.885 12.9791Z"
+                fill="#F9F9F9"
+              />
+              <path
+                d="M185.731 12.9791C185.865 13.9623 186 14.9456 186 15.9289V32.1199H176.5V16.2566C176.5 12.258 174.614 9.89819 172.121 9.24268C171.65 9.11158 171.178 9.11158 170.639 9.11158C170.504 9.11158 170.369 9.11158 170.167 9.11158C168.55 9.24268 167.136 9.96374 166.192 11.4059C165.316 12.6513 164.845 14.3556 164.845 16.5844V32.1199H155.278V16.2566C155.278 13.7001 154.537 11.7992 153.324 10.6192C152.381 9.70153 151.236 9.17712 149.955 9.11158C149.821 9.11158 149.619 9.11158 149.484 9.11158C146.25 9.11158 143.69 11.537 143.69 16.5844V32.1199H134.123V1.04881H143.69V2.22873C142.679 3.08089 141.938 4.06415 141.534 4.71967C141.466 4.85077 141.399 4.98187 141.399 5.04742C141.399 5.04742 141.399 5.04742 141.399 5.11297C141.466 5.37517 141.669 5.57183 142.005 5.57183C142.208 5.57183 142.41 5.44073 142.544 5.24407C142.544 5.24407 142.612 5.17852 142.747 5.04742C144.431 3.21199 146.587 1.83543 149.08 1.17991C149.821 0.983263 150.629 0.852161 151.505 0.78661C152.583 0.721058 153.728 0.78661 154.874 0.983263H154.941C158.377 1.83543 160.735 3.80195 162.285 6.35844V6.22734C162.487 5.89958 162.689 5.57183 162.891 5.30962C164.373 3.14644 166.731 1.70432 169.022 1.04881C169.561 0.917713 170.1 0.852161 170.706 0.78661C171.582 0.721058 172.391 0.721058 173.267 0.852161C176.029 1.17991 178.791 2.29428 180.947 4.19526C183.507 6.35844 185.057 9.43933 185.663 12.6513C185.663 12.7824 185.731 12.9135 185.731 12.9791Z"
+                fill="#F9F9F9"
+              />
+            </svg>
+            <p>Teal Pay Global Inc.</p>
+          </div>
+          <div class="footer-section-content-container">
+            <div class="footer-section-content">
+              <div class="footer-section-content-menu">
+                <p class="footer-section-content-menu-tem">Features</p>
+                <p class="footer-section-content-menu-tem">About</p>
+                <p class="footer-section-content-menu-tem">FAQ</p>
+                <p class="footer-section-content-menu-tem">Contact</p>
+              </div>
+              <div class="footer-section-content-contact-info">
+                <a href="info@gemm.app" aria-label="Email">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="25"
+                    viewBox="0 0 32 25"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_1001_9299)">
+                      <path
+                        d="M3.2 25.8031C2.32 25.8031 1.56667 25.4898 0.94 24.8631C0.313333 24.2365 0 23.4831 0 22.6031V3.40313C0 2.52312 0.313333 1.76979 0.94 1.14313C1.56667 0.516458 2.32 0.203125 3.2 0.203125H28.8C29.68 0.203125 30.4333 0.516458 31.06 1.14313C31.6867 1.76979 32 2.52312 32 3.40313V22.6031C32 23.4831 31.6867 24.2365 31.06 24.8631C30.4333 25.4898 29.68 25.8031 28.8 25.8031H3.2ZM16 14.6031L3.2 6.60313V22.6031H28.8V6.60313L16 14.6031ZM16 11.4031L28.8 3.40313H3.2L16 11.4031ZM3.2 6.60313V3.40313V22.6031V6.60313Z"
+                        fill="#F9F9F9"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1001_9299">
+                        <rect width="32" height="25" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/gemmapp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_1001_9301)">
+                      <path
+                        d="M29.6313 0H2.3625C1.05625 0 0 1.03125 0 2.30625V29.6875C0 30.9625 1.05625 32 2.3625 32H29.6313C30.9375 32 32 30.9625 32 29.6938V2.30625C32 1.03125 30.9375 0 29.6313 0ZM9.49375 27.2687H4.74375V11.9937H9.49375V27.2687ZM7.11875 9.9125C5.59375 9.9125 4.3625 8.68125 4.3625 7.1625C4.3625 5.64375 5.59375 4.4125 7.11875 4.4125C8.6375 4.4125 9.86875 5.64375 9.86875 7.1625C9.86875 8.675 8.6375 9.9125 7.11875 9.9125ZM27.2687 27.2687H22.525V19.8438C22.525 18.075 22.4937 15.7937 20.0562 15.7937C17.5875 15.7937 17.2125 17.725 17.2125 19.7188V27.2687H12.475V11.9937H17.025V14.0813H17.0875C17.7187 12.8813 19.2688 11.6125 21.575 11.6125C26.3813 11.6125 27.2687 14.775 27.2687 18.8875V27.2687Z"
+                        fill="white"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1001_9301">
+                        <rect width="32" height="32" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+                <a
+                  href="https://www.instagram.com/gemm.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_1001_9303)">
+                      <path
+                        d="M16 2.88125C20.275 2.88125 20.7813 2.9 22.4625 2.975C24.025 3.04375 24.8688 3.30625 25.4313 3.525C26.175 3.8125 26.7125 4.1625 27.2688 4.71875C27.8313 5.28125 28.175 5.8125 28.4625 6.55625C28.6813 7.11875 28.9438 7.96875 29.0125 9.525C29.0875 11.2125 29.1063 11.7188 29.1063 15.9875C29.1063 20.2625 29.0875 20.7688 29.0125 22.45C28.9438 24.0125 28.6813 24.8563 28.4625 25.4188C28.175 26.1625 27.825 26.7 27.2688 27.2563C26.7063 27.8188 26.175 28.1625 25.4313 28.45C24.8688 28.6688 24.0188 28.9313 22.4625 29C20.775 29.075 20.2688 29.0938 16 29.0938C11.725 29.0938 11.2188 29.075 9.5375 29C7.975 28.9313 7.13125 28.6688 6.56875 28.45C5.825 28.1625 5.2875 27.8125 4.73125 27.2563C4.16875 26.6938 3.825 26.1625 3.5375 25.4188C3.31875 24.8563 3.05625 24.0063 2.9875 22.45C2.9125 20.7625 2.89375 20.2563 2.89375 15.9875C2.89375 11.7125 2.9125 11.2063 2.9875 9.525C3.05625 7.9625 3.31875 7.11875 3.5375 6.55625C3.825 5.8125 4.175 5.275 4.73125 4.71875C5.29375 4.15625 5.825 3.8125 6.56875 3.525C7.13125 3.30625 7.98125 3.04375 9.5375 2.975C11.2188 2.9 11.725 2.88125 16 2.88125ZM16 0C11.6563 0 11.1125 0.01875 9.40625 0.09375C7.70625 0.16875 6.5375 0.44375 5.525 0.8375C4.46875 1.25 3.575 1.79375 2.6875 2.6875C1.79375 3.575 1.25 4.46875 0.8375 5.51875C0.44375 6.5375 0.16875 7.7 0.09375 9.4C0.01875 11.1125 0 11.6562 0 16C0 20.3438 0.01875 20.8875 0.09375 22.5938C0.16875 24.2938 0.44375 25.4625 0.8375 26.475C1.25 27.5313 1.79375 28.425 2.6875 29.3125C3.575 30.2 4.46875 30.75 5.51875 31.1562C6.5375 31.55 7.7 31.825 9.4 31.9C11.1063 31.975 11.65 31.9937 15.9938 31.9937C20.3375 31.9937 20.8813 31.975 22.5875 31.9C24.2875 31.825 25.4563 31.55 26.4688 31.1562C27.5188 30.75 28.4125 30.2 29.3 29.3125C30.1875 28.425 30.7375 27.5313 31.1438 26.4813C31.5375 25.4625 31.8125 24.3 31.8875 22.6C31.9625 20.8938 31.9813 20.35 31.9813 16.0063C31.9813 11.6625 31.9625 11.1188 31.8875 9.4125C31.8125 7.7125 31.5375 6.54375 31.1438 5.53125C30.75 4.46875 30.2063 3.575 29.3125 2.6875C28.425 1.8 27.5313 1.25 26.4813 0.84375C25.4625 0.45 24.3 0.175 22.6 0.1C20.8875 0.01875 20.3438 0 16 0Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M16 7.78125C11.4625 7.78125 7.78125 11.4625 7.78125 16C7.78125 20.5375 11.4625 24.2188 16 24.2188C20.5375 24.2188 24.2188 20.5375 24.2188 16C24.2188 11.4625 20.5375 7.78125 16 7.78125ZM16 21.3312C13.0563 21.3312 10.6687 18.9438 10.6687 16C10.6687 13.0563 13.0563 10.6687 16 10.6687C18.9438 10.6687 21.3312 13.0563 21.3312 16C21.3312 18.9438 18.9438 21.3312 16 21.3312Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M26.4625 7.45781C26.4625 8.52032 25.6 9.37657 24.5438 9.37657C23.4813 9.37657 22.625 8.51407 22.625 7.45781C22.625 6.39531 23.4875 5.53906 24.5438 5.53906C25.6 5.53906 26.4625 6.40156 26.4625 7.45781Z"
+                        fill="white"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1001_9303">
+                        <rect width="32" height="32" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+              </div>
+              <div class="footer-section-content-legal">
+                <p onclick="showPage('privacy-policy-content.html')">
+                  Privacy Policy
+                </p>
+                <p onclick="showPage('terms-of-service.html')">
+                  Terms of Service
+                </p>
+
+                <p onclick="showPage('gemm-privacy-notice.html')">
+                    Gemm Privacy Notice
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+    <script>
+      // Only define showPage if it doesn't exist on window
+      if (typeof window.showPage === 'undefined') {
+        window.showPage = function(page) {
+          fetch(page)
+            .then((response) => response.text())
+            .then((html) => {
+              // Clear both placeholders
+              const privacyPlaceholder = document.getElementById("privacy-policy-placeholder");
+              const termsPlaceholder = document.getElementById("terms-of-service-placeholder");
+              
+              if (privacyPlaceholder) privacyPlaceholder.innerHTML = "";
+              if (termsPlaceholder) termsPlaceholder.innerHTML = "";
+              
+              // Hide main content
+              const menuContainer = document.querySelector(".menu-item-container");
+              const mobileMenu = document.querySelector(".mobile-menu");
+              const mainContent = document.querySelector(".main-content");
+              const footerSection = document.querySelector(".footer-section");
+
+              if (menuContainer) menuContainer.style.display = "none";
+              if (mobileMenu) mobileMenu.style.display = "none";
+              if (mainContent) mainContent.style.display = "none";
+              if (footerSection) footerSection.style.display = "none";
+
+              document.body.setAttribute("data-current-page", page);
+
+              // Load content into appropriate placeholder
+              if (page === 'privacy-policy-content.html' && privacyPlaceholder) {
+                privacyPlaceholder.innerHTML = html;
+              } else if (page === 'terms-of-service.html' && termsPlaceholder) {
+                termsPlaceholder.innerHTML = html;
+              }
+
+              window.scrollTo(0, 0);
+            })
+            .catch((error) => {
+              console.error("Error loading page:", error);
+            });
+        };
+      }
+
+      // Only define showMainContent if it doesn't exist on window
+      if (typeof window.showMainContent === 'undefined') {
+        window.showMainContent = function() {
+          const currentPage = document.body.getAttribute("data-current-page");
+
+          // Clear placeholders
+          const privacyPlaceholder = document.getElementById("privacy-policy-placeholder");
+          const termsPlaceholder = document.getElementById("terms-of-service-placeholder");
+
+          if (currentPage === "privacy-policy-content.html" && privacyPlaceholder) {
+            privacyPlaceholder.innerHTML = "";
+          } else if (currentPage === "terms-of-service.html" && termsPlaceholder) {
+            termsPlaceholder.innerHTML = "";
+          }
+
+          // Clear the current page attribute
+          document.body.removeAttribute("data-current-page");
+
+          // Show main content
+          const mainContent = document.querySelector(".main-content");
+          const footerSection = document.querySelector(".footer-section");
+          
+          if (mainContent) mainContent.style.display = "block";
+          if (footerSection) footerSection.style.display = "flex";
+
+          const isMobile = window.innerWidth <= 768;
+          const menuContainer = document.querySelector(".menu-item-container");
+          const hamburgerMenu = document.querySelector(".hamburger-menu");
+          const joinButton = document.querySelector(".join-now-button");
+
+          if (isMobile) {
+            if (menuContainer) menuContainer.style.display = "none";
+            if (hamburgerMenu) hamburgerMenu.style.display = "flex";
+            if (joinButton) joinButton.style.display = "none";
+          } else {
+            if (menuContainer) menuContainer.style.display = "flex";
+            if (hamburgerMenu) hamburgerMenu.style.display = "none";
+            if (joinButton) joinButton.style.display = "flex";
+          }
+          window.scrollTo(0, 0);
+        };
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gemm</title>
+    <style>
+      body {
+        font-family: "Montserrat";
+        overflow-x: hidden;
+        margin: 0;
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      .navbar-menu-section {
+        display: flex;
+        width: 100%;
+        max-width: 1512px;
+        padding: 2rem 5rem;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.625rem;
+        box-sizing: border-box;
+      }
+
+      .navbar-frame {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+      }
+
+      .logo-wrapper {
+        display: flex;
+        align-items: center;
+        width: 9.375rem;
+        height: 2.4375rem;
+        aspect-ratio: 50/13;
+      }
+
+      .logo-wrapper:hover {
+        cursor: pointer;
+      }
+
+      .main-content {
+        /* overflow: hidden; */
+      }
+
+      .menu-item-container {
+        display: flex;
+        align-items: center;
+        gap: 56px;
+      }
+
+      .menu-item {
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.4px;
+
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .get-a-demo-button,
+      .join-now-button {
+        display: flex;
+        padding: 16px 32px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 50px;
+        background: #caffd0;
+
+        /* color: var(--Metal-400, #3b3a3a); */
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: -0.4px;
+        border: none;
+      }
+
+
+      .get-a-demo-button:hover,
+      .join-now-button:hover {
+        cursor: pointer;
+        background-color: #e8ffe8;
+      }
+
+      .hero-bg-svg {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        min-width: 900px;
+        width: 80%;
+        height: 115%;
+        z-index: -1;
+        pointer-events: none;
+        transform: translateX(10%);
+      }
+
+      .hero-section {
+        position: relative;
+        overflow: visible;
+        display: flex;
+        width: 100%;
+        padding: 5rem 0 12rem 6.25rem;
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .info-hero-section {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 100px;
+        width: 100%;
+        /* z-index: 1; */
+      }
+
+      .text-info-hero-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px;
+        flex: 0 0 auto;
+        width: 50%;
+        max-width: 550px;
+      }
+
+      .screens-info-hero-section {
+        position: relative;
+        display: flex;
+        height: min(600px, 40vw);
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 45%;
+        right: -60px;
+      }
+
+      .screen-info-hero-section-deals-desktop {
+        width: auto;
+        height: 552px;
+        aspect-ratio: 425/276;
+        position: relative;
+        top: 30px;
+        z-index: 1;
+      }
+
+      .screen-info-hero-section-phone-image {
+        width: 146px;
+        height: auto;
+        aspect-ratio: 73/158;
+        position: absolute;
+        left: -30%;
+        bottom: 2%;
+        z-index: 2;
+      }
+
+      .details-text-info-hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .details-text-info-hero-section h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 70px;
+        letter-spacing: -2.88px;
+      }
+
+      .details-text-info-hero-section p {
+        position: relative;
+        /* this might need to be changed */
+        top: -1rem;
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(1.125rem, 2.5vw, 2rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.96px;
+      }
+
+      .company-section {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        padding: 2.5rem 6.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        box-sizing: border-box;
+        margin-top: 8rem;
+      }
+
+      .company-section-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        align-self: stretch;
+      }
+
+      .service-section {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        margin: 0 auto;
+        padding: 96px 150px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        background: #f9f9f9;
+        box-sizing: border-box;
+      }
+
+      .service-section h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: 45px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 50px;
+        letter-spacing: -2.24px;
+      }
+
+      .service-section-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+      }
+
+      .service-section-heading {
+        flex: 0 0 auto;
+        min-width: 300px;
+      }
+
+      .service-section-heading h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+        margin: 0;
+      }
+
+      .service-section-heading-desktop {
+        display: inline;
+      }
+
+      .service-section-heading-mobile {
+        display: none;
+      }
+
+      .service-features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 40px 32px;
+        flex: 1;
+        max-width: 650px;
+      }
+
+      .service-feature-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        min-width: 180px;
+      }
+
+      .service-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: rgba(250, 250, 250, 0.8);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .service-icon svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .service-feature-item span {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.4;
+        letter-spacing: -0.2px;
+      }
+
+      .square-section-gradient {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        padding: 96px 150px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+        margin: 0;
+        background: #250f7f;
+        box-sizing: border-box;
+      }
+
+      .info-container-square-section-gradient {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 64px;
+        align-self: stretch;
+      }
+
+      .info-container-square-section-gradient img {
+        height: 374.22px;
+        align-self: stretch;
+        aspect-ratio: 1212/374.22;
+
+        border-radius: 16px;
+        /* border: 1px solid #000;
+              background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+              box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); */
+      }
+
+      .text-info-container-square-section-gradient {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 100px;
+        align-self: stretch;
+      }
+
+      .text-info-container-square-section-gradient h1 {
+        color: var(--Cyrstal-Mint-600, #9ef3cc);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+      }
+
+      .text-info-container-square-section-gradient span {
+        color: var(--White-200, #fafafa);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+      }
+
+      .text-info-container-square-section-gradient p {
+        color: var(--White-200, #fafafa);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.24px;
+      }
+
+      .solution-section {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        padding: 96px 150px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: #f9f9f9;
+        box-sizing: border-box;
+      }
+
+      .solution-section-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 64px;
+        align-self: stretch;
+      }
+
+      .solution-section-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+        gap: 30px;
+      }
+
+      .solution-section-item-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+
+      .solution-section-item-content-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .faq-section {
+        display: flex;
+        width: 100%;
+        padding: 6rem 9.375rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+        box-sizing: border-box;
+      }
+
+      .faq-section h1 {
+        align-self: stretch;
+        /* color: var(--Metal-400, #3b3a3a); */
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+      }
+
+      .faq-section-details {
+        display: flex;
+        width: 100%;
+        max-width: 879px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .faq-section-details-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+        align-self: stretch;
+      }
+
+      .rectangle {
+        height: 3px;
+        align-self: stretch;
+        border-radius: 50px;
+        background: var(
+          --Sapphire-Ink-Gradient-Horiz,
+          linear-gradient(270deg, #a08ee8 0%, #250f7f 100%)
+        );
+      }
+
+      .faq-section-details-item-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+      }
+
+      .faq-section-details-item-heading h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: -0.48px;
+      }
+
+      .faq-section-details-item-heading button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .faq-section-details-item-answer {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.48px;
+      }
+
+      .cta-section {
+        display: flex;
+        width: 100%;
+        padding: 96px 100px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        box-sizing: border-box;
+      }
+
+      .cta-section-container {
+        position: relative;
+        display: flex;
+        padding: 96px 64px;
+        justify-content: center;
+        align-items: center;
+        gap: 96px;
+        align-self: stretch;
+        box-sizing: border-box;
+      }
+
+      .cta-section-animated-gradient {
+        width: 100%;
+        /* max-width: 1312px; */
+        height: 401px;
+
+        position: absolute;
+        top: -26px;
+        border-radius: 25px;
+        z-index: -1;
+      }
+
+      .cta-section-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        flex: 1 0 0;
+      }
+
+      .cta-section-content-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        align-self: stretch;
+
+        color: var(--White-300, #fcfcfc);
+        text-align: center;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+      }
+
+      .hamburger-menu {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-menu-item {
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section {
+        display: flex;
+        width: 100%;
+        padding: 64px 100px;
+        justify-content: space-between;
+        align-items: center;
+
+        background: #250f7f;
+        box-sizing: border-box;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1 0 0;
+      }
+
+      .footer-section-company {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 16px;
+        align-self: stretch;
+      }
+
+      .footer-section-company p {
+        color: #fff;
+
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.12px;
+      }
+
+      .footer-section-content-container {
+        display: flex;
+        height: 173px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .footer-section-content {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 64px;
+        flex: 1 0 0;
+        align-self: stretch;
+      }
+
+      .footer-section-content-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        color: white;
+      }
+
+      .footer-section-content-contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .footer-section-content-legal {
+        display: flex;
+        width: 163px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        align-self: stretch;
+
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.2px;
+      }
+
+      @media (min-width: 1920px) {
+        .hero-bg-svg {
+          right: -200px;
+          width: 90%;
+          min-width: 1200px;
+          transform: translateX(30%);
+        }
+
+        .screen-info-hero-section-phone-image {
+          left: 2%;
+        }
+      }
+
+      @media (max-width: 1350px) {
+        .hero-section {
+          padding: 70px 0 140px 80px;
+        }
+
+        .info-hero-section {
+          gap: 80px;
+        }
+
+        .screens-info-hero-section {
+          height: 500px;
+          right: -50px;
+          width: 45%;
+        }
+
+        .text-info-hero-section {
+          width: 50%;
+        }
+
+        .screen-info-hero-section-deals-desktop {
+          height: 500px;
+          top: 25px;
+        }
+
+        .screen-info-hero-section-phone-image {
+          width: 130px;
+          height: auto;
+          left: -20%;
+          bottom: 5%;
+        }
+
+        /* .hero-bg-svg {
+    top: 90px;
+    right: -80px;
+    min-width: 800px;
+  } */
+
+        /* .company-section {
+    margin-top: -3rem;
+  } */
+      }
+
+      @media (max-width: 1200px) {
+        .hero-section {
+          padding: 60px 0 130px 60px;
+        }
+
+        .info-hero-section {
+          gap: 60px;
+        }
+
+        .screens-info-hero-section {
+          height: 450px;
+          right: -40px;
+          width: 48%;
+        }
+
+        .text-info-hero-section {
+          width: 52%;
+        }
+
+        .screen-info-hero-section-deals-desktop {
+          height: 450px;
+          top: 20px;
+        }
+
+        .screen-info-hero-section-phone-image {
+          width: 120px;
+          height: auto;
+          left: -20%;
+          bottom: 5%;
+        }
+
+        .hero-bg-svg {
+          transform: translateX(10%);
+        }
+      }
+
+      @media (max-width: 1100px) {
+        .hero-section {
+          padding: 50px 0 120px 50px;
+        }
+
+        .info-hero-section {
+          gap: 50px;
+        }
+
+        .screens-info-hero-section {
+          height: 420px;
+          right: -30px;
+          width: 50%;
+        }
+
+        .text-info-hero-section {
+          width: 50%;
+          gap: 28px;
+        }
+
+        .screen-info-hero-section-deals-desktop {
+          height: 420px;
+          top: 15px;
+        }
+
+        .screen-info-hero-section-phone-image {
+          width: 110px;
+          height: auto;
+          left: -20%;
+          bottom: 5%;
+        }
+
+        .hero-bg-svg {
+          transform: translateX(15%);
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .cta-section-animated-gradient {
+          height: 480px;
+        }
+
+        .cta-section-container {
+          padding: 90px 48px;
+        }
+
+        .cta-section-content-details {
+          font-size: clamp(1.75rem, 4.5vw, 3rem);
+          gap: 20px;
+        }
+
+        .cta-section .get-a-demo-button {
+          font-size: 18px;
+          padding: 14px 28px;
+        }
+      }
+
+      @media (max-width: 880px) {
+        .navbar-menu-section {
+          padding: 20px 24px;
+          align-items: center;
+        }
+
+        .navbar-frame {
+          position: relative;
+          align-items: center;
+        }
+
+        .menu-item-container {
+          display: none;
+        }
+
+        .logo-wrapper {
+          width: 120px;
+          height: auto;
+          align-items: center;
+        }
+
+        .join-now-button {
+          display: none;
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 24px;
+          height: 18px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          /* testing */
+          position: relative;
+          bottom: 8px;
+          z-index: 1000;
+        }
+
+        .navbar-menu-section {
+          position: relative;
+          z-index: 1000;
+        }
+
+        .hamburger-line {
+          width: 100%;
+          height: 2px;
+          background-color: #3b3a3a;
+          transition: all 0.3s ease;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: white;
+          display: none;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+          z-index: 999;
+          padding: 32px 40px;
+          border-radius: 16px;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+          min-width: 280px;
+          width: auto;
+        }
+
+        .mobile-menu.active {
+          display: flex;
+        }
+
+        .mobile-menu-item {
+          padding: 0;
+          color: var(--Metal-400, #3b3a3a);
+          font-size: 24px;
+          font-weight: 600;
+          border-bottom: none;
+          text-align: left;
+          width: 100%;
+        }
+
+        .mobile-menu-item:last-child {
+          border-bottom: none;
+        }
+
+        .mobile-join-button {
+          display: flex;
+          padding: 14px 48px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50px;
+          background: #caffd0;
+          color: var(--Metal-400, #3b3a3a);
+          font-size: 18px;
+          font-weight: 700;
+          margin-top: 8px;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        .hero-section {
+          padding: 60px 0 80px 24px;
+        }
+
+        .hero-bg-svg {
+          display: none;
+        }
+
+        .info-hero-section {
+          flex-direction: column;
+          gap: 40px;
+          align-items: center;
+        }
+
+        .text-info-hero-section {
+          align-items: center;
+          text-align: center;
+        }
+
+        .details-text-info-hero-section h1 {
+          font-size: 1.75rem;
+          line-height: 2rem;
+          letter-spacing: -0.08rem;
+        }
+
+        .details-text-info-hero-section p {
+          font-size: 1rem;
+          top: 0;
+          text-align: center;
+          width: 100%;
+          margin: 0 auto;
+          display: block;
+        }
+
+        .screens-info-hero-section {
+          margin-right: 0;
+          right: 0;
+          height: auto;
+          width: 100%;
+          justify-content: center;
+          position: relative; 
+          display: flex;
+          align-items: center;
+        }
+
+        .screen-info-hero-section-deals-desktop {
+          width: 100%;
+          max-width: 400px;
+          height: auto;
+          margin-top: 0;
+          position: relative;
+          z-index: 1;
+        }
+
+        .screen-info-hero-section-phone-image {
+          width: 80px;
+          height: auto;
+          position: absolute;
+          bottom: 2%;
+          left: 20%;
+          z-index: 2;
+        }
+
+        .company-section {
+          padding: 0px 24px;
+          margin-top: 2rem;
+        }
+
+        .company-section-container lottie-player {
+          width: 100% !important;
+          height: 80px !important;
+        }
+
+        .service-section {
+          padding: 60px 24px;
+        }
+
+        .service-section-container {
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .service-section-heading-desktop {
+          display: none;
+        }
+
+        .service-section-heading-mobile {
+          display: block;
+          font-size: 32px;
+          line-height: 36px;
+          letter-spacing: -1.28px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .service-features-grid {
+          /* grid-template-columns: 1fr; */
+          gap: 32px;
+        }
+
+        .service-feature-item {
+          flex-direction: row;
+          text-align: left;
+          gap: 16px;
+        }
+
+        .square-section-gradient {
+          padding: 60px 24px;
+        }
+
+        .text-info-container-square-section-gradient {
+          flex-direction: column;
+          gap: 32px;
+          align-items: flex-start;
+        }
+
+        .text-info-container-square-section-gradient h1,
+        .text-info-container-square-section-gradient span {
+          font-size: 2.25rem;
+          line-height: 2.75rem;
+          text-align: left;
+          letter-spacing: -0.06rem;
+        }
+
+        .text-info-container-square-section-gradient h1,
+        .text-info-container-square-section-gradient > div {
+          width: 100%;
+        }
+
+        .text-info-container-square-section-gradient p {
+          font-size: 1rem;
+          text-align: left;
+        }
+
+        .info-container-square-section-gradient img {
+          height: 200px;
+        }
+
+        .solution-section {
+          padding: 60px 24px;
+        }
+
+        .solution-section-container {
+          gap: 40px;
+        }
+
+        .solution-section-item {
+          flex-direction: column;
+          
+          align-items: flex-start;
+        }
+
+        .solution-section-item-animation {
+          width: 100%;
+          height: auto;
+          /* order: -1; */
+        }
+
+        .solution-section-item-animation lottie-player {
+          width: 100% !important;
+          height: 100% !important;
+        }
+
+        .solution-section-item-content {
+          gap: 16px;
+        }
+
+        .solution-section-item-content h1 {
+          font-size: 28px;
+          line-height: 32px;
+        }
+
+        .solution-section-item-content p {
+          font-size: 18px;
+        }
+
+        .solution-section-item-content img {
+          width: 40px;
+          height: 40px;
+        }
+
+        .faq-section {
+          padding: 60px 24px;
+        }
+
+        .faq-section h1 {
+          font-size: 32px;
+          line-height: 36px;
+          letter-spacing: -1.28px;
+        }
+
+        .faq-section-details-item-heading h1 {
+          font-size: 18px;
+          line-height: 24px;
+        }
+
+        .faq-section-details-item-answer {
+          font-size: 16px;
+        }
+
+        .cta-section {
+          padding: 60px 24px;
+        }
+
+        .cta-section-container {
+          padding: 60px 24px;
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .cta-section-animated-gradient {
+          height: 300px;
+        }
+
+        .footer-section {
+          display: flex;
+          width: 100%;
+          padding: 40px 24px;
+          justify-content: center;
+          /* align-items: flex-start; */
+          background: #250f7f;
+          box-sizing: border-box;
+          flex-direction: column;
+          gap: 32px;
+        }
+
+        .footer-container {
+          display: flex;
+          flex-direction: column;
+          /* align-items: flex-start; */
+          gap: 48px;
+          width: 100%;
+        }
+
+        .footer-section-company {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 16px;
+          order: 3;
+          align-self: flex-start;
+        }
+
+        .footer-section-content-container {
+          display: flex;
+          flex-direction: column;
+          /* align-items: flex-start; */
+          gap: 32px;
+          width: 100%;
+          height: auto;
+        }
+
+        .footer-section-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 32px;
+          width: 100%;
+        }
+
+        .footer-section-content-menu {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+          color: white;
+          order: 1;
+        }
+
+        .footer-section-content-contact-info {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 24px;
+          order: 2;
+        }
+
+        .footer-section-content-legal {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+          color: #fff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 0.2px;
+          order: 3;
+          width: auto;
+          align-self: flex-start;
+        }
+
+        .cta-section-content-details {
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
+          gap: 16px;
+        }
+
+        .cta-section .get-a-demo-button {
+          font-size: 16px;
+          padding: 12px 24px;
+        }
+
+        .cta-section-container {
+          padding: 60px 24px;
+        }
+      }
+
+      @media (max-width: 480px) {
+  .cta-section {
+    padding: 40px 16px;
+  }
+
+  .cta-section-container {
+    padding: 40px 20px;
+    min-height: 250px;
+  }
+
+  .cta-section-content-details {
+    font-size: clamp(1.25rem, 3.5vw, 2rem);
+  }
+
+  .cta-section .get-a-demo-button {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+
+  .text-info-container-square-section-gradient h1,
+  .text-info-container-square-section-gradient span {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.04rem;
+  }
+
+  .text-info-container-square-section-gradient p {
+    font-size: 0.875rem;
+  }
+
+  .screen-info-hero-section-phone-image {
+    width: 70px;
+    left: -8px;
+    bottom: -2px;
+  }
+}
+    </style>
+    <!-- this is for all the animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <!-- this is for the purple background gradient -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+  <body>
+    <div class="navbar-menu-section">
+      <div class="navbar-frame">
+        <div class="logo-wrapper" onclick="showMainContent()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="150"
+            height="40"
+            viewBox="0 0 150 40"
+            fill="none"
+          >
+            <path
+              d="M20.4292 1.37029H28.1989V27.0983C28.1989 27.3703 28.1445 27.6423 28.1445 27.9142C27.7642 34.4414 22.2222 39.5 15.5393 39.5H12.1163V31.7762H15.5393C18.0929 31.7762 20.2662 29.818 20.4292 27.4247C20.4292 27.3159 20.4292 24.5418 20.4292 24.5418C19.3969 25.6297 18.2016 26.2824 17.7126 26.4456C16.2999 26.9895 14.7786 27.2615 13.1486 27.2615C5.86797 27.2615 0 21.387 0 14.0983C0 6.80962 5.86797 0.880753 13.1486 0.880753C14.7786 0.880753 16.2999 1.20711 17.7126 1.75105C18.3102 2.02301 20.2662 3.00209 21.3529 4.85146C21.4072 5.01464 21.5702 5.06904 21.7332 5.06904C22.1679 5.06904 22.3852 4.63389 22.1679 4.30753C21.7876 3.7636 21.2442 2.9477 20.4292 2.24058V1.37029ZM14.0723 20.4623C17.6039 20.4623 20.4292 17.6339 20.4292 14.0983C20.4292 10.5628 17.6039 7.73431 14.0723 7.73431C10.5406 7.73431 7.7153 10.5628 7.7153 14.0983C7.7153 17.6339 10.5406 20.4623 14.0723 20.4623Z"
+              fill="#250F7F"
+            />
+            <path
+              d="M59.0643 14.2615C59.0643 14.5879 59.0643 14.9142 59.01 15.1862H38.6351C39.1241 18.4498 41.895 21.0063 45.318 21.0063C47.274 21.0063 49.067 20.136 50.2623 18.7761H58.3036C56.4563 24.1611 51.349 28.023 45.318 28.023C37.7114 28.023 31.5718 21.8766 31.5718 14.2615C31.5718 6.64644 37.7114 0.5 45.318 0.5C52.9246 0.5 59.0643 6.64644 59.0643 14.2615ZM39.2327 11.4331H51.4033C50.3167 9.14853 47.9803 7.57113 45.318 7.57113C42.6014 7.57113 40.3194 9.14853 39.2327 11.4331Z"
+              fill="#250F7F"
+            />
+            <path
+              d="M103.939 11.2699C104.048 12.0858 104.156 12.9017 104.156 13.7176V27.1527H96.4955V13.9895C96.4955 10.6715 94.9742 8.71339 92.9639 8.16946C92.5835 8.06067 92.2032 8.06067 91.7685 8.06067C91.6599 8.06067 91.5512 8.06067 91.3882 8.06067C90.0842 8.16946 88.9432 8.76778 88.1826 9.96444C87.4762 10.9979 87.0959 12.4121 87.0959 14.2615V27.1527H79.3806V13.9895C79.3806 11.8682 78.7829 10.2908 77.8049 9.31172C77.0443 8.55021 76.1206 8.11506 75.0883 8.06067C74.9796 8.06067 74.8166 8.06067 74.708 8.06067C72.1 8.06067 70.0353 10.0732 70.0353 14.2615V27.1527H62.32V1.37029H70.0353V2.34937C69.2203 3.05648 68.6227 3.87238 68.2967 4.41632C68.2423 4.5251 68.188 4.63389 68.188 4.68828C68.188 4.68828 68.188 4.68828 68.188 4.74268C68.2423 4.96025 68.4053 5.12343 68.677 5.12343C68.84 5.12343 69.003 5.01464 69.1117 4.85146C69.1117 4.85146 69.166 4.79707 69.2747 4.68828C70.633 3.16527 72.3716 2.02301 74.382 1.47908C74.9796 1.3159 75.6316 1.20711 76.338 1.15272C77.2073 1.09833 78.1309 1.15272 79.0546 1.3159H79.1089C81.8799 2.02301 83.7816 3.65481 85.0312 5.77615V5.66736C85.1942 5.3954 85.3572 5.12343 85.5202 4.90586C86.7156 3.11088 88.6172 1.91423 90.4645 1.37029C90.8992 1.26151 91.3339 1.20711 91.8229 1.15272C92.5292 1.09833 93.1812 1.09833 93.8875 1.20711C96.1152 1.47908 98.3428 2.40377 100.081 3.98117C102.146 5.77615 103.396 8.33264 103.885 10.9979C103.885 11.1067 103.939 11.2155 103.939 11.2699Z"
+              fill="#250F7F"
+            />
+            <path
+              d="M149.783 11.2699C149.891 12.0858 150 12.9017 150 13.7176V27.1527H142.339V13.9895C142.339 10.6715 140.818 8.71339 138.807 8.16946C138.427 8.06067 138.047 8.06067 137.612 8.06067C137.503 8.06067 137.395 8.06067 137.232 8.06067C135.928 8.16946 134.787 8.76778 134.026 9.96444C133.32 10.9979 132.939 12.4121 132.939 14.2615V27.1527H125.224V13.9895C125.224 11.8682 124.626 10.2908 123.648 9.31172C122.888 8.55021 121.964 8.11506 120.932 8.06067C120.823 8.06067 120.66 8.06067 120.551 8.06067C117.943 8.06067 115.879 10.0732 115.879 14.2615V27.1527H108.164V1.37029H115.879V2.34937C115.064 3.05648 114.466 3.87238 114.14 4.41632C114.086 4.5251 114.032 4.63389 114.032 4.68828C114.032 4.68828 114.032 4.68828 114.032 4.74268C114.086 4.96025 114.249 5.12343 114.521 5.12343C114.684 5.12343 114.847 5.01464 114.955 4.85146C114.955 4.85146 115.01 4.79707 115.118 4.68828C116.477 3.16527 118.215 2.02301 120.225 1.47908C120.823 1.3159 121.475 1.20711 122.181 1.15272C123.051 1.09833 123.974 1.15272 124.898 1.3159H124.952C127.723 2.02301 129.625 3.65481 130.875 5.77615V5.66736C131.038 5.3954 131.201 5.12343 131.364 4.90586C132.559 3.11088 134.461 1.91423 136.308 1.37029C136.743 1.26151 137.177 1.20711 137.666 1.15272C138.373 1.09833 139.025 1.09833 139.731 1.20711C141.959 1.47908 144.186 2.40377 145.925 3.98117C147.99 5.77615 149.239 8.33264 149.728 10.9979C149.728 11.1067 149.783 11.2155 149.783 11.2699Z"
+              fill="#250F7F"
+            />
+          </svg>
+        </div>
+        <div class="menu-item-container">
+          <div class="menu-item">About</div>
+          <div class="menu-item">Features</div>
+          <div class="menu-item">FAQ</div>
+        </div>
+
+        <button
+          class="join-now-button"
+          onclick="window.open('https://my.gemm.app/')"
+        >
+          Join Now
+        </button>
+
+        <!-- for mobile layout -->
+        <button class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <div class="mobile-menu">
+          <div class="mobile-menu-item">About</div>
+          <div class="mobile-menu-item">Features</div>
+          <div class="mobile-menu-item">FAQ</div>
+          <button class="mobile-join-button">Join Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="info-hero-section">
+          <div class="text-info-hero-section">
+            <div class="details-text-info-hero-section">
+              <h1>The Payment App for the Creator Economy</h1>
+              <p>
+                Powering the creator economy from payments to taxes, end to end.
+              </p>
+            </div>
+            <button
+              class="get-a-demo-button"
+              onclick="window.open('https://calendly.com/gemm-info/30min')"
+            >
+              Get A Demo
+            </button>
+          </div>
+
+          <div class="screens-info-hero-section">
+            <img
+              class="screen-info-hero-section-phone-image"
+              src="images/Phone_Screen_Gemm_Hero_Section.png"
+              alt="Phone_screen"
+            />
+            <img
+              class="screen-info-hero-section-deals-desktop"
+              src="images/Deals_Desktop_Gemm_Hero_Section.png"
+              alt="Deals_Desktop"
+            />
+          </div>
+        </div>
+      </section>
+      <div class="hero-bg-wrapper">
+        <svg
+          class="hero-bg-svg"
+          width="100%"
+          height="auto"
+          viewBox="0 0 983 812"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <mask
+            id="mask0_943_8955"
+            style="mask-type: alpha"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="-1"
+            width="983"
+            height="813"
+          >
+            <path
+              d="M983 -1L820 102.5L798.5 267L689 327L544 369L476.5 454.5L406 576L262 587.5L181 683.5L80.5 720.5L0 812H983V-1Z"
+              fill="white"
+            />
+          </mask>
+          <g mask="url(#mask0_943_8955)">
+            <rect
+              width="1643"
+              height="928"
+              transform="matrix(-1 0 0 1 1642 -103)"
+              fill="#200D5F"
+            />
+            <g filter="url(#filter0_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M580.739 461.359C495.44 462.209 475.076 605.463 392.544 627.029C301.492 650.821 191.87 521.503 119.652 581.843C53.7325 636.92 156.228 747.633 146.103 832.934C135.993 918.115 34.2099 989.222 61.6504 1070.49C88.4153 1149.76 195.749 1162.66 270.274 1200.69C338.859 1235.69 405.335 1300.56 480.594 1284.28C556.362 1267.89 577.8 1167.96 639.37 1120.85C695.61 1077.83 784.307 1081.94 822.788 1022.49C862.31 961.446 855.05 880.85 840.931 809.508C827.074 739.487 786.562 680.705 743.831 623.528C696.987 560.849 658.985 460.579 580.739 461.359Z"
+                fill="#F8E1CA"
+              />
+            </g>
+            <g filter="url(#filter1_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1717.11 307.044C1665.23 307.561 1652.85 394.683 1602.65 407.798C1547.28 422.268 1480.61 343.622 1436.69 380.318C1396.6 413.814 1458.94 481.145 1452.78 533.023C1446.63 584.826 1384.73 628.071 1401.42 677.497C1417.69 725.707 1482.97 733.552 1528.29 756.68C1570 777.965 1610.43 817.413 1656.2 807.512C1702.28 797.545 1715.32 736.77 1752.76 708.125C1786.97 681.959 1840.91 684.456 1864.31 648.306C1888.35 611.178 1883.93 562.163 1875.35 518.776C1866.92 476.191 1842.28 440.442 1816.29 405.67C1787.8 367.55 1764.69 306.57 1717.11 307.044Z"
+                fill="#F8E1CA"
+              />
+            </g>
+            <g filter="url(#filter2_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1031.77 -94.8736C979.893 -94.3567 967.509 -7.23519 917.316 5.88042C861.942 20.3499 795.274 -58.2964 751.353 -21.5999C711.264 11.8958 773.598 79.2275 767.44 131.105C761.291 182.908 699.391 226.153 716.079 275.579C732.356 323.789 797.633 331.634 842.956 354.762C884.667 376.047 925.095 415.495 970.865 405.594C1016.94 395.627 1029.98 334.852 1067.43 306.207C1101.63 280.041 1155.57 282.538 1178.97 246.388C1203.01 209.26 1198.59 160.245 1190.01 116.858C1181.58 74.2732 1156.94 38.5242 1130.96 3.75173C1102.47 -34.3675 1079.36 -95.3478 1031.77 -94.8736Z"
+                fill="#F8E1CA"
+              />
+            </g>
+            <g filter="url(#filter3_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1275.32 424.677C1192.91 396.133 1099.8 464.32 1043.07 530.488C991.271 590.907 994.241 677.767 990.22 757.205C987.154 817.764 1017.09 871.291 1022.76 931.662C1030.9 1018.3 962.598 1131.69 1030.51 1186.2C1097.16 1239.69 1190.05 1140.72 1275.32 1134.37C1350.39 1128.78 1424.87 1179.06 1494.96 1151.62C1573.96 1120.71 1640.6 1057.06 1672.97 978.744C1706.67 897.222 1728.64 789.216 1673.11 720.637C1615.9 649.978 1487.04 713.279 1414.07 658.991C1339.38 603.42 1363.32 455.157 1275.32 424.677Z"
+                fill="#250F7F"
+              />
+            </g>
+            <g filter="url(#filter4_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M612.354 1213.41C668.112 1165.05 657.647 1068 633.262 998.472C610.997 934.982 546.21 900.481 489.81 863.988C446.814 836.168 394.994 835.513 348.437 814.176C281.628 783.558 227.602 685.602 158.986 712.373C91.6499 738.644 124.729 848.533 93.28 913.727C65.5912 971.125 -2.7038 1004.5 -12.3079 1067.47C-23.1316 1138.43 -4.78648 1214.16 38.7944 1270.97C84.1574 1330.09 153.854 1391.81 227.516 1380.06C303.412 1367.96 311.654 1246.76 382.245 1216.19C454.505 1184.9 552.813 1265.06 612.354 1213.41Z"
+                fill="#250F7F"
+              />
+            </g>
+            <g filter="url(#filter5_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1008.41 396.646C1082.19 486.969 1223.92 448.368 1340.5 451.159C1452.83 453.85 1577.27 485.613 1662.41 412.308C1748.7 338.016 1740.41 209.542 1752.63 96.3244C1766.15 -28.903 1804.05 -160.958 1735.71 -266.777C1658.61 -386.163 1524.87 -468.169 1382.98 -476.028C1240.08 -483.943 1085.57 -426.197 1006.11 -307.189C934.852 -200.481 1022.81 -65.5835 1023.23 62.7407C1023.6 178.561 935.134 306.938 1008.41 396.646Z"
+                fill="#4630A0"
+              />
+            </g>
+            <g filter="url(#filter6_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M283.423 -121.24C164.114 -146.914 17.6389 -161.94 -65.3633 -72.4472C-147.701 16.3291 -98.6715 156.074 -85.422 276.446C-74.2911 377.569 -66.8205 482.945 3.82544 556.129C75.496 630.374 180.778 648.064 283.423 658.542C402.47 670.693 556.116 716.454 626.565 619.694C697.811 521.841 586.188 394.98 561.62 276.446C545.339 197.901 554.685 116.813 508.709 51.0903C452.365 -29.4549 379.501 -100.564 283.423 -121.24Z"
+                fill="#4630A0"
+              />
+            </g>
+            <g filter="url(#filter7_f_943_8955)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M470.471 -292.098C378.506 -279.409 276.819 -365.255 199.653 -313.656C124.627 -263.489 105.486 -148.835 124.323 -60.6375C141.885 21.596 232.476 60.1437 292.145 119.42C334.818 161.812 375.863 199.894 423.526 236.597C491.977 289.309 547.754 402.62 631.349 380.628C715.642 358.453 708.794 231.615 744.506 152.156C768.323 99.1628 804.174 51.4746 805.382 -6.59715C806.545 -62.5424 768.859 -108.033 751.02 -161.068C725.951 -235.6 751.099 -346.616 679.815 -379.909C609.554 -412.725 547.314 -302.701 470.471 -292.098Z"
+                fill="#250F7F"
+              />
+            </g>
+          </g>
+          <defs>
+            <filter
+              id="filter0_f_943_8955"
+              x="-443.029"
+              y="-38.6456"
+              width="1795.22"
+              height="1825.5"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+            <filter
+              id="filter1_f_943_8955"
+              x="898.571"
+              y="-192.958"
+              width="1483.62"
+              height="1502.04"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+            <filter
+              id="filter2_f_943_8955"
+              x="213.233"
+              y="-594.876"
+              width="1483.62"
+              height="1502.04"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+            <filter
+              id="filter3_f_943_8955"
+              x="490"
+              y="-82"
+              width="1717"
+              height="1784"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+            <filter
+              id="filter4_f_943_8955"
+              x="-515.346"
+              y="207.79"
+              width="1668.34"
+              height="1673.72"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+            <filter
+              id="filter5_f_943_8955"
+              x="478.264"
+              y="-976.744"
+              width="1797.08"
+              height="1937.04"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+            <filter
+              id="filter6_f_943_8955"
+              x="-612"
+              y="-641"
+              width="1762"
+              height="1821"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+            <filter
+              id="filter7_f_943_8955"
+              x="-382.433"
+              y="-885.998"
+              width="1687.84"
+              height="1769.42"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="250"
+                result="effect1_foregroundBlur_943_8955"
+              />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Company Section -->
+      <section class="company-section">
+        <div class="company-section-container">
+          <lottie-player
+            src="gemm_animations_json_files/logo_carousel_gemm_desktop_10_1_25.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+            style="width: 1200px; height: 112px"
+          >
+          </lottie-player>
+        </div>
+      </section>
+      <!-- Service Section -->
+      <section class="service-section">
+        <div class="service-section-container">
+          <div class="service-section-heading">
+            <h1 class="service-section-heading-desktop">
+              Track All of <br />Your Revenue <br />in One Place
+            </h1>
+            <h1 class="service-section-heading-mobile">
+              Track All of Your <br />
+              Revenue in One Place
+            </h1>
+          </div>
+          <div class="service-features-grid">
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M27.5 3.375V6.75C38.6881 6.75 47.75 15.8119 47.75 27C47.75 38.1881 38.6881 47.25 27.5 47.25V50.625C40.5443 50.625 51.125 40.0444 51.125 27C51.125 13.9556 40.5443 3.375 27.5 3.375ZM14.405 42.4237L12.2281 45.0056C14.3037 46.7606 16.6831 48.1613 19.2818 49.1231L20.4293 45.9506C18.2018 45.1237 16.16 43.9256 14.3881 42.4237H14.405ZM7.57059 30.375L4.24622 31.0669C4.71872 33.8175 5.66372 36.3994 7.01372 38.7281L9.93309 37.125C8.78559 35.1338 7.97559 32.7206 7.57059 30.375ZM9.93309 16.875L7.01372 15.1875C5.68059 17.5162 4.73559 20.1825 4.24622 22.9331L7.57059 23.5237C7.97559 21.1781 8.78559 18.8831 9.93309 16.8919V16.875ZM20.4462 8.0325L19.2987 4.86C16.7 5.82188 14.3206 7.2225 12.245 8.9775L14.4218 11.5594C16.1937 10.0575 18.2356 8.85938 20.4631 8.0325H20.4462Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M35.9375 20.25V16.875H29.1875V11.8125H25.8125V16.875H22.4375C20.5762 16.875 19.0625 18.3887 19.0625 20.25V25.3125C19.0625 27.1738 20.5762 28.6875 22.4375 28.6875H32.5625V33.75H19.0625V37.125H25.8125V42.1875H29.1875V37.125H32.5625C34.4238 37.125 35.9375 35.6105 35.9375 33.75V28.6875C35.9375 26.8262 34.4238 25.3125 32.5625 25.3125H22.4375V20.25H35.9375Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Automated <br />
+                Payments & Reminders</span
+              >
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M37.625 28.6875H41V32.0625H37.625V28.6875Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M47.75 13.5H7.25V8.4375H44.375V5.0625H7.25C6.35489 5.0625 5.49645 5.41808 4.86351 6.05101C4.23058 6.68395 3.875 7.54239 3.875 8.4375V43.875C3.875 44.7701 4.23058 45.6285 4.86351 46.2615C5.49645 46.8944 6.35489 47.25 7.25 47.25H47.75C48.6451 47.25 49.5035 46.8944 50.1365 46.2615C50.7694 45.6285 51.125 44.7701 51.125 43.875V16.875C51.125 15.9799 50.7694 15.1215 50.1365 14.4885C49.5035 13.8556 48.6451 13.5 47.75 13.5ZM7.25 43.875V16.875H47.75V21.9375H34.25C33.3549 21.9375 32.4965 22.2931 31.8635 22.926C31.2306 23.559 30.875 24.4174 30.875 25.3125V35.4375C30.875 36.3326 31.2306 37.191 31.8635 37.824C32.4965 38.4569 33.3549 38.8125 34.25 38.8125H47.75V43.875H7.25ZM47.75 25.3125V35.4375H34.25V25.3125H47.75Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span>Centralized <br />Earnings</span>
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.75 16.875H41.25V20.25H13.75V16.875ZM13.75 25.3125H41.25V28.6875H13.75V25.3125ZM13.75 33.75H27.5V37.125H13.75V33.75Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M6.875 3.375V50.625H48.125V3.375H6.875ZM44.75 47.25H10.25V6.75H44.75V47.25Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Split <br />
+                Transactions</span
+              >
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M27.5 5.0625C15.6744 5.0625 6.1875 14.5494 6.1875 26.375C6.1875 38.2006 15.6744 47.6875 27.5 47.6875C39.3256 47.6875 48.8125 38.2006 48.8125 26.375C48.8125 14.5494 39.3256 5.0625 27.5 5.0625ZM27.5 44.3125C17.5406 44.3125 9.5625 36.3344 9.5625 26.375C9.5625 16.4156 17.5406 8.4375 27.5 8.4375C37.4594 8.4375 45.4375 16.4156 45.4375 26.375C45.4375 36.3344 37.4594 44.3125 27.5 44.3125Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M29.1875 13.5H25.8125V24.6875H16.875V28.0625H25.8125V39.25H29.1875V28.0625H38.125V24.6875H29.1875V13.5Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Track <br />
+                Brand Deals</span
+              >
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M41.25 10.125H38.75V6.75C38.75 5.85489 38.3944 4.99645 37.7615 4.36351C37.1285 3.73058 36.2701 3.375 35.375 3.375H19.625C18.7299 3.375 17.8715 3.73058 17.2385 4.36351C16.6056 4.99645 16.25 5.85489 16.25 6.75V10.125H13.75C12.8549 10.125 11.9965 10.4806 11.3635 11.1135C10.7306 11.7465 10.375 12.6049 10.375 13.5V45.5625C10.375 46.4576 10.7306 47.316 11.3635 47.949C11.9965 48.5819 12.8549 48.9375 13.75 48.9375H41.25C42.1451 48.9375 43.0035 48.5819 43.6365 47.949C44.2694 47.316 44.625 46.4576 44.625 45.5625V13.5C44.625 12.6049 44.2694 11.7465 43.6365 11.1135C43.0035 10.4806 42.1451 10.125 41.25 10.125ZM19.625 6.75H35.375V10.125H19.625V6.75ZM41.25 45.5625H13.75V13.5H41.25V45.5625Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M18.5625 18.5625H36.4375V21.9375H18.5625V18.5625ZM18.5625 25.3125H36.4375V28.6875H18.5625V25.3125ZM18.5625 32.0625H30.875V35.4375H18.5625V32.0625Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Auto <br />
+                Reconciliation</span
+              >
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M48.125 8.4375H6.875C5.98 8.4375 5.125 9.29 5.125 10.1875V43.8125C5.125 44.71 5.98 45.5625 6.875 45.5625H48.125C49.02 45.5625 49.875 44.71 49.875 43.8125V10.1875C49.875 9.29 49.02 8.4375 48.125 8.4375ZM46.375 42.0625H8.625V11.8125H46.375V42.0625Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M15.5 20.25C15.5 18.88 16.63 17.75 18 17.75C19.37 17.75 20.5 18.88 20.5 20.25C20.5 21.62 19.37 22.75 18 22.75C16.63 22.75 15.5 21.62 15.5 20.25ZM23.125 33.75V31H12.875V33.75C12.875 34.6975 13.6775 35.5 14.625 35.5H21.375C22.3225 35.5 23.125 34.6975 23.125 33.75ZM39.5 17.75H26.5V20.25H39.5V17.75ZM39.5 22.75H26.5V25.25H39.5V22.75ZM33.5 27.75H26.5V30.25H33.5V27.75Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span>W-9 & <br />Tax Automation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="square-section-gradient">
+        <div class="info-container-square-section-gradient">
+          <div class="text-info-container-square-section-gradient">
+            <h1>
+              Connect<span>,</span> Collaborate <br />
+              <span> and</span> Collect
+            </h1>
+            <div>
+              <p style="margin-bottom: 20px">
+                Gemm unifies tracking and payments in one <br />
+                platform, replacing spreadsheets and scattered <br />
+                apps like PayPal, Stripe, and Bill.com.
+              </p>
+
+              <p>
+                Purpose-built for the creator economy, <br />
+                everything you need lives in one place.
+              </p>
+            </div>
+          </div>
+          <!-- need to change the alt -->
+          <img src="images/image 1.png" alt="Image1" />
+        </div>
+      </section>
+
+      <section class="solution-section">
+        <div class="solution-section-container">
+          <div class="solution-section-item">
+            <div class="solution-section-item-content">
+              <img
+                src="images/gemm_icons/Dashboard_Icon.svg"
+                alt="Dashboard_Icon"
+              />
+              <div class="solution-section-item-content-text">
+                <h1>We Do It All:</h1>
+                <p>
+                  Connecting brands, <br />
+                  agencies and creators.
+                </p>
+              </div>
+            </div>
+            <div class="solution-section-item-animation" id="animation">
+              <lottie-player
+                src="gemm_animations_json_files/gemm_features_word_animation.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                style="width: 688px; height: 387px; aspect-ratio: 16/9"
+              >
+              </lottie-player>
+            </div>
+          </div>
+          <div class="solution-section-item">
+            <div class="solution-section-item-content">
+              <img
+                src="images/gemm_icons/Lightning_Icon.svg"
+                alt="Lightning_Icon"
+              />
+              <div class="solution-section-item-content-text">
+                <h1>Instant Payments:</h1>
+                <p>Get paid and payout, globally.</p>
+              </div>
+            </div>
+            <div class="solution-section-item-animation">
+              <lottie-player
+                src="gemm_animations_json_files/re_designed_gemm_pay_notification.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                style="width: 688px; height: 516px; aspect-ratio: 4/3"
+              >
+              </lottie-player>
+            </div>
+          </div>
+          <div class="solution-section-item">
+            <div class="solution-section-item-content">
+              <img src="images/gemm_icons/Cursor_Icon.svg" alt="Cursor_Icon" />
+              <div class="solution-section-item-content-text">
+                <h1>
+                  Pay Everyone in <br />
+                  One-Click
+                </h1>
+                <p>
+                  Your roster doesn't have to <br />
+                  wait, create more value by <br />
+                  automating the admin tasks <br />
+                  and eliminate fees.
+                </p>
+              </div>
+            </div>
+            <div class="solution-section-item-animation">
+              <lottie-player
+                src="gemm_animations_json_files/card_arrow_only_animation.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                style="width: 688px; height: 500px; aspect-ratio: 172/125"
+              >
+              </lottie-player>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <h1>FAQ</h1>
+        <div class="faq-section-details">
+          <div class="faq-section-details-item">
+            <div class="rectangle"></div>
+            <div class="faq-section-details-item-heading">
+              <h1>What is Gemm?</h1>
+              <button>
+                <img
+                  src="images/gemm_icons/Arrow_Down_Icon.svg"
+                  alt="Arrow_Down_Icon"
+                />
+              </button>
+            </div>
+            <div class="faq-section-details-item-answer">
+              Gemm is for brands, agencies and their creators to track
+              influencer brand deals and budgets. Eliminate all the operational
+              chaos of spreadsheets, deal trackers and payment apps that don’t
+              talk to each other.
+            </div>
+          </div>
+          <div class="faq-section-details-item">
+            <div class="rectangle"></div>
+            <div class="faq-section-details-item-heading">
+              <h1>How to get started?</h1>
+              <button>
+                <img
+                  src="images/gemm_icons/Arrow_Down_Icon.svg"
+                  alt="Arrow_Down_Icon"
+                />
+              </button>
+            </div>
+            <div class="faq-section-details-item-answer">
+              It’s as easy as signing up and setting up your first brand deal!
+            </div>
+          </div>
+          <div class="faq-section-details-item">
+            <div class="rectangle"></div>
+            <div class="faq-section-details-item-heading">
+              <h1>How does Gemm help agencies make more margin?</h1>
+              <button>
+                <img
+                  src="images/gemm_icons/Arrow_Down_Icon.svg"
+                  alt="Arrow_Down_Icon"
+                />
+              </button>
+            </div>
+            <div class="faq-section-details-item-answer">
+              Gemm allows agencies to scale with growing operational costs. We
+              automate everything from contacts to taxes, paying out your entire
+              roster in one-click without the need for any more spreadsheets or
+              manual follow-ups.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-section-container">
+          <svg
+            class="cta-section-animated-gradient"
+            width="1312"
+            height="349"
+            viewBox="0 0 1312 349"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_1217_9495)">
+              <rect y="-26" width="1312" height="401" rx="25" fill="#200D5F" />
+              <g filter="url(#filter0_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1061.26 538.359C1146.56 539.209 1166.92 682.463 1249.46 704.029C1340.51 727.821 1450.13 598.503 1522.35 658.843C1588.27 713.92 1485.77 824.633 1495.9 909.934C1506.01 995.115 1607.79 1066.22 1580.35 1147.49C1553.58 1226.76 1446.25 1239.66 1371.73 1277.69C1303.14 1312.69 1236.66 1377.56 1161.41 1361.28C1085.64 1344.89 1064.2 1244.96 1002.63 1197.85C946.39 1154.83 857.693 1158.94 819.212 1099.49C779.69 1038.45 786.95 957.85 801.069 886.508C814.926 816.487 855.438 757.705 898.169 700.528C945.013 637.849 983.015 537.579 1061.26 538.359Z"
+                  fill="#F8E1CA"
+                />
+              </g>
+              <g filter="url(#filter1_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M-75.1071 384.044C-23.2314 384.561 -10.8469 471.683 39.346 484.798C94.7201 499.268 161.388 420.622 205.309 457.318C245.398 490.814 183.064 558.145 189.222 610.023C195.371 661.826 257.271 705.071 240.583 754.497C224.305 802.707 159.029 810.552 113.706 833.681C71.9948 854.965 31.5669 894.413 -14.2026 884.512C-60.2822 874.545 -73.3198 813.77 -110.765 785.125C-144.968 758.959 -198.909 761.456 -222.312 725.306C-246.348 688.178 -241.933 639.163 -233.346 595.776C-224.919 553.191 -200.281 517.442 -174.293 482.67C-145.805 444.55 -122.693 383.57 -75.1071 384.044Z"
+                  fill="#F8E1CA"
+                />
+              </g>
+              <g filter="url(#filter2_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M610.231 -17.8736C662.106 -17.3567 674.491 69.7648 724.684 82.8804C780.058 97.3499 846.726 18.7036 890.647 55.4001C930.736 88.8958 868.402 156.227 874.56 208.105C880.709 259.908 942.609 303.153 925.921 352.579C909.643 400.789 844.367 408.634 799.044 431.762C757.333 453.047 716.905 492.495 671.135 482.594C625.056 472.627 612.018 411.852 574.573 383.207C540.37 357.041 486.429 359.538 463.026 323.388C438.99 286.26 443.405 237.245 451.991 193.858C460.419 151.273 485.057 115.524 511.044 80.7517C539.533 42.6325 562.645 -18.3478 610.231 -17.8736Z"
+                  fill="#F8E1CA"
+                />
+              </g>
+              <g filter="url(#filter3_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M366.683 501.677C449.093 473.133 542.199 541.32 598.928 607.488C650.729 667.907 647.759 754.767 651.78 834.205C654.846 894.764 624.908 948.291 619.238 1008.66C611.101 1095.3 679.402 1208.69 611.487 1263.2C544.838 1316.69 451.954 1217.72 366.683 1211.37C291.607 1205.78 217.13 1256.06 147.035 1228.62C68.0406 1197.71 1.40218 1134.06 -30.9708 1055.74C-64.6677 974.222 -86.6402 866.216 -31.1122 797.637C26.0993 726.978 154.96 790.279 227.928 735.991C302.621 680.42 278.683 532.157 366.683 501.677Z"
+                  fill="#250F7F"
+                />
+              </g>
+              <g filter="url(#filter4_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M936.646 1141.41C880.888 1093.05 891.353 996.002 915.737 926.472C938.003 862.982 1002.79 828.481 1059.19 791.988C1102.19 764.168 1154.01 763.512 1200.56 742.176C1267.37 711.558 1321.4 613.602 1390.01 640.373C1457.35 666.644 1424.27 776.533 1455.72 841.726C1483.41 899.125 1551.7 932.495 1561.31 995.466C1572.13 1066.43 1553.79 1142.16 1510.21 1198.97C1464.84 1258.09 1395.15 1319.81 1321.48 1308.06C1245.59 1295.96 1237.35 1174.76 1166.75 1144.19C1094.5 1112.9 996.186 1193.06 936.646 1141.41Z"
+                  fill="#250F7F"
+                />
+              </g>
+              <g filter="url(#filter5_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M633.589 473.646C559.811 563.969 418.081 525.368 301.503 528.159C189.171 530.85 64.7305 562.613 -20.4116 489.308C-106.7 415.016 -98.4097 286.542 -110.63 173.324C-124.147 48.097 -162.053 -83.9578 -93.7099 -189.777C-16.6049 -309.163 117.133 -391.169 259.021 -399.028C401.917 -406.943 556.43 -349.197 635.895 -230.189C707.148 -123.481 619.195 11.4165 618.775 139.741C618.395 255.561 706.866 383.938 633.589 473.646Z"
+                  fill="#4630A0"
+                />
+              </g>
+              <g filter="url(#filter6_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1358.58 -44.2397C1477.89 -69.9143 1624.36 -84.9396 1707.36 4.55281C1789.7 93.3291 1740.67 233.074 1727.42 353.446C1716.29 454.569 1708.82 559.945 1638.17 633.129C1566.5 707.374 1461.22 725.064 1358.58 735.542C1239.53 747.693 1085.88 793.454 1015.43 696.694C944.189 598.841 1055.81 471.98 1080.38 353.446C1096.66 274.901 1087.32 193.813 1133.29 128.09C1189.64 47.5451 1262.5 -23.5642 1358.58 -44.2397Z"
+                  fill="#4630A0"
+                />
+              </g>
+              <g filter="url(#filter7_f_1217_9495)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1171.53 -215.098C1263.49 -202.409 1365.18 -288.255 1442.35 -236.656C1517.37 -186.489 1536.51 -71.8355 1517.68 16.3625C1500.12 98.596 1409.52 137.144 1349.86 196.42C1307.18 238.812 1266.14 276.894 1218.47 313.597C1150.02 366.309 1094.25 479.62 1010.65 457.628C926.358 435.453 933.206 308.615 897.494 229.156C873.677 176.163 837.826 128.475 836.619 70.4028C835.455 14.4576 873.141 -31.0326 890.98 -84.0677C916.05 -158.6 890.902 -269.616 962.186 -302.909C1032.45 -335.725 1094.69 -225.701 1171.53 -215.098Z"
+                  fill="#250F7F"
+                />
+              </g>
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_1217_9495"
+                x="289.812"
+                y="38.3535"
+                width="1795.22"
+                height="1825.5"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <filter
+                id="filter1_f_1217_9495"
+                x="-740.192"
+                y="-115.959"
+                width="1483.62"
+                height="1502.04"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <filter
+                id="filter2_f_1217_9495"
+                x="-54.8545"
+                y="-517.877"
+                width="1483.62"
+                height="1502.04"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <filter
+                id="filter3_f_1217_9495"
+                x="-565"
+                y="-5"
+                width="1717"
+                height="1784"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <filter
+                id="filter4_f_1217_9495"
+                x="396.009"
+                y="135.791"
+                width="1668.34"
+                height="1673.72"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <filter
+                id="filter5_f_1217_9495"
+                x="-633.342"
+                y="-899.744"
+                width="1797.08"
+                height="1937.04"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <filter
+                id="filter6_f_1217_9495"
+                x="492"
+                y="-564"
+                width="1762"
+                height="1821"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <filter
+                id="filter7_f_1217_9495"
+                x="336.593"
+                y="-808.998"
+                width="1687.84"
+                height="1769.42"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="250"
+                  result="effect1_foregroundBlur_1217_9495"
+                />
+              </filter>
+              <clipPath id="clip0_1217_9495">
+                <rect y="-26" width="1312" height="401" rx="25" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+
+          <div class="cta-section-content">
+            <div class="cta-section-content-details">
+              Get Started with Gemm Today
+            </div>
+            <button
+              class="get-a-demo-button"
+              onclick="window.open('https://calendly.com/gemm-info/30min')"
+            >
+              Get A Demo
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="footer-section">
+      <div class="footer-container">
+        <div class="footer-section-company">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="186"
+            height="47"
+            viewBox="0 0 186 47"
+            fill="none"
+          >
+            <path
+              d="M25.3322 1.04881H34.9666V32.0544C34.9666 32.3821 34.8992 32.7099 34.8992 33.0377C34.4276 40.9038 27.5556 47 19.2687 47H15.0242V37.6918H19.2687C22.4352 37.6918 25.1301 35.3319 25.3322 32.4477C25.3322 32.3166 25.3322 28.9735 25.3322 28.9735C24.0522 30.2845 22.57 31.0711 21.9636 31.2678C20.2119 31.9233 18.3255 32.251 16.3043 32.251C7.27628 32.251 0 25.1715 0 16.3877C0 7.6039 7.27628 0.458856 16.3043 0.458856C18.3255 0.458856 20.2119 0.852161 21.9636 1.50767C22.7047 1.83543 25.1301 3.01534 26.4776 5.24407C26.545 5.44073 26.7471 5.50628 26.9492 5.50628C27.4882 5.50628 27.7577 4.98187 27.4882 4.58856C27.0166 3.93305 26.3428 2.94979 25.3322 2.09763V1.04881ZM17.4496 24.0572C21.8288 24.0572 25.3322 20.6485 25.3322 16.3877C25.3322 12.1269 21.8288 8.71827 17.4496 8.71827C13.0704 8.71827 9.56697 12.1269 9.56697 16.3877C9.56697 20.6485 13.0704 24.0572 17.4496 24.0572Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M73.2397 16.5844C73.2397 16.9777 73.2397 17.371 73.1723 17.6987H47.9075C48.5138 21.6318 51.9498 24.7127 56.1943 24.7127C58.6198 24.7127 60.8431 23.6639 62.3253 22.0251H72.2965C70.0058 28.5146 63.6727 33.1688 56.1943 33.1688C46.7621 33.1688 39.149 25.7615 39.149 16.5844C39.149 7.40725 46.7621 0 56.1943 0C65.6266 0 73.2397 7.40725 73.2397 16.5844ZM48.6486 13.1757H63.7401C62.3927 10.4226 59.4956 8.52162 56.1943 8.52162C52.8257 8.52162 49.996 10.4226 48.6486 13.1757Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M128.885 12.9791C129.019 13.9623 129.154 14.9456 129.154 15.9289V32.1199H119.654V16.2566C119.654 12.258 117.768 9.89819 115.275 9.24268C114.804 9.11158 114.332 9.11158 113.793 9.11158C113.658 9.11158 113.523 9.11158 113.321 9.11158C111.704 9.24268 110.29 9.96374 109.346 11.4059C108.471 12.6513 107.999 14.3556 107.999 16.5844V32.1199H98.4319V16.2566C98.4319 13.7001 97.6908 11.7992 96.4781 10.6192C95.5349 9.70153 94.3896 9.17712 93.1095 9.11158C92.9747 9.11158 92.7726 9.11158 92.6379 9.11158C89.404 9.11158 86.8438 11.537 86.8438 16.5844V32.1199H77.2768V1.04881H86.8438V2.22873C85.8332 3.08089 85.0921 4.06415 84.6879 4.71967C84.6205 4.85077 84.5531 4.98187 84.5531 5.04742C84.5531 5.04742 84.5531 5.04742 84.5531 5.11297C84.6205 5.37517 84.8226 5.57183 85.1595 5.57183C85.3616 5.57183 85.5637 5.44073 85.6984 5.24407C85.6984 5.24407 85.7658 5.17852 85.9006 5.04742C87.5849 3.21199 89.7408 1.83543 92.2336 1.17991C92.9747 0.983263 93.7832 0.852161 94.6591 0.78661C95.737 0.721058 96.8824 0.78661 98.0277 0.983263H98.0951C101.531 1.83543 103.889 3.80195 105.439 6.35844V6.22734C105.641 5.89958 105.843 5.57183 106.045 5.30962C107.527 3.14644 109.885 1.70432 112.176 1.04881C112.715 0.917713 113.254 0.852161 113.86 0.78661C114.736 0.721058 115.545 0.721058 116.421 0.852161C119.183 1.17991 121.945 2.29428 124.101 4.19526C126.661 6.35844 128.211 9.43933 128.817 12.6513C128.817 12.7824 128.885 12.9135 128.885 12.9791Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M185.731 12.9791C185.865 13.9623 186 14.9456 186 15.9289V32.1199H176.5V16.2566C176.5 12.258 174.614 9.89819 172.121 9.24268C171.65 9.11158 171.178 9.11158 170.639 9.11158C170.504 9.11158 170.369 9.11158 170.167 9.11158C168.55 9.24268 167.136 9.96374 166.192 11.4059C165.316 12.6513 164.845 14.3556 164.845 16.5844V32.1199H155.278V16.2566C155.278 13.7001 154.537 11.7992 153.324 10.6192C152.381 9.70153 151.236 9.17712 149.955 9.11158C149.821 9.11158 149.619 9.11158 149.484 9.11158C146.25 9.11158 143.69 11.537 143.69 16.5844V32.1199H134.123V1.04881H143.69V2.22873C142.679 3.08089 141.938 4.06415 141.534 4.71967C141.466 4.85077 141.399 4.98187 141.399 5.04742C141.399 5.04742 141.399 5.04742 141.399 5.11297C141.466 5.37517 141.669 5.57183 142.005 5.57183C142.208 5.57183 142.41 5.44073 142.544 5.24407C142.544 5.24407 142.612 5.17852 142.747 5.04742C144.431 3.21199 146.587 1.83543 149.08 1.17991C149.821 0.983263 150.629 0.852161 151.505 0.78661C152.583 0.721058 153.728 0.78661 154.874 0.983263H154.941C158.377 1.83543 160.735 3.80195 162.285 6.35844V6.22734C162.487 5.89958 162.689 5.57183 162.891 5.30962C164.373 3.14644 166.731 1.70432 169.022 1.04881C169.561 0.917713 170.1 0.852161 170.706 0.78661C171.582 0.721058 172.391 0.721058 173.267 0.852161C176.029 1.17991 178.791 2.29428 180.947 4.19526C183.507 6.35844 185.057 9.43933 185.663 12.6513C185.663 12.7824 185.731 12.9135 185.731 12.9791Z"
+              fill="#F9F9F9"
+            />
+          </svg>
+          <p>Teal Pay Global Inc.</p>
+        </div>
+        <div class="footer-section-content-container">
+          <div class="footer-section-content">
+            <div class="footer-section-content-menu">
+              <p class="footer-section-content-menu-tem">Features</p>
+              <p class="footer-section-content-menu-tem">About</p>
+              <p class="footer-section-content-menu-tem">FAQ</p>
+              <p class="footer-section-content-menu-tem">Contact</p>
+            </div>
+            <div class="footer-section-content-contact-info">
+              <a href="info@gemm.app" aria-label="Email">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="25"
+                  viewBox="0 0 32 25"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9299)">
+                    <path
+                      d="M3.2 25.8031C2.32 25.8031 1.56667 25.4898 0.94 24.8631C0.313333 24.2365 0 23.4831 0 22.6031V3.40313C0 2.52312 0.313333 1.76979 0.94 1.14313C1.56667 0.516458 2.32 0.203125 3.2 0.203125H28.8C29.68 0.203125 30.4333 0.516458 31.06 1.14313C31.6867 1.76979 32 2.52312 32 3.40313V22.6031C32 23.4831 31.6867 24.2365 31.06 24.8631C30.4333 25.4898 29.68 25.8031 28.8 25.8031H3.2ZM16 14.6031L3.2 6.60313V22.6031H28.8V6.60313L16 14.6031ZM16 11.4031L28.8 3.40313H3.2L16 11.4031ZM3.2 6.60313V3.40313V22.6031V6.60313Z"
+                      fill="#F9F9F9"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9299">
+                      <rect width="32" height="25" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/gemmapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9301)">
+                    <path
+                      d="M29.6313 0H2.3625C1.05625 0 0 1.03125 0 2.30625V29.6875C0 30.9625 1.05625 32 2.3625 32H29.6313C30.9375 32 32 30.9625 32 29.6938V2.30625C32 1.03125 30.9375 0 29.6313 0ZM9.49375 27.2687H4.74375V11.9937H9.49375V27.2687ZM7.11875 9.9125C5.59375 9.9125 4.3625 8.68125 4.3625 7.1625C4.3625 5.64375 5.59375 4.4125 7.11875 4.4125C8.6375 4.4125 9.86875 5.64375 9.86875 7.1625C9.86875 8.675 8.6375 9.9125 7.11875 9.9125ZM27.2687 27.2687H22.525V19.8438C22.525 18.075 22.4937 15.7937 20.0562 15.7937C17.5875 15.7937 17.2125 17.725 17.2125 19.7188V27.2687H12.475V11.9937H17.025V14.0813H17.0875C17.7187 12.8813 19.2688 11.6125 21.575 11.6125C26.3813 11.6125 27.2687 14.775 27.2687 18.8875V27.2687Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9301">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/gemm.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9303)">
+                    <path
+                      d="M16 2.88125C20.275 2.88125 20.7813 2.9 22.4625 2.975C24.025 3.04375 24.8688 3.30625 25.4313 3.525C26.175 3.8125 26.7125 4.1625 27.2688 4.71875C27.8313 5.28125 28.175 5.8125 28.4625 6.55625C28.6813 7.11875 28.9438 7.96875 29.0125 9.525C29.0875 11.2125 29.1063 11.7188 29.1063 15.9875C29.1063 20.2625 29.0875 20.7688 29.0125 22.45C28.9438 24.0125 28.6813 24.8563 28.4625 25.4188C28.175 26.1625 27.825 26.7 27.2688 27.2563C26.7063 27.8188 26.175 28.1625 25.4313 28.45C24.8688 28.6688 24.0188 28.9313 22.4625 29C20.775 29.075 20.2688 29.0938 16 29.0938C11.725 29.0938 11.2188 29.075 9.5375 29C7.975 28.9313 7.13125 28.6688 6.56875 28.45C5.825 28.1625 5.2875 27.8125 4.73125 27.2563C4.16875 26.6938 3.825 26.1625 3.5375 25.4188C3.31875 24.8563 3.05625 24.0063 2.9875 22.45C2.9125 20.7625 2.89375 20.2563 2.89375 15.9875C2.89375 11.7125 2.9125 11.2063 2.9875 9.525C3.05625 7.9625 3.31875 7.11875 3.5375 6.55625C3.825 5.8125 4.175 5.275 4.73125 4.71875C5.29375 4.15625 5.825 3.8125 6.56875 3.525C7.13125 3.30625 7.98125 3.04375 9.5375 2.975C11.2188 2.9 11.725 2.88125 16 2.88125ZM16 0C11.6563 0 11.1125 0.01875 9.40625 0.09375C7.70625 0.16875 6.5375 0.44375 5.525 0.8375C4.46875 1.25 3.575 1.79375 2.6875 2.6875C1.79375 3.575 1.25 4.46875 0.8375 5.51875C0.44375 6.5375 0.16875 7.7 0.09375 9.4C0.01875 11.1125 0 11.6562 0 16C0 20.3438 0.01875 20.8875 0.09375 22.5938C0.16875 24.2938 0.44375 25.4625 0.8375 26.475C1.25 27.5313 1.79375 28.425 2.6875 29.3125C3.575 30.2 4.46875 30.75 5.51875 31.1562C6.5375 31.55 7.7 31.825 9.4 31.9C11.1063 31.975 11.65 31.9937 15.9938 31.9937C20.3375 31.9937 20.8813 31.975 22.5875 31.9C24.2875 31.825 25.4563 31.55 26.4688 31.1562C27.5188 30.75 28.4125 30.2 29.3 29.3125C30.1875 28.425 30.7375 27.5313 31.1438 26.4813C31.5375 25.4625 31.8125 24.3 31.8875 22.6C31.9625 20.8938 31.9813 20.35 31.9813 16.0063C31.9813 11.6625 31.9625 11.1188 31.8875 9.4125C31.8125 7.7125 31.5375 6.54375 31.1438 5.53125C30.75 4.46875 30.2063 3.575 29.3125 2.6875C28.425 1.8 27.5313 1.25 26.4813 0.84375C25.4625 0.45 24.3 0.175 22.6 0.1C20.8875 0.01875 20.3438 0 16 0Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M16 7.78125C11.4625 7.78125 7.78125 11.4625 7.78125 16C7.78125 20.5375 11.4625 24.2188 16 24.2188C20.5375 24.2188 24.2188 20.5375 24.2188 16C24.2188 11.4625 20.5375 7.78125 16 7.78125ZM16 21.3312C13.0563 21.3312 10.6687 18.9438 10.6687 16C10.6687 13.0563 13.0563 10.6687 16 10.6687C18.9438 10.6687 21.3312 13.0563 21.3312 16C21.3312 18.9438 18.9438 21.3312 16 21.3312Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M26.4625 7.45781C26.4625 8.52032 25.6 9.37657 24.5438 9.37657C23.4813 9.37657 22.625 8.51407 22.625 7.45781C22.625 6.39531 23.4875 5.53906 24.5438 5.53906C25.6 5.53906 26.4625 6.40156 26.4625 7.45781Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9303">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+            </div>
+            <div class="footer-section-content-legal">
+              <p onclick="showPage('privacy-policy-content.html')">
+                Privacy Policy
+              </p>
+              <p onclick="showPage('terms-of-service.html')">
+                Terms of Service
+              </p>
+
+              <p onclick="showPage('gemm-privacy-notice.html')">
+                Gemm Privacy Notice
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="privacy-policy-placeholder"></div>
+    <div id="terms-of-service-placeholder"></div>
+    <div id="gemm-privacy-notice-placeholder"></div>
+
+    <script>
+      // Get all FAQ items
+      const faqItems = document.querySelectorAll(".faq-section-details-item");
+
+      faqItems.forEach((item) => {
+        const button = item.querySelector("button");
+        const answer = item.querySelector(".faq-section-details-item-answer");
+
+        if (answer) {
+          answer.style.display = "none";
+        }
+
+        // Add click event to button
+        button.addEventListener("click", () => {
+          if (answer) {
+            if (answer.style.display === "none") {
+              answer.style.display = "flex";
+            } else {
+              answer.style.display = "none";
+            }
+          }
+        });
+      });
+
+      const hamburgerMenu = document.querySelector(".hamburger-menu");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      hamburgerMenu.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+        hamburgerMenu.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          !hamburgerMenu.contains(e.target) &&
+          !mobileMenu.contains(e.target)
+        ) {
+          mobileMenu.classList.remove("active");
+          hamburgerMenu.classList.remove("active");
+        }
+      });
+
+      // square gradient animation
+      const animation = lottie.loadAnimation({
+        container: document.getElementById("lottie-container"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        preserveAspectRatio: "xMidYMid slice",
+        path: "gemm_animations_json_files/Gemm_Gradient-background.json",
+      });
+
+      // Scroll to sections when menu items are clicked
+      document
+        .querySelectorAll(
+          ".menu-item, .mobile-menu-item, .footer-section-content-menu-tem"
+        )
+        .forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            const text = this.textContent.trim().toLowerCase();
+
+            let targetSection;
+            if (text === "about") {
+              targetSection = document.querySelector(
+                ".square-section-gradient"
+              );
+            } else if (text === "features") {
+              targetSection = document.querySelector(".solution-section");
+            } else if (text === "faq") {
+              targetSection = document.querySelector(".faq-section");
+            } else {
+              return;
+            }
+
+            if (targetSection) {
+              targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+
+            // Close mobile menu if open
+            const mobileMenu = document.querySelector(".mobile-menu");
+            const hamburgerMenu = document.querySelector(".hamburger-menu");
+            if (mobileMenu && hamburgerMenu) {
+              mobileMenu.classList.remove("active");
+              hamburgerMenu.classList.remove("active");
+            }
+          });
+        });
+    </script>
+
+    <script>
+      function showPage(page) {
+        fetch(page)
+          .then((response) => response.text())
+          .then((html) => {
+            document.getElementById("privacy-policy-placeholder").innerHTML = "";
+            document.getElementById("terms-of-service-placeholder").innerHTML =
+            "";
+            document.getElementById("gemm-privacy-notice-placeholder").innerHTML =
+
+
+            document.querySelector(".menu-item-container").style.display =
+              "none";
+            document.querySelector(".mobile-menu").style.display = "none";
+            document.querySelector(".main-content").style.display = "none";
+            document.querySelector(".footer-section").style.display = "none";
+
+            document.body.setAttribute("data-current-page", page);
+
+            if (page === 'privacy-policy-content.html') {
+        document.getElementById('privacy-policy-placeholder').innerHTML = html;
+        // document.getElementById('privacy-policy-placeholder').style.display = 'block';
+      } else if (page === 'terms-of-service.html') {
+        document.getElementById('terms-of-service-placeholder').innerHTML = html;
+        // document.getElementById('terms-of-service-placeholder').style.display = 'block';
+      } else if (page === 'gemm-privacy-notice.html') {
+        document.getElementById('gemm-privacy-notice-placeholder').innerHTML = html;
+        // document.getElementById('gemm-privacy-notice-placeholder').style.display = 'block';
+      }
+
+
+            window.scrollTo(0, 0);
+          })
+          .catch((error) => {
+            console.error("Error loading privacy policy:", error);
+          });
+      }
+
+      function showMainContent() {
+        const currentPage = document.body.getAttribute("data-current-page");
+
+        if (currentPage === "privacy-policy-content.html") {
+          // document.getElementById("privacy-policy-placeholder").style.display =
+          //   "none";
+          document.getElementById("privacy-policy-placeholder").innerHTML = "";
+        } else if (currentPage === "terms-of-service-content.html") {
+          // document.getElementById(
+          //   "terms-of-service-placeholder"
+          // ).style.display = "none";
+          document.getElementById("terms-of-service-placeholder").innerHTML =
+            "";
+        } else if (currentPage === "gemm-privacy-notice.html") {
+          document.getElementById("gemm-privacy-notice-placeholder").innerHTML =
+            "";
+        }
+
+        // Clear the current page attribute
+        document.body.removeAttribute("data-current-page");
+
+        document.querySelector(".main-content").style.display = "block";
+        document.querySelector(".footer-section").style.display = "flex";
+
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+          document.querySelector(".menu-item-container").style.display = "none";
+          document.querySelector(".hamburger-menu").style.display = "flex";
+          document.querySelector(".join-now-button").style.display = "none";
+        } else {
+          document.querySelector(".menu-item-container").style.display = "flex";
+          document.querySelector(".hamburger-menu").style.display = "none";
+          document.querySelector(".join-now-button").style.display = "flex";
+        }
+        window.scrollTo(0, 0);
+      }
+    </script>
+  </body>
+</html>
+
+
+
