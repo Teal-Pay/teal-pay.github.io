@@ -531,12 +531,12 @@
         </div>
         <div class="footer-section-content-container">
           <div class="footer-section-content">
-            <div class="footer-section-content-menu">
+            <!-- <div class="footer-section-content-menu">
               <p class="footer-section-content-menu-tem">Features</p>
               <p class="footer-section-content-menu-tem">About</p>
               <p class="footer-section-content-menu-tem">FAQ</p>
               <p class="footer-section-content-menu-tem">Contact</p>
-            </div>
+            </div> -->
             <div class="footer-section-content-contact-info">
               <a href="info@gemm.app" aria-label="Email">
                 <svg
@@ -682,51 +682,6 @@
         };
       }
 
-      // Only define showMainContent if it doesn't exist on window
-      if (typeof window.showMainContent === 'undefined') {
-        window.showMainContent = function() {
-          const currentPage = document.body.getAttribute("data-current-page");
-
-          // Clear placeholders
-          const privacyPlaceholder = document.getElementById("privacy-policy-placeholder");
-          const termsPlaceholder = document.getElementById("terms-of-service-placeholder");
-          const gemmPrivacyPlaceholder = document.getElementById("gemm-privacy-notice-placeholder");
-
-          if (currentPage === "privacy-policy-content.html" && privacyPlaceholder) {
-            privacyPlaceholder.innerHTML = "";
-          } else if (currentPage === "terms-of-service.html" && termsPlaceholder) {
-            termsPlaceholder.innerHTML = "";
-          } else if (currentPage === "gemm-privacy-notice.html" && gemmPrivacyPlaceholder) {
-            gemmPrivacyPlaceholder.innerHTML = "";
-          }
-
-          // Clear the current page attribute
-          document.body.removeAttribute("data-current-page");
-
-          // Show main content
-          const mainContent = document.querySelector(".main-content");
-          const footerSection = document.querySelector(".footer-section");
-          
-          if (mainContent) mainContent.style.display = "block";
-          if (footerSection) footerSection.style.display = "flex";
-
-          const isMobile = window.innerWidth <= 768;
-          const menuContainer = document.querySelector(".menu-item-container");
-          const hamburgerMenu = document.querySelector(".hamburger-menu");
-          const joinButton = document.querySelector(".join-now-button");
-
-          if (isMobile) {
-            if (menuContainer) menuContainer.style.display = "none";
-            if (hamburgerMenu) hamburgerMenu.style.display = "flex";
-            if (joinButton) joinButton.style.display = "none";
-          } else {
-            if (menuContainer) menuContainer.style.display = "flex";
-            if (hamburgerMenu) hamburgerMenu.style.display = "none";
-            if (joinButton) joinButton.style.display = "flex";
-          }
-          window.scrollTo(0, 0);
-        };
-      }
     </script>
 </body>
 </html>

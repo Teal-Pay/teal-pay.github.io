@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gemm</title>
     <style>
+      html,
       body {
         font-family: "Montserrat";
         overflow-x: hidden;
@@ -103,45 +104,57 @@
         border: none;
       }
 
-
       .get-a-demo-button:hover,
       .join-now-button:hover {
         cursor: pointer;
         background-color: #e8ffe8;
       }
 
-      .hero-bg-svg {
+      .hero-bg-wrapper {
         position: absolute;
-        top: 50px;
+        top: 0;
         right: 0;
-        min-width: 900px;
-        width: 80%;
-        height: 115%;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: -1;
         pointer-events: none;
-        transform: translateX(10%);
+        overflow: hidden;
+      }
+
+      .hero-bg-img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right top;
+        display: block;
       }
 
       .hero-section {
         position: relative;
-        overflow: visible;
-        display: flex;
-        width: 100%;
-        padding: 5rem 0 12rem 6.25rem;
-        margin: 0 auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        min-height: 900px;
         box-sizing: border-box;
+        /* padding-top: 7rem; */
       }
 
       .info-hero-section {
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         gap: 100px;
         width: 100%;
+        height: 100%;
+        padding: 5rem 0 0 6.25rem;
+        box-sizing: border-box;
         /* z-index: 1; */
       }
 
@@ -154,6 +167,7 @@
         flex: 0 0 auto;
         width: 50%;
         max-width: 550px;
+        padding-top: 30px;
       }
 
       .screens-info-hero-section {
@@ -165,6 +179,7 @@
         flex: 0 0 auto;
         width: 45%;
         right: -60px;
+        transform: scale(1);
       }
 
       .desktop-image-wrapper {
@@ -188,7 +203,7 @@
         aspect-ratio: 73/158;
         position: absolute;
         left: 0;
-        transform: translateX(-30%);
+        transform: translateX(-50%);
         bottom: 2%;
         z-index: 2;
       }
@@ -202,10 +217,10 @@
 
       .details-text-info-hero-section h1 {
         /* color: var(--Metal-400, #3b3a3a); */
-        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-size: clamp(2.5rem, 5vw, 5rem);
         font-style: normal;
         font-weight: 600;
-        line-height: 70px;
+        line-height: clamp(3rem, 5.5vw, 5rem);
         letter-spacing: -2.88px;
       }
 
@@ -219,6 +234,8 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: 0.96px;
+        margin-bottom: clamp(2rem, 5vw, 4rem);
+        max-width: 90%;
       }
 
       .company-section {
@@ -230,7 +247,7 @@
         align-items: flex-start;
         gap: 10px;
         box-sizing: border-box;
-        margin-top: 8rem;
+        margin-top: 3rem;
       }
 
       .company-section-container {
@@ -300,6 +317,7 @@
         gap: 40px 32px;
         flex: 1;
         max-width: 650px;
+        padding: 5px;
       }
 
       .service-feature-item {
@@ -443,7 +461,6 @@
         gap: 24px;
       }
 
-
       .solution-section-item-content-text {
         display: flex;
         flex-direction: column;
@@ -543,45 +560,50 @@
       }
 
       .cta-section {
-        display: flex;
-        width: 100%;
+        position: relative;
         padding: 96px 100px;
-        flex-direction: column;
+        display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px;
+        width: 100%;
         box-sizing: border-box;
       }
 
       .cta-section-container {
         position: relative;
         display: flex;
-        padding: 96px 64px;
         justify-content: center;
         align-items: center;
-        gap: 96px;
-        align-self: stretch;
-        box-sizing: border-box;
+        width: 100%;
+        max-width: 1312px;
+        height: 401px;
+        border-radius: 25px;
+        overflow: hidden;
       }
 
-      .cta-section-animated-gradient {
-        width: 100%;
-        /* max-width: 1312px; */
-        height: 401px;
-
+      .cta-img {
         position: absolute;
-        top: -26px;
-        border-radius: 25px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         z-index: -1;
+        border-radius: 25px;
       }
 
       .cta-section-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        width: 100%;
+        max-width: 800px;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 32px;
-        flex: 1 0 0;
       }
 
       .cta-section-content-details {
@@ -591,14 +613,34 @@
         align-items: center;
         gap: 24px;
         align-self: stretch;
-
-        color: var(--White-300, #fcfcfc);
+        color: white;
         text-align: center;
         font-size: clamp(2rem, 5vw, 3.5rem);
         font-style: normal;
         font-weight: 600;
         line-height: 1.2;
         letter-spacing: -2.24px;
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .cta-section .get-a-demo-button {
+        background: #caffd0;
+        color: #3b3a3a;
+        border: 2px solid #caffd0;
+        border-radius: 50px;
+        padding: 16px 32px;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: -0.4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .cta-section .get-a-demo-button:hover {
+        background: #e8ffe8;
+        border-color: #e8ffe8;
       }
 
       .hamburger-menu {
@@ -703,55 +745,58 @@
 
       @media (min-width: 1920px) {
         .hero-bg-svg {
-          right: -200px;
+          /* right: -200px;
           width: 90%;
-          min-width: 1200px;
-          transform: translateX(30%);
+          min-width: 1200px; */
+          /* transform: translateX(30%); */
+        }
+
+        .hero-section {
+          min-height: 1300px;
+        }
+
+        .info-hero-section {
+          padding: 6rem 0 0 8rem;
         }
 
         .screen-info-hero-section-phone-image {
-          left: 0;
-          transform: translateX(2%);
+          transform: translateX(-60%);
+        }
+
+        .hero-bg-svg {
+          /* transform: scale(1.1); */
         }
       }
 
       @media (max-width: 1350px) {
         .hero-section {
-          padding: 70px 0 140px 80px;
-        }
-
-        .info-hero-section {
-          gap: 80px;
+          padding: 70px 0 70px 80px;
+          height: 80vh;
         }
 
         .screens-info-hero-section {
-          height: 500px;
+          transform: scale(0.9);
           right: -50px;
           width: 45%;
+        }
+
+        .details-text-info-hero-section p {
+          margin-bottom: clamp(1.5rem, 4vw, 3rem);
+          max-width: 85%;
         }
 
         .text-info-hero-section {
           width: 50%;
         }
 
-        .screen-info-hero-section-deals-desktop {
-          height: 500px;
-          top: 25px;
-        }
-
         .screen-info-hero-section-phone-image {
-          width: 130px;
-          height: auto;
           left: 0;
-          transform: translateX(-20%);
+          transform: translateX(-50%);
           bottom: 5%;
         }
 
-        /* .hero-bg-svg {
-    top: 90px;
-    right: -80px;
-    min-width: 800px;
-  } */
+        .hero-bg-svg {
+        }
 
         /* .company-section {
     margin-top: -3rem;
@@ -760,15 +805,12 @@
 
       @media (max-width: 1200px) {
         .hero-section {
-          padding: 60px 0 130px 60px;
-        }
-
-        .info-hero-section {
-          gap: 60px;
+          padding: 60px 0 60px 60px;
+          height: 70vh;
         }
 
         .screens-info-hero-section {
-          height: 450px;
+          transform: scale(0.8);
           right: -40px;
           width: 48%;
         }
@@ -777,35 +819,25 @@
           width: 52%;
         }
 
-        .screen-info-hero-section-deals-desktop {
-          height: 450px;
-          top: 20px;
-        }
-
         .screen-info-hero-section-phone-image {
-          width: 120px;
-          height: auto;
           left: 0;
-          transform: translateX(-20%);
+          transform: translateX(-50%);
           bottom: 5%;
         }
 
-        .hero-bg-svg {
-          transform: translateX(10%);
-        }
+        /* .hero-bg-svg {
+          transform: scale(0.8);
+        } */
       }
 
       @media (max-width: 1100px) {
         .hero-section {
           padding: 50px 0 120px 50px;
-        }
-
-        .info-hero-section {
-          gap: 50px;
+          height: 60vh;
         }
 
         .screens-info-hero-section {
-          height: 420px;
+          transform: scale(0.75);
           right: -30px;
           width: 50%;
         }
@@ -815,41 +847,10 @@
           gap: 28px;
         }
 
-        .screen-info-hero-section-deals-desktop {
-          height: 420px;
-          top: 15px;
-        }
-
         .screen-info-hero-section-phone-image {
-          width: 110px;
-          height: auto;
           left: 0;
-          transform: translateX(-20%);
+          transform: translateX(-50%);
           bottom: 5%;
-        }
-
-        .hero-bg-svg {
-          transform: translateX(15%);
-        }
-      }
-
-      @media (max-width: 1200px) {
-        .cta-section-animated-gradient {
-          height: 480px;
-        }
-
-        .cta-section-container {
-          padding: 90px 48px;
-        }
-
-        .cta-section-content-details {
-          font-size: clamp(1.75rem, 4.5vw, 3rem);
-          gap: 20px;
-        }
-
-        .cta-section .get-a-demo-button {
-          font-size: 18px;
-          padding: 14px 28px;
         }
       }
 
@@ -962,10 +963,23 @@
         }
 
         .hero-section {
-          padding: 60px 0 80px 24px;
+          height: auto;
+          min-height: 100px;
+          padding: 0;
+        }
+
+        .info-hero-section {
+          position: relative;
+          flex-direction: column;
+          gap: 40px;
+          padding: 60px 24px 80px 24px;
         }
 
         .hero-bg-svg {
+          display: none;
+        }
+
+        .hero-bg-img {
           display: none;
         }
 
@@ -991,8 +1005,9 @@
           top: 0;
           text-align: center;
           width: 100%;
-          margin: 0 auto;
+          margin: 0 auto 2rem auto;
           display: block;
+          max-width: 90%;
         }
 
         .screens-info-hero-section {
@@ -1001,7 +1016,7 @@
           height: auto;
           width: 100%;
           justify-content: center;
-          position: relative; 
+          position: relative;
           display: flex;
           align-items: center;
         }
@@ -1016,7 +1031,7 @@
         }
 
         .desktop-image-wrapper {
-          width: 100%;
+          /* width: 100%; */
           display: flex;
           justify-content: center;
         }
@@ -1027,7 +1042,6 @@
           position: absolute;
           bottom: 2%;
           left: 0;
-          transform: translateX(100%);
           z-index: 2;
         }
 
@@ -1116,7 +1130,7 @@
 
         .solution-section-item {
           flex-direction: column;
-          
+
           align-items: flex-start;
         }
 
@@ -1173,9 +1187,48 @@
         }
 
         .cta-section-container {
-          padding: 60px 24px;
-          flex-direction: column;
-          gap: 40px;
+          height: 300px;
+          max-width: 100%;
+        }
+
+        .cta-section-content {
+          padding: 20px;
+          gap: 24px;
+        }
+
+        .cta-section-content-details {
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
+          gap: 16px;
+          white-space: normal;
+        }
+
+        .cta-section .get-a-demo-button {
+          font-size: 16px;
+          padding: 12px 24px;
+        }
+
+        .cta-section {
+          padding: 40px 16px;
+        }
+
+        .cta-section-container {
+          height: 250px;
+        }
+
+        .cta-section-content {
+          padding: 16px;
+          gap: 20px;
+        }
+
+        .cta-section-content-details {
+          font-size: clamp(1.25rem, 3.5vw, 2rem);
+          gap: 12px;
+          white-space: normal;
+        }
+
+        .cta-section .get-a-demo-button {
+          font-size: 14px;
+          padding: 10px 20px;
         }
 
         .cta-section-animated-gradient {
@@ -1261,72 +1314,41 @@
           width: auto;
           align-self: flex-start;
         }
-
-        .cta-section-content-details {
-          font-size: clamp(1.5rem, 4vw, 2.5rem);
-          gap: 16px;
-        }
-
-        .cta-section .get-a-demo-button {
-          font-size: 16px;
-          padding: 12px 24px;
-        }
-
-        .cta-section-container {
-          padding: 60px 24px;
-        }
       }
 
       @media (max-width: 480px) {
-  .cta-section {
-    padding: 40px 16px;
-  }
+        .text-info-container-square-section-gradient h1,
+        .text-info-container-square-section-gradient span {
+          font-size: 1.125rem;
+          line-height: 1.5rem;
+          letter-spacing: -0.04rem;
+        }
 
-  .cta-section-container {
-    padding: 40px 20px;
-    min-height: 250px;
-  }
+        .text-info-container-square-section-gradient p {
+          font-size: 0.875rem;
+        }
 
-  .cta-section-content-details {
-    font-size: clamp(1.25rem, 3.5vw, 2rem);
-  }
+        .screen-info-hero-section-phone-image {
+          width: 70px;
+          left: 0;
+          /* transform: translateX(-2%); */
+          transform: translateX(-60%);
+          bottom: -6%;
+        }
+      }
 
-  .cta-section .get-a-demo-button {
-    font-size: 14px;
-    padding: 12px 24px;
-  }
+      @media (max-width: 680px) {
+        /* .screen-info-hero-section-deals-desktop {
+          max-width: 320px;
+        } */
 
-  .text-info-container-square-section-gradient h1,
-  .text-info-container-square-section-gradient span {
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    letter-spacing: -0.04rem;
-  }
-
-  .text-info-container-square-section-gradient p {
-    font-size: 0.875rem;
-  }
-
-  .screen-info-hero-section-phone-image {
-    width: 70px;
-    left: 0;
-    transform: translateX(-2%);
-    /* bottom: 0%; */
-  }
-}
-
-@media (max-width: 680px) {
-  .screen-info-hero-section-deals-desktop {
-    max-width: 320px;
-  }
-
-  .screen-info-hero-section-phone-image {
-    width: 75px;
-    left: 0;
-    transform: translateX(10%);
-    bottom: 2%;
-  }
-}
+        .screen-info-hero-section-phone-image {
+          width: 75px;
+          left: 0;
+          /* transform: translateX(10%); */
+          /* bottom: 2%; */
+        }
+      }
     </style>
     <!-- this is for all the animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
@@ -1336,7 +1358,7 @@
   <body>
     <div class="navbar-menu-section">
       <div class="navbar-frame">
-        <div class="logo-wrapper" onclick="showMainContent()">
+        <div class="logo-wrapper" onclick="window.location.reload()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="150"
@@ -1425,280 +1447,30 @@
             </div>
           </div>
         </div>
+
+        <div class="hero-bg-wrapper">
+          <picture>
+            <source
+              srcset="
+                https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/hero-background.webp
+              "
+              type="image/webp"
+            />
+            <img
+              src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/hero-background.png"
+              alt=""
+              class="hero-bg-img"
+              loading="eager"
+            />
+          </picture>
+        </div>
       </section>
-      <div class="hero-bg-wrapper">
-        <svg
-          class="hero-bg-svg"
-          width="100%"
-          height="auto"
-          viewBox="0 0 983 812"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <mask
-            id="mask0_943_8955"
-            style="mask-type: alpha"
-            maskUnits="userSpaceOnUse"
-            x="0"
-            y="-1"
-            width="983"
-            height="813"
-          >
-            <path
-              d="M983 -1L820 102.5L798.5 267L689 327L544 369L476.5 454.5L406 576L262 587.5L181 683.5L80.5 720.5L0 812H983V-1Z"
-              fill="white"
-            />
-          </mask>
-          <g mask="url(#mask0_943_8955)">
-            <rect
-              width="1643"
-              height="928"
-              transform="matrix(-1 0 0 1 1642 -103)"
-              fill="#200D5F"
-            />
-            <g filter="url(#filter0_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M580.739 461.359C495.44 462.209 475.076 605.463 392.544 627.029C301.492 650.821 191.87 521.503 119.652 581.843C53.7325 636.92 156.228 747.633 146.103 832.934C135.993 918.115 34.2099 989.222 61.6504 1070.49C88.4153 1149.76 195.749 1162.66 270.274 1200.69C338.859 1235.69 405.335 1300.56 480.594 1284.28C556.362 1267.89 577.8 1167.96 639.37 1120.85C695.61 1077.83 784.307 1081.94 822.788 1022.49C862.31 961.446 855.05 880.85 840.931 809.508C827.074 739.487 786.562 680.705 743.831 623.528C696.987 560.849 658.985 460.579 580.739 461.359Z"
-                fill="#F8E1CA"
-              />
-            </g>
-            <g filter="url(#filter1_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1717.11 307.044C1665.23 307.561 1652.85 394.683 1602.65 407.798C1547.28 422.268 1480.61 343.622 1436.69 380.318C1396.6 413.814 1458.94 481.145 1452.78 533.023C1446.63 584.826 1384.73 628.071 1401.42 677.497C1417.69 725.707 1482.97 733.552 1528.29 756.68C1570 777.965 1610.43 817.413 1656.2 807.512C1702.28 797.545 1715.32 736.77 1752.76 708.125C1786.97 681.959 1840.91 684.456 1864.31 648.306C1888.35 611.178 1883.93 562.163 1875.35 518.776C1866.92 476.191 1842.28 440.442 1816.29 405.67C1787.8 367.55 1764.69 306.57 1717.11 307.044Z"
-                fill="#F8E1CA"
-              />
-            </g>
-            <g filter="url(#filter2_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1031.77 -94.8736C979.893 -94.3567 967.509 -7.23519 917.316 5.88042C861.942 20.3499 795.274 -58.2964 751.353 -21.5999C711.264 11.8958 773.598 79.2275 767.44 131.105C761.291 182.908 699.391 226.153 716.079 275.579C732.356 323.789 797.633 331.634 842.956 354.762C884.667 376.047 925.095 415.495 970.865 405.594C1016.94 395.627 1029.98 334.852 1067.43 306.207C1101.63 280.041 1155.57 282.538 1178.97 246.388C1203.01 209.26 1198.59 160.245 1190.01 116.858C1181.58 74.2732 1156.94 38.5242 1130.96 3.75173C1102.47 -34.3675 1079.36 -95.3478 1031.77 -94.8736Z"
-                fill="#F8E1CA"
-              />
-            </g>
-            <g filter="url(#filter3_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1275.32 424.677C1192.91 396.133 1099.8 464.32 1043.07 530.488C991.271 590.907 994.241 677.767 990.22 757.205C987.154 817.764 1017.09 871.291 1022.76 931.662C1030.9 1018.3 962.598 1131.69 1030.51 1186.2C1097.16 1239.69 1190.05 1140.72 1275.32 1134.37C1350.39 1128.78 1424.87 1179.06 1494.96 1151.62C1573.96 1120.71 1640.6 1057.06 1672.97 978.744C1706.67 897.222 1728.64 789.216 1673.11 720.637C1615.9 649.978 1487.04 713.279 1414.07 658.991C1339.38 603.42 1363.32 455.157 1275.32 424.677Z"
-                fill="#250F7F"
-              />
-            </g>
-            <g filter="url(#filter4_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M612.354 1213.41C668.112 1165.05 657.647 1068 633.262 998.472C610.997 934.982 546.21 900.481 489.81 863.988C446.814 836.168 394.994 835.513 348.437 814.176C281.628 783.558 227.602 685.602 158.986 712.373C91.6499 738.644 124.729 848.533 93.28 913.727C65.5912 971.125 -2.7038 1004.5 -12.3079 1067.47C-23.1316 1138.43 -4.78648 1214.16 38.7944 1270.97C84.1574 1330.09 153.854 1391.81 227.516 1380.06C303.412 1367.96 311.654 1246.76 382.245 1216.19C454.505 1184.9 552.813 1265.06 612.354 1213.41Z"
-                fill="#250F7F"
-              />
-            </g>
-            <g filter="url(#filter5_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1008.41 396.646C1082.19 486.969 1223.92 448.368 1340.5 451.159C1452.83 453.85 1577.27 485.613 1662.41 412.308C1748.7 338.016 1740.41 209.542 1752.63 96.3244C1766.15 -28.903 1804.05 -160.958 1735.71 -266.777C1658.61 -386.163 1524.87 -468.169 1382.98 -476.028C1240.08 -483.943 1085.57 -426.197 1006.11 -307.189C934.852 -200.481 1022.81 -65.5835 1023.23 62.7407C1023.6 178.561 935.134 306.938 1008.41 396.646Z"
-                fill="#4630A0"
-              />
-            </g>
-            <g filter="url(#filter6_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M283.423 -121.24C164.114 -146.914 17.6389 -161.94 -65.3633 -72.4472C-147.701 16.3291 -98.6715 156.074 -85.422 276.446C-74.2911 377.569 -66.8205 482.945 3.82544 556.129C75.496 630.374 180.778 648.064 283.423 658.542C402.47 670.693 556.116 716.454 626.565 619.694C697.811 521.841 586.188 394.98 561.62 276.446C545.339 197.901 554.685 116.813 508.709 51.0903C452.365 -29.4549 379.501 -100.564 283.423 -121.24Z"
-                fill="#4630A0"
-              />
-            </g>
-            <g filter="url(#filter7_f_943_8955)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M470.471 -292.098C378.506 -279.409 276.819 -365.255 199.653 -313.656C124.627 -263.489 105.486 -148.835 124.323 -60.6375C141.885 21.596 232.476 60.1437 292.145 119.42C334.818 161.812 375.863 199.894 423.526 236.597C491.977 289.309 547.754 402.62 631.349 380.628C715.642 358.453 708.794 231.615 744.506 152.156C768.323 99.1628 804.174 51.4746 805.382 -6.59715C806.545 -62.5424 768.859 -108.033 751.02 -161.068C725.951 -235.6 751.099 -346.616 679.815 -379.909C609.554 -412.725 547.314 -302.701 470.471 -292.098Z"
-                fill="#250F7F"
-              />
-            </g>
-          </g>
-          <defs>
-            <filter
-              id="filter0_f_943_8955"
-              x="-443.029"
-              y="-38.6456"
-              width="1795.22"
-              height="1825.5"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-            <filter
-              id="filter1_f_943_8955"
-              x="898.571"
-              y="-192.958"
-              width="1483.62"
-              height="1502.04"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-            <filter
-              id="filter2_f_943_8955"
-              x="213.233"
-              y="-594.876"
-              width="1483.62"
-              height="1502.04"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-            <filter
-              id="filter3_f_943_8955"
-              x="490"
-              y="-82"
-              width="1717"
-              height="1784"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-            <filter
-              id="filter4_f_943_8955"
-              x="-515.346"
-              y="207.79"
-              width="1668.34"
-              height="1673.72"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-            <filter
-              id="filter5_f_943_8955"
-              x="478.264"
-              y="-976.744"
-              width="1797.08"
-              height="1937.04"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-            <filter
-              id="filter6_f_943_8955"
-              x="-612"
-              y="-641"
-              width="1762"
-              height="1821"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-            <filter
-              id="filter7_f_943_8955"
-              x="-382.433"
-              y="-885.998"
-              width="1687.84"
-              height="1769.42"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="250"
-                result="effect1_foregroundBlur_943_8955"
-              />
-            </filter>
-          </defs>
-        </svg>
-      </div>
 
       <!-- Company Section -->
       <section class="company-section">
         <div class="company-section-container">
           <lottie-player
-            src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/logo_carousel_gemm_desktop_10_1_25.json"
+            src="gemm_animations_json_files/logo_carousel_gemm_desktop_10_1_25.json"
             background="transparent"
             speed="1"
             loop
@@ -1871,18 +1643,21 @@
             </h1>
             <div>
               <p style="margin-bottom: 20px">
-                Gemm unifies tracking and payments in one <br />
-                platform, replacing spreadsheets and scattered <br />
-                apps like PayPal, Stripe, and Bill.com.
+                Gemm unifies tracking and payments in one platform, replacing
+                spreadsheets and scattered apps like PayPal, Stripe, and
+                Bill.com.
               </p>
 
               <p>
-                Purpose-built for the creator economy, <br />
-                everything you need lives in one place.
+                Purpose-built for the creator economy, everything you need lives
+                in one place.
               </p>
             </div>
           </div>
-          <img src="https://storage.googleapis.com/gemm-marketing/images/image%201.png" alt="Image1" />
+          <img
+            src="https://storage.googleapis.com/gemm-marketing/images/image%201.png"
+            alt="Image1"
+          />
         </div>
       </section>
 
@@ -1939,16 +1714,19 @@
           </div>
           <div class="solution-section-item">
             <div class="solution-section-item-content">
-              <img src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Cursor_Icon.svg" alt="Cursor_Icon" />
+              <img
+                src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Cursor_Icon.svg"
+                alt="Cursor_Icon"
+              />
               <div class="solution-section-item-content-text">
                 <h1>
                   Pay Everyone in <br />
                   One-Click
                 </h1>
                 <p>
-                  Your roster doesn't have to <br />
-                  wait, create more value by <br />
-                  automating the admin tasks <br />
+                  Your roster doesn't have to 
+                  wait, create more value by 
+                  automating the admin tasks 
                   and eliminate fees.
                 </p>
               </div>
@@ -2027,255 +1805,10 @@
 
       <section class="cta-section">
         <div class="cta-section-container">
-          <svg
-            class="cta-section-animated-gradient"
-            width="1312"
-            height="349"
-            viewBox="0 0 1312 349"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clip-path="url(#clip0_1217_9495)">
-              <rect y="-26" width="1312" height="401" rx="25" fill="#200D5F" />
-              <g filter="url(#filter0_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M1061.26 538.359C1146.56 539.209 1166.92 682.463 1249.46 704.029C1340.51 727.821 1450.13 598.503 1522.35 658.843C1588.27 713.92 1485.77 824.633 1495.9 909.934C1506.01 995.115 1607.79 1066.22 1580.35 1147.49C1553.58 1226.76 1446.25 1239.66 1371.73 1277.69C1303.14 1312.69 1236.66 1377.56 1161.41 1361.28C1085.64 1344.89 1064.2 1244.96 1002.63 1197.85C946.39 1154.83 857.693 1158.94 819.212 1099.49C779.69 1038.45 786.95 957.85 801.069 886.508C814.926 816.487 855.438 757.705 898.169 700.528C945.013 637.849 983.015 537.579 1061.26 538.359Z"
-                  fill="#F8E1CA"
-                />
-              </g>
-              <g filter="url(#filter1_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M-75.1071 384.044C-23.2314 384.561 -10.8469 471.683 39.346 484.798C94.7201 499.268 161.388 420.622 205.309 457.318C245.398 490.814 183.064 558.145 189.222 610.023C195.371 661.826 257.271 705.071 240.583 754.497C224.305 802.707 159.029 810.552 113.706 833.681C71.9948 854.965 31.5669 894.413 -14.2026 884.512C-60.2822 874.545 -73.3198 813.77 -110.765 785.125C-144.968 758.959 -198.909 761.456 -222.312 725.306C-246.348 688.178 -241.933 639.163 -233.346 595.776C-224.919 553.191 -200.281 517.442 -174.293 482.67C-145.805 444.55 -122.693 383.57 -75.1071 384.044Z"
-                  fill="#F8E1CA"
-                />
-              </g>
-              <g filter="url(#filter2_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M610.231 -17.8736C662.106 -17.3567 674.491 69.7648 724.684 82.8804C780.058 97.3499 846.726 18.7036 890.647 55.4001C930.736 88.8958 868.402 156.227 874.56 208.105C880.709 259.908 942.609 303.153 925.921 352.579C909.643 400.789 844.367 408.634 799.044 431.762C757.333 453.047 716.905 492.495 671.135 482.594C625.056 472.627 612.018 411.852 574.573 383.207C540.37 357.041 486.429 359.538 463.026 323.388C438.99 286.26 443.405 237.245 451.991 193.858C460.419 151.273 485.057 115.524 511.044 80.7517C539.533 42.6325 562.645 -18.3478 610.231 -17.8736Z"
-                  fill="#F8E1CA"
-                />
-              </g>
-              <g filter="url(#filter3_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M366.683 501.677C449.093 473.133 542.199 541.32 598.928 607.488C650.729 667.907 647.759 754.767 651.78 834.205C654.846 894.764 624.908 948.291 619.238 1008.66C611.101 1095.3 679.402 1208.69 611.487 1263.2C544.838 1316.69 451.954 1217.72 366.683 1211.37C291.607 1205.78 217.13 1256.06 147.035 1228.62C68.0406 1197.71 1.40218 1134.06 -30.9708 1055.74C-64.6677 974.222 -86.6402 866.216 -31.1122 797.637C26.0993 726.978 154.96 790.279 227.928 735.991C302.621 680.42 278.683 532.157 366.683 501.677Z"
-                  fill="#250F7F"
-                />
-              </g>
-              <g filter="url(#filter4_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M936.646 1141.41C880.888 1093.05 891.353 996.002 915.737 926.472C938.003 862.982 1002.79 828.481 1059.19 791.988C1102.19 764.168 1154.01 763.512 1200.56 742.176C1267.37 711.558 1321.4 613.602 1390.01 640.373C1457.35 666.644 1424.27 776.533 1455.72 841.726C1483.41 899.125 1551.7 932.495 1561.31 995.466C1572.13 1066.43 1553.79 1142.16 1510.21 1198.97C1464.84 1258.09 1395.15 1319.81 1321.48 1308.06C1245.59 1295.96 1237.35 1174.76 1166.75 1144.19C1094.5 1112.9 996.186 1193.06 936.646 1141.41Z"
-                  fill="#250F7F"
-                />
-              </g>
-              <g filter="url(#filter5_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M633.589 473.646C559.811 563.969 418.081 525.368 301.503 528.159C189.171 530.85 64.7305 562.613 -20.4116 489.308C-106.7 415.016 -98.4097 286.542 -110.63 173.324C-124.147 48.097 -162.053 -83.9578 -93.7099 -189.777C-16.6049 -309.163 117.133 -391.169 259.021 -399.028C401.917 -406.943 556.43 -349.197 635.895 -230.189C707.148 -123.481 619.195 11.4165 618.775 139.741C618.395 255.561 706.866 383.938 633.589 473.646Z"
-                  fill="#4630A0"
-                />
-              </g>
-              <g filter="url(#filter6_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M1358.58 -44.2397C1477.89 -69.9143 1624.36 -84.9396 1707.36 4.55281C1789.7 93.3291 1740.67 233.074 1727.42 353.446C1716.29 454.569 1708.82 559.945 1638.17 633.129C1566.5 707.374 1461.22 725.064 1358.58 735.542C1239.53 747.693 1085.88 793.454 1015.43 696.694C944.189 598.841 1055.81 471.98 1080.38 353.446C1096.66 274.901 1087.32 193.813 1133.29 128.09C1189.64 47.5451 1262.5 -23.5642 1358.58 -44.2397Z"
-                  fill="#4630A0"
-                />
-              </g>
-              <g filter="url(#filter7_f_1217_9495)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M1171.53 -215.098C1263.49 -202.409 1365.18 -288.255 1442.35 -236.656C1517.37 -186.489 1536.51 -71.8355 1517.68 16.3625C1500.12 98.596 1409.52 137.144 1349.86 196.42C1307.18 238.812 1266.14 276.894 1218.47 313.597C1150.02 366.309 1094.25 479.62 1010.65 457.628C926.358 435.453 933.206 308.615 897.494 229.156C873.677 176.163 837.826 128.475 836.619 70.4028C835.455 14.4576 873.141 -31.0326 890.98 -84.0677C916.05 -158.6 890.902 -269.616 962.186 -302.909C1032.45 -335.725 1094.69 -225.701 1171.53 -215.098Z"
-                  fill="#250F7F"
-                />
-              </g>
-            </g>
-            <defs>
-              <filter
-                id="filter0_f_1217_9495"
-                x="289.812"
-                y="38.3535"
-                width="1795.22"
-                height="1825.5"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <filter
-                id="filter1_f_1217_9495"
-                x="-740.192"
-                y="-115.959"
-                width="1483.62"
-                height="1502.04"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <filter
-                id="filter2_f_1217_9495"
-                x="-54.8545"
-                y="-517.877"
-                width="1483.62"
-                height="1502.04"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <filter
-                id="filter3_f_1217_9495"
-                x="-565"
-                y="-5"
-                width="1717"
-                height="1784"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <filter
-                id="filter4_f_1217_9495"
-                x="396.009"
-                y="135.791"
-                width="1668.34"
-                height="1673.72"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <filter
-                id="filter5_f_1217_9495"
-                x="-633.342"
-                y="-899.744"
-                width="1797.08"
-                height="1937.04"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <filter
-                id="filter6_f_1217_9495"
-                x="492"
-                y="-564"
-                width="1762"
-                height="1821"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <filter
-                id="filter7_f_1217_9495"
-                x="336.593"
-                y="-808.998"
-                width="1687.84"
-                height="1769.42"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_1217_9495"
-                />
-              </filter>
-              <clipPath id="clip0_1217_9495">
-                <rect y="-26" width="1312" height="401" rx="25" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
+          <picture>
+            <source srcset="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/cta.webp" type="image/webp" />
+            <img src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/cta.png" alt="" class="cta-img" loading="eager" />
+          </picture>
 
           <div class="cta-section-content">
             <div class="cta-section-content-details">
@@ -2327,10 +1860,10 @@
               <p class="footer-section-content-menu-tem">Features</p>
               <p class="footer-section-content-menu-tem">About</p>
               <p class="footer-section-content-menu-tem">FAQ</p>
-              <p class="footer-section-content-menu-tem">Contact</p>
+              <p class="footer-section-content-menu-tem" onclick="window.location.href='mailto:info@gemm.app'">Contact</p>
             </div>
             <div class="footer-section-content-contact-info">
-              <a href="info@gemm.app" aria-label="Email">
+              <a href="mailto:info@gemm.app" aria-label="Email">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
@@ -2434,6 +1967,7 @@
     <div id="gemm-privacy-notice-placeholder"></div>
 
     <script>
+
       // Get all FAQ items
       const faqItems = document.querySelectorAll(".faq-section-details-item");
 
@@ -2532,31 +2066,35 @@
         fetch(page)
           .then((response) => response.text())
           .then((html) => {
-            document.getElementById("privacy-policy-placeholder").innerHTML = "";
+            document.getElementById("privacy-policy-placeholder").innerHTML =
+              "";
             document.getElementById("terms-of-service-placeholder").innerHTML =
-            "";
-            document.getElementById("gemm-privacy-notice-placeholder").innerHTML = "";
-
+              "";
+            document.getElementById(
+              "gemm-privacy-notice-placeholder"
+            ).innerHTML = "";
 
             document.querySelector(".menu-item-container").style.display =
               "none";
             document.querySelector(".mobile-menu").style.display = "none";
+            document.querySelector(".hamburger-menu").style.display = "none";
             document.querySelector(".main-content").style.display = "none";
             document.querySelector(".footer-section").style.display = "none";
 
             document.body.setAttribute("data-current-page", page);
 
-            if (page === 'privacy-policy-content.html') {
-        document.getElementById('privacy-policy-placeholder').innerHTML = html;
-        // document.getElementById('privacy-policy-placeholder').style.display = 'block';
-      } else if (page === 'terms-of-service.html') {
-        document.getElementById('terms-of-service-placeholder').innerHTML = html;
-        // document.getElementById('terms-of-service-placeholder').style.display = 'block';
-      } else if (page === 'gemm-privacy-notice.html') {
-        document.getElementById('gemm-privacy-notice-placeholder').innerHTML = html;
-        // document.getElementById('gemm-privacy-notice-placeholder').style.display = 'block';
-      }
-
+            if (page === "privacy-policy-content.html") {
+              document.getElementById("privacy-policy-placeholder").innerHTML =
+                html;
+            } else if (page === "terms-of-service.html") {
+              document.getElementById(
+                "terms-of-service-placeholder"
+              ).innerHTML = html;
+            } else if (page === "gemm-privacy-notice.html") {
+              document.getElementById(
+                "gemm-privacy-notice-placeholder"
+              ).innerHTML = html;
+            }
 
             window.scrollTo(0, 0);
           })
@@ -2565,46 +2103,6 @@
           });
       }
 
-      function showMainContent() {
-        const currentPage = document.body.getAttribute("data-current-page");
-
-        if (currentPage === "privacy-policy-content.html") {
-          // document.getElementById("privacy-policy-placeholder").style.display =
-          //   "none";
-          document.getElementById("privacy-policy-placeholder").innerHTML = "";
-        } else if (currentPage === "terms-of-service-content.html") {
-          // document.getElementById(
-          //   "terms-of-service-placeholder"
-          // ).style.display = "none";
-          document.getElementById("terms-of-service-placeholder").innerHTML =
-            "";
-        } else if (currentPage === "gemm-privacy-notice.html") {
-          document.getElementById("gemm-privacy-notice-placeholder").innerHTML =
-            "";
-        }
-
-        // Clear the current page attribute
-        document.body.removeAttribute("data-current-page");
-
-        document.querySelector(".main-content").style.display = "block";
-        document.querySelector(".footer-section").style.display = "flex";
-
-        const isMobile = window.innerWidth <= 768;
-
-        if (isMobile) {
-          document.querySelector(".menu-item-container").style.display = "none";
-          document.querySelector(".hamburger-menu").style.display = "flex";
-          document.querySelector(".join-now-button").style.display = "none";
-        } else {
-          document.querySelector(".menu-item-container").style.display = "flex";
-          document.querySelector(".hamburger-menu").style.display = "none";
-          document.querySelector(".join-now-button").style.display = "flex";
-        }
-        window.scrollTo(0, 0);
-      }
     </script>
   </body>
 </html>
-
-
-
