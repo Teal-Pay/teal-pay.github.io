@@ -1,910 +1,2105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <!-- End fonts-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemm - The Payment Platform for Influencer Marketing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gemm</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      html,
+      body {
+        font-family: "Montserrat";
+        overflow-x: hidden;
+        margin: 0;
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      .navbar-menu-section {
+        display: flex;
+        width: 100%;
+        max-width: 1512px;
+        padding: 2rem 5rem;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.625rem;
+        box-sizing: border-box;
+      }
+
+      .navbar-frame {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+      }
+
+      .logo-wrapper {
+        display: flex;
+        align-items: center;
+        width: 9.375rem;
+        height: 2.4375rem;
+        aspect-ratio: 50/13;
+      }
+
+      .logo-wrapper:hover {
+        cursor: pointer;
+      }
+
+      .main-content {
+        /* overflow: hidden; */
+      }
+
+      .menu-item-container {
+        display: flex;
+        align-items: center;
+        gap: 56px;
+      }
+
+      .menu-item {
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.4px;
+
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .text-link {
+        cursor: pointer;
+      }
+
+      .text-link:hover {
+        color:#caffd0;
+      }
+ 
+      .get-a-demo-button,
+      .join-now-button {
+        display: flex;
+        padding: 16px 32px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 50px;
+        background: #caffd0;
+
+        /* color: var(--Metal-400, #3b3a3a); */
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: -0.4px;
+        border: none;
+      }
+
+      .get-a-demo-button:hover,
+      .join-now-button:hover {
+        cursor: pointer;
+        background-color: #e8ffe8;
+      }
+
+      .hero-bg-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .hero-bg-img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right top;
+        display: block;
+      }
+
+      .hero-section {
+        position: relative;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        min-height: 900px;
+        box-sizing: border-box;
+        /* padding-top: 7rem; */
+      }
+
+      .info-hero-section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 100px;
+        width: 100%;
+        height: 100%;
+        padding: 5rem 0 0 6.25rem;
+        box-sizing: border-box;
+        /* z-index: 1; */
+      }
+
+      .text-info-hero-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px;
+        flex: 0 0 auto;
+        width: 50%;
+        max-width: 550px;
+        padding-top: 30px;
+      }
+
+      .screens-info-hero-section {
+        position: relative;
+        display: flex;
+        height: min(600px, 40vw);
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 45%;
+        right: -60px;
+        transform: scale(1);
+      }
+
+      .desktop-image-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+
+      .screen-info-hero-section-deals-desktop {
+        width: auto;
+        height: 552px;
+        aspect-ratio: 425/276;
+        position: relative;
+        top: 30px;
+        z-index: 1;
+        display: block;
+      }
+
+      .screen-info-hero-section-phone-image {
+        width: 146px;
+        height: auto;
+        aspect-ratio: 73/158;
+        position: absolute;
+        left: 0;
+        transform: translateX(-50%);
+        bottom: 2%;
+        z-index: 2;
+      }
+
+      .details-text-info-hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .details-text-info-hero-section h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: clamp(3rem, 5.5vw, 5rem);
+        letter-spacing: -2.88px;
+      }
+
+      .details-text-info-hero-section p {
+        position: relative;
+        /* this might need to be changed */
+        top: -1rem;
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(1.125rem, 2.5vw, 2rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.96px;
+        margin-bottom: clamp(2rem, 5vw, 4rem);
+        max-width: 90%;
+      }
+
+      .company-section {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        padding: 2.5rem 6.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        box-sizing: border-box;
+        margin-top: 3rem;
+      }
+
+      .company-section-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        align-self: stretch;
+      }
+
+      .service-section {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        margin: 0 auto;
+        padding: 96px 150px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        background: #f9f9f9;
+        box-sizing: border-box;
+      }
+
+      .service-section h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: 45px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 50px;
+        letter-spacing: -2.24px;
+      }
+
+      .service-section-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+      }
+
+      .service-section-heading {
+        flex: 0 0 auto;
+        min-width: 300px;
+      }
+
+      .service-section-heading h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+        margin: 0;
+      }
+
+      .service-section-heading-desktop {
+        display: inline;
+      }
+
+      .service-section-heading-mobile {
+        display: none;
+      }
+
+      .service-features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 40px 32px;
+        flex: 1;
+        max-width: 650px;
+        padding: 5px;
+      }
+
+      .service-feature-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        min-width: 180px;
+      }
+
+      .service-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: rgba(250, 250, 250, 0.8);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .service-icon svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .service-feature-item span {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.4;
+        letter-spacing: -0.2px;
+      }
+
+      .square-section-gradient {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        padding: 96px 150px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+        margin: 0;
+        background: #250f7f;
+        box-sizing: border-box;
+      }
+
+      .info-container-square-section-gradient {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 64px;
+        max-width: 100%;
+      }
+
+      .info-container-square-section-gradient img {
+        border-radius: 16px;
+        width: 80vw;
+      }
+
+      .text-info-container-square-section-gradient {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 100px;
+        align-self: stretch;
+      }
+
+      .text-info-container-square-section-gradient h1 {
+        color: var(--Cyrstal-Mint-600, #9ef3cc);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+      }
+
+      .text-info-container-square-section-gradient span {
+        color: var(--White-200, #fafafa);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+      }
+
+      .text-info-container-square-section-gradient p {
+        color: var(--White-200, #fafafa);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.24px;
+      }
+
+      .solution-section {
+        display: flex;
+        width: 100%;
+        /* max-width: 1512px; */
+        padding: 96px 150px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: #f9f9f9;
+        box-sizing: border-box;
+      }
+
+      .solution-section-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 64px;
+        align-self: stretch;
+      }
+
+      .solution-section-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+        gap: 30px;
+      }
+
+      .solution-section-item-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .solution-section-item-content-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .faq-section {
+        display: flex;
+        width: 100%;
+        padding: 6rem 9.375rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+        box-sizing: border-box;
+      }
+
+      .faq-section h1 {
+        align-self: stretch;
+        /* color: var(--Metal-400, #3b3a3a); */
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -2.24px;
+      }
+
+      .faq-section-details {
+        display: flex;
+        width: 100%;
+        max-width: 879px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .faq-section-details-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+        align-self: stretch;
+      }
+
+      .rectangle {
+        height: 3px;
+        align-self: stretch;
+        border-radius: 50px;
+        background: var(
+          --Sapphire-Ink-Gradient-Horiz,
+          linear-gradient(270deg, #a08ee8 0%, #250f7f 100%)
+        );
+      }
+
+      .faq-section-details-item-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+      }
+
+      .faq-section-details-item-heading h1 {
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: -0.48px;
+      }
+
+      .faq-section-details-item-heading button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .faq-section-details-item-answer {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+
+        /* color: var(--Metal-400, #3b3a3a); */
+        font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.48px;
+      }
+
+      .cta-section {
+        position: relative;
+        padding: 96px 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .cta-section-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1312px;
+        height: 401px;
+        border-radius: 25px;
+        overflow: hidden;
+      }
+
+      .cta-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        border-radius: 25px;
+      }
+
+      .cta-section-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        width: 100%;
+        max-width: 800px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .cta-section-content-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        align-self: stretch;
+        color: white;
+        text-align: center;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .cta-section .get-a-demo-button {
+        background: #caffd0;
+        color: #3b3a3a;
+        border: 2px solid #caffd0;
+        border-radius: 50px;
+        padding: 16px 32px;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: -0.4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .cta-section .get-a-demo-button:hover {
+        background: #e8ffe8;
+        border-color: #e8ffe8;
+      }
+
+      .hamburger-menu {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-menu-item {
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section {
+        display: flex;
+        width: 100%;
+        padding: 64px 100px;
+        justify-content: space-between;
+        align-items: center;
+
+        background: #250f7f;
+        box-sizing: border-box;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1 0 0;
+      }
+
+      .footer-section-company {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 16px;
+        align-self: stretch;
+      }
+
+      .footer-section-company p {
+        color: #fff;
+
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.12px;
+      }
+
+      .footer-section-content-container {
+        display: flex;
+        height: 173px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .footer-section-content {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 64px;
+        flex: 1 0 0;
+        align-self: stretch;
+      }
+
+      .footer-section-content-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        color: white;
+      }
+
+      .footer-section-content-contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .footer-section-content-legal {
+        display: flex;
+        width: 163px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        align-self: stretch;
+
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.2px;
+      }
+
+      .px-2 {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+      }
+
+      @media (min-width: 1920px) {
+        .hero-bg-svg {
+          /* right: -200px;
+          width: 90%;
+          min-width: 1200px; */
+          /* transform: translateX(30%); */
         }
 
-        body {
-            font-family: "Inter", sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+        .hero-section {
+          min-height: 1300px;
         }
 
-        .container {
-            position: relative;
-            min-height: 100vh;
-            padding-top: 80px;
+        .info-hero-section {
+          padding: 6rem 0 0 8rem;
         }
 
-        /* Fixed translucent header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 40px 100px 30px;
+        .screen-info-hero-section-phone-image {
+          transform: translateX(-60%);
         }
 
-        .title-1 {
-            line-height: 1.2;
-            font-size: 58px;
-            font-weight: bold;
+        .hero-bg-svg {
+          /* transform: scale(1.1); */
+        }
+      }
+
+      @media (max-width: 1350px) {
+        .hero-section {
+          padding: 70px 0 70px 80px;
+          height: 80vh;
         }
 
-        .title-2 {
-            line-height: 1.2;
-            font-size: 42px;
-            font-weight: bold;
+        .screens-info-hero-section {
+          transform: scale(0.9);
+          right: -50px;
+          width: 45%;
         }
 
-        .title-3 {
-            line-height: 1.2;
-            font-size: 36px;
-            font-weight: bold;
+        .details-text-info-hero-section p {
+          margin-bottom: clamp(1.5rem, 4vw, 3rem);
+          max-width: 85%;
         }
 
-        /* Left barrier */
-        .left-barrier {
-            position: absolute;
-            left: -0px;
-            top: 0;
-            z-index: 1;
+        .text-info-hero-section {
+          width: 50%;
         }
 
-        /* Right barrier */
-        .right-barrier {
-            position: absolute;
-            right: 0px;
-            top: 0;
-            z-index: 1;
-            overflow-x: hidden;
+        .screen-info-hero-section-phone-image {
+          left: 0;
+          transform: translateX(-50%);
+          bottom: 5%;
         }
 
-        /* Main content */
-        .main-content {
-            position: relative;
-            z-index: 2;
+        .hero-bg-svg {
         }
 
-        /* Hero section */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow-x: hidden;
-            margin-top: 320px;
+        /* .company-section {
+    margin-top: -3rem;
+  } */
+      }
+
+      @media (max-width: 1200px) {
+        .hero-section {
+          padding: 60px 0 60px 60px;
+          height: 70vh;
         }
 
-        .hero h1 {
-            color: #333;
-            margin-bottom: 80px;
-            max-width: 780px;
+        .screens-info-hero-section {
+          transform: scale(0.8);
+          right: -40px;
+          width: 48%;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 40px;
-            max-width: 600px;
+        .text-info-hero-section {
+          width: 52%;
         }
 
-        .cta-button {
-            background: #250F7F;
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 8px;
-            margin-bottom: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+        .screen-info-hero-section-phone-image {
+          left: 0;
+          transform: translateX(-50%);
+          bottom: 5%;
         }
 
-        .cta-button:hover {
-            background: #CAFFD0;
-            color: #250F7F;
+        /* .hero-bg-svg {
+          transform: scale(0.8);
+        } */
+      }
+
+      @media (max-width: 1100px) {
+        .hero-section {
+          padding: 50px 0 120px 50px;
+          height: 60vh;
         }
 
-        .cta-button.light {
-            background: #CAFFD0;
-            color: #333;
-            border: 2px solid #CAFFD0;
+        .screens-info-hero-section {
+          transform: scale(0.75);
+          right: -30px;
+          width: 50%;
         }
 
-        .cta-button.light:hover {
-            background: #0A0325;
-            color: #CAFFD0;
-            border: 2px solid #CAFFD0;
+        .text-info-hero-section {
+          width: 50%;
+          gap: 28px;
         }
 
-        /* What we offer section */
-        .features {
-            text-align: center;
-            background: white;
-            margin-bottom: 100px;
-            margin-top: 100px;
+        .screen-info-hero-section-phone-image {
+          left: 0;
+          transform: translateX(-50%);
+          bottom: 5%;
+        }
+      }
+
+      @media (max-width: 880px) {
+        .navbar-menu-section {
+          padding: 20px 24px;
+          align-items: center;
         }
 
-        .features h2 {
-            color: #333;
-            margin-bottom: 60px;
+        .navbar-frame {
+          position: relative;
+          align-items: center;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
-            max-width: 1000px;
-            margin: 0 auto;
+        .menu-item-container {
+          display: none;
         }
 
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .logo-wrapper {
+          width: 120px;
+          height: auto;
+          align-items: center;
         }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: #250F7F;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+        .join-now-button {
+          display: none;
         }
 
-        .feature-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
+        /* Hamburger Menu */
+        .hamburger-menu {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 24px;
+          height: 18px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          /* testing */
+          position: relative;
+          bottom: 8px;
+          z-index: 1000;
         }
 
-        .feature-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #232323;
+        .navbar-menu-section {
+          position: relative;
+          z-index: 1000;
         }
 
-        /* Connect section */
-        .connect-section {
-            background: linear-gradient(135deg, #250F7F 50%, #CAFFD0 100%);
-            padding: 40px 40px;
-            color: white;
-            position: relative;
+        .hamburger-line {
+          width: 100%;
+          height: 2px;
+          background-color: #3b3a3a;
+          transition: all 0.3s ease;
         }
 
-        .connect-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 80px;
-            align-items: center;
+        /* Mobile Menu */
+        .mobile-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: white;
+          display: none;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+          z-index: 999;
+          padding: 32px 40px;
+          border-radius: 16px;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+          min-width: 280px;
+          width: auto;
         }
 
-        .connect-text h2 {
-            margin-bottom: 20px;
-            color: #CAFFD0;
+        .mobile-menu.active {
+          display: flex;
         }
 
-        .connect-text p {
-            font-size: 20px;
-            opacity: 0.9;
-            line-height: 1.4;
-            padding-bottom: 20px;
+        .mobile-menu-item {
+          padding: 0;
+          color: var(--Metal-400, #3b3a3a);
+          font-size: 24px;
+          font-weight: 600;
+          border-bottom: none;
+          text-align: left;
+          width: 100%;
+        }
+
+        .mobile-menu-item:last-child {
+          border-bottom: none;
+        }
+
+        .mobile-join-button {
+          display: flex;
+          padding: 14px 48px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50px;
+          background: #caffd0;
+          color: var(--Metal-400, #3b3a3a);
+          font-size: 18px;
+          font-weight: 700;
+          margin-top: 8px;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        .hero-section {
+          height: auto;
+          min-height: 100px;
+          padding: 0;
+        }
+
+        .info-hero-section {
+          position: relative;
+          flex-direction: column;
+          gap: 40px;
+          padding: 60px 24px 80px 24px;
+        }
+
+        .hero-bg-svg {
+          display: none;
+        }
+
+        .hero-bg-img {
+          display: none;
+        }
+
+        .info-hero-section {
+          flex-direction: column;
+          gap: 40px;
+          align-items: center;
+        }
+
+        .text-info-hero-section {
+          align-items: center;
+          text-align: center;
+        }
+
+        .details-text-info-hero-section h1 {
+          font-size: 1.75rem;
+          line-height: 2rem;
+          letter-spacing: -0.08rem;
+        }
+
+        .details-text-info-hero-section p {
+          font-size: 1rem;
+          top: 0;
+          text-align: center;
+          width: 100%;
+          margin: 0 auto 2rem auto;
+          display: block;
+          max-width: 90%;
+        }
+
+        .screens-info-hero-section {
+          margin-right: 0;
+          right: 0;
+          height: auto;
+          width: 100%;
+          justify-content: center;
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .screen-info-hero-section-deals-desktop {
+          width: 100%;
+          max-width: 400px;
+          height: auto;
+          margin-top: 0;
+          position: relative;
+          z-index: 1;
+        }
+
+        .desktop-image-wrapper {
+          /* width: 100%; */
+          display: flex;
+          justify-content: center;
+        }
+
+        .screen-info-hero-section-phone-image {
+          width: 80px;
+          height: auto;
+          position: absolute;
+          bottom: 2%;
+          left: 0;
+          z-index: 2;
+        }
+
+        .company-section {
+          padding: 0px 24px;
+          margin-top: 2rem;
+        }
+
+        .company-section-container lottie-player {
+          width: 100% !important;
+          height: 80px !important;
+        }
+
+        .service-section {
+          padding: 60px 24px;
+        }
+
+        .service-section-container {
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .service-section-heading-desktop {
+          display: none;
+        }
+
+        .service-section-heading-mobile {
+          display: block;
+          font-size: 32px;
+          line-height: 36px;
+          letter-spacing: -1.28px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .service-features-grid {
+          /* grid-template-columns: 1fr; */
+          gap: 32px;
+        }
+
+        .service-feature-item {
+          flex-direction: row;
+          text-align: left;
+          gap: 16px;
+        }
+
+        .square-section-gradient {
+          padding: 60px 24px;
+        }
+
+        .text-info-container-square-section-gradient {
+          flex-direction: column;
+          gap: 32px;
+          align-items: flex-start;
+        }
+
+        .text-info-container-square-section-gradient h1,
+        .text-info-container-square-section-gradient span {
+          font-size: 2.25rem;
+          line-height: 2.75rem;
+          text-align: left;
+          letter-spacing: -0.06rem;
+        }
+
+        .text-info-container-square-section-gradient h1,
+        .text-info-container-square-section-gradient > div {
+          width: 100%;
+        }
+
+        .text-info-container-square-section-gradient p {
+          font-size: 1rem;
+          text-align: left;
         }
 
 
-        .graph-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
+        .solution-section {
+          padding: 60px 24px;
         }
 
-        .graph-item {
-            display: grid;
+        .solution-section-container {
+          gap: 40px;
         }
 
-        .graph-line {
-            --tw-border-style: dashed;
-            border-style: dashed;
-            width: 400px;
-            border-color: #CAFFD0;
-            border-width: 2px;
-            min-width: 150px;
+        .solution-section-item {
+          flex-direction: column;
+
+          align-items: flex-start;
         }
 
-        .dashed-vertical-line {
-            --tw-border-style: dashed;
-            border-style: dashed;
-            min-height: 4px;
-            border-color: #CAFFD0;
-            border-width: 2px;
-            height: 60px;
-            margin-top: -18px;
-            margin-bottom: -18px;
+        .solution-section-item-animation {
+          width: 100%;
+          height: auto;
+          /* order: -1; */
         }
 
-        .graph-node {
-            position: absolute;
-            z-index: 5;
-            margin-left: -50px;
-            margin-top: -50px;
-            overflow-x: hidden;
+        .solution-section-item-animation lottie-player {
+          width: 100% !important;
+          height: 100% !important;
         }
 
-        .profile-circle {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+        .solution-section-item-content {
+          gap: 16px;
         }
 
-        /* Dashboard section */
-        .dashboard-section {
-            padding-top: 80px;
-            padding-left: 40px;
-            padding-bottom: 30px;
-            background: white;
+        .solution-section-item-content h1 {
+          font-size: 28px;
+          line-height: 32px;
         }
 
-        .dashboard-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: left;
+        .solution-section-item-content p {
+          font-size: 18px;
         }
 
-        .dashboard-content p {
-            font-size: 20px;
-            color: #666;
+        .solution-section-item-content img {
+          width: 40px;
+          height: 40px;
         }
 
-        .mobile-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 80px;
-            align-items: center;
-        }
-
-        .platform-teaser-features {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .platform-teaser-feature {
-            display: flex;
-            border: 2px solid #250F7F;
-            border-radius: 10px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            font-weight: 600;
-            color: #250F7F;
-            width: 350px;
-            font-size: 20px;
-            height: 109px;
-        }
-
-        .money-strong {
-            color: #CAFFD0;
-        }
-
-        .platform-teaser-image-container {
-            justify-content: center;
-            align-items: center;
-            display: grid;
-            position: relative;
-            width: auto;
-        }
-
-        /* CTA section */
-        .final-cta {
-            background: #1a1a2e;
-            color: white;
-            padding: 80px 40px;
-            text-align: center;
-        }
-
-        .final-cta h2 {
-            margin-bottom: 20px;
-        }
-
-        .final-cta p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        /* FAQ section */
         .faq-section {
-            padding: 80px 40px;
-            background: white;
-            overflow-x: hidden;
+          padding: 60px 24px;
         }
 
-        .faq-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
+        .faq-section h1 {
+          font-size: 32px;
+          line-height: 36px;
+          letter-spacing: -1.28px;
         }
 
-        .faq-content h2 {
-            color: #333;
-            margin-bottom: 60px;
+        .faq-section-details-item-heading h1 {
+          font-size: 18px;
+          line-height: 24px;
         }
 
-        .faq-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        .faq-section-details-item-answer {
+          font-size: 16px;
         }
 
-        .title-light-background {
-            color: #232323;
-            font-family: "Montserrat", sans-serif;
+        .cta-section {
+          padding: 60px 24px;
         }
 
-        .title-dark-background {
-            color: #FFFEFD;
-            font-family: "Montserrat", sans-serif;
+        .cta-section-container {
+          height: 300px;
+          max-width: 100%;
         }
 
-        .faq-item {
-            text-align: left;
-            padding: 30px;
-            border: 1px solid #250F7F;
-            border-radius: 12px;
+        .cta-section-content {
+          padding: 20px;
+          gap: 24px;
         }
 
-        .faq-question {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
+        .cta-section .get-a-demo-button {
+          font-size: 16px;
+          padding: 12px 24px;
         }
 
-        .faq-answer {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.6;
+        .cta-section {
+          padding: 40px 16px;
         }
 
-        .highlight {
-            color: #431BE5;
-            font-weight: 600;
+        .cta-section-container {
+          height: 250px;
         }
 
-        /* Footer */
-        .footer {
-            padding: 40px;
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #e5e7eb;
+        .cta-section-content {
+          padding: 16px;
+          gap: 20px;
         }
 
-        .footer-left {
-            display: flex;
-            flex-direction: column;
-            gap: 0px;
+        .cta-section-content-details {
+          font-size: clamp(1.25rem, 3.5vw, 2rem);
+          gap: 12px;
+          white-space: normal;
         }
 
-        .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #431BE5;
+        .cta-section .get-a-demo-button {
+          font-size: 14px;
+          padding: 10px 20px;
         }
 
-        .footer-tagline {
-            font-size: 14px;
-            color: #666;
+        .cta-section-animated-gradient {
+          height: 300px;
         }
 
-        .footer-right {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: flex-end;
+        .footer-section {
+          display: flex;
+          width: 100%;
+          padding: 40px 24px;
+          justify-content: center;
+          /* align-items: flex-start; */
+          background: #250f7f;
+          box-sizing: border-box;
+          flex-direction: column;
+          gap: 32px;
         }
 
-        .social-link, .email-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #666;
-            text-decoration: none;
-            font-size: 14px;
+        .footer-container {
+          display: flex;
+          flex-direction: column;
+          /* align-items: flex-start; */
+          gap: 48px;
+          width: 100%;
         }
 
-        @media (max-width: 1200px) {
-            .title-1 {
-                font-size: 46px;
-            }
-            .platform-teaser-image-container {
-                transform: scale(0.8);
-            }
+        .footer-section-company {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 16px;
+          order: 3;
+          align-self: flex-start;
         }
 
-        /* Responsive */
-        @media (max-width: 1050px) {
-            .hero {
-                margin-top: 200px;
-            }
-
-            .hero h1 {
-                padding-left: 120px;
-                padding-right: 120px;
-                margin-bottom: 20px;
-            }
-
-            .hero p {
-                font-size: 12px;
-                padding-left: 100px;
-                padding-right: 100px;
-            }
-
-            .left-barrier {
-                transform-origin: left top;
-                transform: scale(0.6);
-                justify-content: left;
-            }
-
-            .title-1 {
-                font-size: 36px;
-            }
-
-            .title-2 {
-                font-size: 32px;
-            }
-
-            .title-3 {
-                font-size: 28px;
-            }
-
-            .graph-container {
-                transform: scale(0.7);
-                padding: 0px;
-            }
-            
-            .right-barrier {
-                transform-origin: top right;
-                transform: scale(0.6);
-                overflow-x: hidden;
-            }
-            
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-                max-width: 500px;
-            }
-
-            .connect-text p {
-                font-size: 16px;
-                padding-bottom: 0px;
-            }
-
-            .dashboard-section {
-                padding-bottom: 10px;
-            }
-
-            .dashboard-section p {
-                font-size: 16px;
-            }
-
-            .platform-teaser-section {
-                transform: scale(0.9);
-            }
-            
-            .connect-content,
-            .mobile-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .cta-button {
-                padding: 10px 20px;
-                border-radius: 6px;
-                margin-bottom: 4px;
-                font-size: 14px;
-            }
-
+        .footer-section-content-container {
+          display: flex;
+          flex-direction: column;
+          /* align-items: flex-start; */
+          gap: 32px;
+          width: 100%;
+          height: auto;
         }
 
-        @media (max-width: 600px) {
-
-            .header {
-                padding: 20px 30px 0px;
-            }
-
-            .left-barrier {
-                margin-top: 150px;
-                transform-origin: left top;
-                transform: scale(0.3);
-                justify-content: left;
-            }
-            .right-barrier {
-                margin-top: 150px;
-                transform-origin: top right;
-                transform: scale(0.3);
-                overflow-x: hidden;
-            }
-
-            .hero h1 {
-                margin-bottom: 10px;
-                padding-left: 50px;
-                padding-right: 50px;
-            }
-
-            .hero p {
-                margin-bottom: 20px;
-            }
-
-            .title-1 {
-                font-size: 28px;
-            }
-
-            .title-2 {
-                font-size: 26px;
-            }
-
-            .title-3 {
-                font-size: 24px;
-            }
-
-            .hero p {
-                font-size: 10px;
-            }
-
-            .graph-container {
-                transform: scale(0.40);
-                padding: 0px;
-            }
-
-            .dashboard-section {
-                padding-bottom: 0px;
-            }
-
-            .platform-teaser-section {
-                transform: scale(0.9);
-            }
-
-            .platform-teaser-image-container {
-                transform: scale(0.7);
-                min-width: 300px;
-            }
+        .footer-section-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 32px;
+          width: 100%;
         }
+
+        .footer-section-content-menu {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+          color: white;
+          order: 1;
+        }
+
+        .footer-section-content-contact-info {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 24px;
+          order: 2;
+        }
+
+        .footer-section-content-legal {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+          color: #fff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 0.2px;
+          order: 3;
+          width: auto;
+          align-self: flex-start;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .text-info-container-square-section-gradient h1,
+        .text-info-container-square-section-gradient span {
+          font-size: 1.125rem;
+          line-height: 1.5rem;
+          letter-spacing: -0.04rem;
+        }
+
+        .text-info-container-square-section-gradient p {
+          font-size: 0.875rem;
+        }
+
+        .screen-info-hero-section-phone-image {
+          width: 70px;
+          left: 0;
+          /* transform: translateX(-2%); */
+          transform: translateX(-60%);
+          bottom: -6%;
+        }
+      }
+
+      @media (max-width: 680px) {
+        /* .screen-info-hero-section-deals-desktop {
+          max-width: 320px;
+        } */
+
+        .screen-info-hero-section-phone-image {
+          width: 75px;
+          left: 0;
+          /* transform: translateX(10%); */
+          /* bottom: 2%; */
+        }
+      }
     </style>
-</head>
-<body>
-    <!-- Fixed Header -->
-    <header class="header">
-        <div>
-            <a href="index.html">
-                <img width="165" src="https://storage.googleapis.com/gemm-marketing/logo-text-large.png" alt="gemm">
-            </a>
+    <!-- this is for all the animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <!-- this is for the purple background gradient -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+  <body>
+    <div class="navbar-menu-section">
+      <div class="navbar-frame">
+        <div class="logo-wrapper" onclick="window.location.reload()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="150"
+            height="40"
+            viewBox="0 0 150 40"
+            fill="none"
+          >
+            <path
+              d="M20.4292 1.37029H28.1989V27.0983C28.1989 27.3703 28.1445 27.6423 28.1445 27.9142C27.7642 34.4414 22.2222 39.5 15.5393 39.5H12.1163V31.7762H15.5393C18.0929 31.7762 20.2662 29.818 20.4292 27.4247C20.4292 27.3159 20.4292 24.5418 20.4292 24.5418C19.3969 25.6297 18.2016 26.2824 17.7126 26.4456C16.2999 26.9895 14.7786 27.2615 13.1486 27.2615C5.86797 27.2615 0 21.387 0 14.0983C0 6.80962 5.86797 0.880753 13.1486 0.880753C14.7786 0.880753 16.2999 1.20711 17.7126 1.75105C18.3102 2.02301 20.2662 3.00209 21.3529 4.85146C21.4072 5.01464 21.5702 5.06904 21.7332 5.06904C22.1679 5.06904 22.3852 4.63389 22.1679 4.30753C21.7876 3.7636 21.2442 2.9477 20.4292 2.24058V1.37029ZM14.0723 20.4623C17.6039 20.4623 20.4292 17.6339 20.4292 14.0983C20.4292 10.5628 17.6039 7.73431 14.0723 7.73431C10.5406 7.73431 7.7153 10.5628 7.7153 14.0983C7.7153 17.6339 10.5406 20.4623 14.0723 20.4623Z"
+              fill="#250F7F"
+            />
+            <path
+              d="M59.0643 14.2615C59.0643 14.5879 59.0643 14.9142 59.01 15.1862H38.6351C39.1241 18.4498 41.895 21.0063 45.318 21.0063C47.274 21.0063 49.067 20.136 50.2623 18.7761H58.3036C56.4563 24.1611 51.349 28.023 45.318 28.023C37.7114 28.023 31.5718 21.8766 31.5718 14.2615C31.5718 6.64644 37.7114 0.5 45.318 0.5C52.9246 0.5 59.0643 6.64644 59.0643 14.2615ZM39.2327 11.4331H51.4033C50.3167 9.14853 47.9803 7.57113 45.318 7.57113C42.6014 7.57113 40.3194 9.14853 39.2327 11.4331Z"
+              fill="#250F7F"
+            />
+            <path
+              d="M103.939 11.2699C104.048 12.0858 104.156 12.9017 104.156 13.7176V27.1527H96.4955V13.9895C96.4955 10.6715 94.9742 8.71339 92.9639 8.16946C92.5835 8.06067 92.2032 8.06067 91.7685 8.06067C91.6599 8.06067 91.5512 8.06067 91.3882 8.06067C90.0842 8.16946 88.9432 8.76778 88.1826 9.96444C87.4762 10.9979 87.0959 12.4121 87.0959 14.2615V27.1527H79.3806V13.9895C79.3806 11.8682 78.7829 10.2908 77.8049 9.31172C77.0443 8.55021 76.1206 8.11506 75.0883 8.06067C74.9796 8.06067 74.8166 8.06067 74.708 8.06067C72.1 8.06067 70.0353 10.0732 70.0353 14.2615V27.1527H62.32V1.37029H70.0353V2.34937C69.2203 3.05648 68.6227 3.87238 68.2967 4.41632C68.2423 4.5251 68.188 4.63389 68.188 4.68828C68.188 4.68828 68.188 4.68828 68.188 4.74268C68.2423 4.96025 68.4053 5.12343 68.677 5.12343C68.84 5.12343 69.003 5.01464 69.1117 4.85146C69.1117 4.85146 69.166 4.79707 69.2747 4.68828C70.633 3.16527 72.3716 2.02301 74.382 1.47908C74.9796 1.3159 75.6316 1.20711 76.338 1.15272C77.2073 1.09833 78.1309 1.15272 79.0546 1.3159H79.1089C81.8799 2.02301 83.7816 3.65481 85.0312 5.77615V5.66736C85.1942 5.3954 85.3572 5.12343 85.5202 4.90586C86.7156 3.11088 88.6172 1.91423 90.4645 1.37029C90.8992 1.26151 91.3339 1.20711 91.8229 1.15272C92.5292 1.09833 93.1812 1.09833 93.8875 1.20711C96.1152 1.47908 98.3428 2.40377 100.081 3.98117C102.146 5.77615 103.396 8.33264 103.885 10.9979C103.885 11.1067 103.939 11.2155 103.939 11.2699Z"
+              fill="#250F7F"
+            />
+            <path
+              d="M149.783 11.2699C149.891 12.0858 150 12.9017 150 13.7176V27.1527H142.339V13.9895C142.339 10.6715 140.818 8.71339 138.807 8.16946C138.427 8.06067 138.047 8.06067 137.612 8.06067C137.503 8.06067 137.395 8.06067 137.232 8.06067C135.928 8.16946 134.787 8.76778 134.026 9.96444C133.32 10.9979 132.939 12.4121 132.939 14.2615V27.1527H125.224V13.9895C125.224 11.8682 124.626 10.2908 123.648 9.31172C122.888 8.55021 121.964 8.11506 120.932 8.06067C120.823 8.06067 120.66 8.06067 120.551 8.06067C117.943 8.06067 115.879 10.0732 115.879 14.2615V27.1527H108.164V1.37029H115.879V2.34937C115.064 3.05648 114.466 3.87238 114.14 4.41632C114.086 4.5251 114.032 4.63389 114.032 4.68828C114.032 4.68828 114.032 4.68828 114.032 4.74268C114.086 4.96025 114.249 5.12343 114.521 5.12343C114.684 5.12343 114.847 5.01464 114.955 4.85146C114.955 4.85146 115.01 4.79707 115.118 4.68828C116.477 3.16527 118.215 2.02301 120.225 1.47908C120.823 1.3159 121.475 1.20711 122.181 1.15272C123.051 1.09833 123.974 1.15272 124.898 1.3159H124.952C127.723 2.02301 129.625 3.65481 130.875 5.77615V5.66736C131.038 5.3954 131.201 5.12343 131.364 4.90586C132.559 3.11088 134.461 1.91423 136.308 1.37029C136.743 1.26151 137.177 1.20711 137.666 1.15272C138.373 1.09833 139.025 1.09833 139.731 1.20711C141.959 1.47908 144.186 2.40377 145.925 3.98117C147.99 5.77615 149.239 8.33264 149.728 10.9979C149.728 11.1067 149.783 11.2155 149.783 11.2699Z"
+              fill="#250F7F"
+            />
+          </svg>
         </div>
-    </header>
+        <div class="menu-item-container">
+          <div class="menu-item">About</div>
+          <div class="menu-item">Features</div>
+          <div class="menu-item">FAQ</div>
+        </div>
 
-    <!-- Left Barrier -->
-    <div class="left-barrier">
-        <svg width="197" height="762" viewBox="0 0 197 762" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M-138.5 -146L-501 62L-252.5 713.5L104 867.5L172.5 725.5L150 481L163 382L150 240L27 124L-4 -68L-138.5 -146Z" fill="url(#paint0_linear_199_1336)" stroke="url(#paint1_linear_199_1336)" stroke-width="49" stroke-linejoin="bevel"/>
-            <defs>
-                <linearGradient id="paint0_linear_199_1336" x1="-123" y1="7.50003" x2="-123" y2="758.5" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#431BE5"/>
-                    <stop offset="1" stop-color="#250F7F"/>
-                </linearGradient>
-                <linearGradient id="paint1_linear_199_1336" x1="-123" y1="11.5001" x2="-123" y2="769.5" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#431BE5"/>
-                    <stop offset="1" stop-color="#250F7F"/>
-                </linearGradient>
-            </defs>
-        </svg>
+        <button
+          class="join-now-button"
+          onclick="window.open('https://my.gemm.app/')"
+        >
+          Join Now
+        </button>
+
+        <!-- for mobile layout -->
+        <button class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <div class="mobile-menu">
+          <div class="mobile-menu-item">About</div>
+          <div class="mobile-menu-item">Features</div>
+          <div class="mobile-menu-item">FAQ</div>
+          <button class="mobile-join-button">Join Now</button>
+        </div>
+      </div>
     </div>
 
-    <!-- Right Barrier -->
-    <div class="right-barrier">
-        <svg width="453" height="762" viewBox="0 0 453 762" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M216 673L254.5 314L394.5 118L381.5 41.5L532 -165L811 118L923.5 940L22 1021.5L132.5 833.5L216 673Z" fill="url(#paint0_linear_199_1335)" stroke="url(#paint1_linear_199_1335)" stroke-width="49" stroke-linejoin="bevel"/>
-            <defs>
-                <linearGradient id="paint0_linear_199_1335" x1="472.75" y1="1.99999" x2="472.75" y2="762" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#431BE5"/>
-                    <stop offset="1" stop-color="#250F7F"/>
-                </linearGradient>
-                <linearGradient id="paint1_linear_199_1335" x1="472.75" y1="1.99999" x2="472.75" y2="752.5" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#431BE5"/>
-                    <stop offset="1" stop-color="#250F7F"/>
-                </linearGradient>
-            </defs>
-        </svg>
-    </div>
-
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1 class="title-light-background title-1">The Payment Platform<br>for Influencer Marketing</h1>
-            <p>Powering the creator economy from payments to taxes, end to end.</p>
-            <button class="cta-button">Get Started</button>
-        </section>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="info-hero-section">
+          <div class="text-info-hero-section">
+            <div class="details-text-info-hero-section">
+              <h1>The Payment App for the Creator Economy</h1>
+              <p>
+                Powering the creator economy from payments to taxes, end to end.
+              </p>
+            </div>
+            <button
+              class="get-a-demo-button"
+              onclick="window.open('https://calendly.com/gemm-info/30min')"
+            >
+              Get A Demo
+            </button>
+          </div>
 
-        <!-- Features Section -->
-        <section class="features">
-            <h2 class="title-light-background title-1">What we offer</h2>
-            <div class="features-grid">
-                <div>
-                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_198_319)">
-                            <path d="M22.5019 15.3931C22.5019 14.8717 22.9364 14.459 23.4578 14.459C23.9792 14.459 24.3919 14.8717 24.3919 15.3931V15.8711C25.6736 16.0231 26.7598 16.4359 27.7592 17.0659C28.1067 17.2614 28.4109 17.5873 28.4109 18.1086C28.4109 18.7821 27.8678 19.3035 27.1943 19.3035C26.9771 19.3035 26.7598 19.2383 26.5426 19.1079C25.7823 18.6517 25.0436 18.3259 24.305 18.1521V22.3231C27.6071 23.1486 29.0192 24.4738 29.0192 26.7983C29.0192 29.188 27.1509 30.7738 24.3919 31.0345V32.338C24.3919 32.8593 23.9792 33.2721 23.4578 33.2721C22.9364 33.2721 22.5019 32.8593 22.5019 32.338V30.9911C20.8726 30.8173 19.3736 30.2307 18.0485 29.2966C17.6792 29.0576 17.4619 28.71 17.4619 28.2538C17.4619 27.5804 17.9833 27.059 18.6567 27.059C18.9174 27.059 19.1781 27.1459 19.3736 27.298C20.3947 28.0366 21.394 28.5362 22.5888 28.7535V24.4738C19.4171 23.6483 17.9398 22.4535 17.9398 19.9986C17.9398 17.6742 19.7864 16.0666 22.5019 15.8493V15.3931ZM26.4557 26.9504C26.4557 25.9945 25.9778 25.408 24.305 24.8866V28.8404C25.6954 28.6883 26.4557 27.9931 26.4557 26.9504ZM20.5033 19.8466C20.5033 20.759 20.9161 21.3238 22.5888 21.8669V18.0217C21.1985 18.1521 20.5033 18.8907 20.5033 19.8466Z" fill="#250F7F"/>
-                            <path d="M39.2932 20.1725C39.2932 12.4596 31.9986 6.20703 23.0001 6.20703C14.0017 6.20703 6.70703 12.4596 6.70703 20.1725" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round"/>
-                            <path d="M11.3621 17.0688L6.70693 20.1723L2.05176 17.0688" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M43.948 27.9312L39.2929 24.8277L34.6377 27.9312" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M39.2932 26.3792C39.2932 34.0922 31.9986 40.3447 23.0001 40.3447C14.0017 40.3447 6.70703 34.0922 6.70703 26.3792" stroke="#250F7F" stroke-width="3.10345" stroke-linecap="round"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_198_319">
-                            <rect width="45" height="45" fill="white" transform="translate(0.5)"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <div class="feature-title">Automated<br>Payments</div>
-                </div>
-                <div>
-                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M38 22.5V15H11.75C10.7554 15 9.80161 14.6049 9.09835 13.9017C8.39509 13.1984 8 12.2446 8 11.25C8 9.1875 9.6875 7.5 11.75 7.5H34.25V15" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 11.25V33.75C8 35.8125 9.6875 37.5 11.75 37.5H38V30" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M34.25 22.5C33.2554 22.5 32.3016 22.8951 31.5984 23.5984C30.8951 24.3016 30.5 25.2554 30.5 26.25C30.5 28.3125 32.1875 30 34.25 30H41.75V22.5H34.25Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <div class="feature-title">Centralized<br>Earnings</div>
-                </div>
-                <div>
-                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M23 41.25C33.3553 41.25 41.75 32.8553 41.75 22.5C41.75 12.1447 33.3553 3.75 23 3.75C12.6447 3.75 4.25 12.1447 4.25 22.5C4.25 32.8553 12.6447 41.25 23 41.25Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M23 15V22.5" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M23 30H23.0188" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <div class="feature-title">Payment<br>Reminders</div>
-                </div>
-                <div>
-                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M23 39.375C26.1066 39.375 28.625 36.8566 28.625 33.75C28.625 30.6434 26.1066 28.125 23 28.125C19.8934 28.125 17.375 30.6434 17.375 33.75C17.375 36.8566 19.8934 39.375 23 39.375Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11.75 16.875C14.8566 16.875 17.375 14.3566 17.375 11.25C17.375 8.1434 14.8566 5.625 11.75 5.625C8.6434 5.625 6.125 8.1434 6.125 11.25C6.125 14.3566 8.6434 16.875 11.75 16.875Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M34.25 16.875C37.3566 16.875 39.875 14.3566 39.875 11.25C39.875 8.1434 37.3566 5.625 34.25 5.625C31.1434 5.625 28.625 8.1434 28.625 11.25C28.625 14.3566 31.1434 16.875 34.25 16.875Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M34.25 16.875V18.75C34.25 19.7446 33.8549 20.6984 33.1516 21.4016C32.4484 22.1049 31.4946 22.5 30.5 22.5H15.5C14.5054 22.5 13.5516 22.1049 12.8483 21.4016C12.1451 20.6984 11.75 19.7446 11.75 18.75V16.875" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M23 22.5V28.125" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <div class="feature-title">Split<br>Transactions</div>
-                </div>
-                <div>
-                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M39.875 22.5V11.25C39.875 10.2554 39.4799 9.30161 38.7766 8.59835C38.0734 7.89509 37.1196 7.5 36.125 7.5H9.875C8.88044 7.5 7.92661 7.89509 7.22335 8.59835C6.52009 9.30161 6.125 10.2554 6.125 11.25V37.5C6.125 39.5625 7.8125 41.25 9.875 41.25H23.9375" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M30.5 3.75V11.25" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15.5 3.75V11.25" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6.125 18.75H39.875" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M34.25 39.375C35.7418 39.375 37.1726 38.7824 38.2275 37.7275C39.2824 36.6726 39.875 35.2418 39.875 33.75C39.875 32.2582 39.2824 30.8274 38.2275 29.7725C37.1726 28.7176 35.7418 28.125 34.25 28.125C32.7582 28.125 31.3274 28.7176 30.2725 29.7725C29.2176 30.8274 28.625 32.2582 28.625 33.75C28.625 35.2418 29.2176 36.6726 30.2725 37.7275C31.3274 38.7824 32.7582 39.375 34.25 39.375Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M41.75 41.25L38.9375 38.4375" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <div class="feature-title">Track<br>Brand Deals</div>
-                </div>
-                <div class="feature-item">
-                    <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M27.6875 3.75H11.75C10.7554 3.75 9.80161 4.14509 9.09835 4.84835C8.39509 5.55161 8 6.50544 8 7.5V37.5C8 38.4946 8.39509 39.4484 9.09835 40.1516C9.80161 40.8549 10.7554 41.25 11.75 41.25H34.25C35.2446 41.25 36.1984 40.8549 36.9016 40.1516C37.6049 39.4484 38 38.4946 38 37.5V14.0625L27.6875 3.75Z" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M26.75 3.75V15H38" stroke="#250F7F" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M18.2959 27.6963C18.6078 27.6963 18.8762 27.7766 19.0674 27.9678H19.0664C19.265 28.1583 19.3496 28.4264 19.3496 28.7393C19.3496 29.0484 19.2635 29.3146 19.0674 29.5107C18.8762 29.7019 18.6078 29.7822 18.2959 29.7822H16.6934V34.9658C16.6933 35.333 16.5961 35.646 16.3809 35.8799L16.3789 35.8828C16.1568 36.1145 15.8367 36.2139 15.4561 36.2139C15.0873 36.2138 14.775 36.1119 14.5479 35.8848L14.5459 35.8828C14.3216 35.6491 14.2197 35.3351 14.2197 34.9658V29.7822H12.6172C12.3047 29.7822 12.0353 29.7011 11.8379 29.5137L11.8301 29.5068V29.5059C11.644 29.3095 11.5625 29.0454 11.5625 28.7393C11.5625 28.4274 11.6428 28.1589 11.834 27.9678L11.8379 27.9648C12.0353 27.7774 12.3046 27.6963 12.6172 27.6963H18.2959ZM22.5771 27.5938C22.8695 27.5938 23.1327 27.6712 23.3574 27.832L23.4424 27.8965C23.5808 28.0101 23.7031 28.1563 23.8105 28.3311L23.9316 28.5547L23.9336 28.5576L26.7734 34.6699H26.7725C26.9033 34.9331 26.9585 35.1918 26.9131 35.4385C26.8752 35.6845 26.7535 35.8826 26.5498 36.0195L26.5508 36.0205C26.3607 36.1535 26.1306 36.2139 25.873 36.2139C25.5431 36.2138 25.2599 36.1393 25.0479 35.9658L25.0439 35.9639C24.8534 35.8006 24.6952 35.5502 24.5605 35.2334L24.2402 34.4805H20.9033L20.583 35.2334L20.582 35.2363C20.4411 35.5495 20.2883 35.7958 20.1182 35.957C19.9251 36.1399 19.6485 36.2139 19.3271 36.2139C19.0632 36.2138 18.8276 36.1535 18.6309 36.0225L18.625 36.0195C18.4272 35.8782 18.3014 35.6846 18.2539 35.4473V35.4463C18.2068 35.2011 18.2523 34.9409 18.3691 34.6738L18.3701 34.6699L21.21 28.5576L21.3271 28.334C21.452 28.1233 21.6004 27.9532 21.7754 27.832L21.7783 27.8301C22.0157 27.672 22.2839 27.5938 22.5771 27.5938ZM33.2168 27.5938C33.5247 27.5938 33.7947 27.6759 34.0098 27.8535H34.0088C34.2212 28.0212 34.344 28.2444 34.3721 28.5137C34.4094 28.7969 34.3081 29.0755 34.1084 29.3418L34.1074 29.3428L32.1904 31.8691L34.1621 34.4727L34.2334 34.5684C34.3894 34.7958 34.4642 35.0377 34.4297 35.2881L34.4277 35.2871C34.3986 35.5552 34.2767 35.7804 34.0664 35.9541C33.8514 36.1317 33.5822 36.2138 33.2744 36.2139C33.0313 36.2139 32.8073 36.1566 32.6084 36.0391L32.6035 36.0361C32.4085 35.9121 32.2205 35.7166 32.0381 35.4629V35.4619L30.7666 33.7041L29.5039 35.4629C29.3215 35.7166 29.1334 35.9121 28.9385 36.0361L28.9336 36.04L28.9326 36.0391C28.7329 36.1569 28.5059 36.2138 28.2568 36.2139C27.9551 36.2139 27.6897 36.131 27.4756 35.9541C27.2653 35.7804 27.1386 35.556 27.1016 35.2881L27.1006 35.2812C27.0716 35.0005 27.1713 34.7299 27.3662 34.4756L29.3398 31.8682L27.4336 29.3428L27.4326 29.3408C27.2394 29.0802 27.1401 28.8066 27.1689 28.5264L27.1699 28.5195C27.2069 28.2516 27.3337 28.0272 27.5439 27.8535C27.758 27.6767 28.0234 27.5938 28.3252 27.5938C28.5771 27.5938 28.8063 27.6556 29.0068 27.7832C29.2014 27.907 29.3853 28.098 29.5605 28.3447L30.7666 30.0205L31.9814 28.3438C32.1561 28.0904 32.3413 27.8967 32.54 27.7793V27.7803C32.7395 27.6547 32.9669 27.5938 33.2168 27.5938ZM21.7432 32.4971H23.3975L22.5664 30.5283L21.7432 32.4971Z" fill="#250F7F" stroke="#250F7F" stroke-width="0.375"/>
-                    </svg>
-                    <div class="feature-title">W-9s</div>
-                </div>
+          <div class="screens-info-hero-section">
+            <div class="desktop-image-wrapper">
+              <img
+                class="screen-info-hero-section-deals-desktop"
+                src="https://storage.googleapis.com/gemm-marketing/images/Deals_Desktop_Gemm_Hero_Section.png"
+                alt="Deals_Desktop"
+              />
+              <img
+                class="screen-info-hero-section-phone-image"
+                src="https://storage.googleapis.com/gemm-marketing/images/Phone_Screen_Gemm_Hero_Section.png"
+                alt="Phone_screen"
+              />
             </div>
-        </section>
+          </div>
+        </div>
 
-        <!-- Connect Section -->
-        <section class="connect-section">
-            <div class="connect-content">
-                <div class="connect-text">
-                    <h2 class="title-3">Connect, Collaborate, and Manage on one platform</h2>
-                    <p>Seamlessly manage split transactions and allocations within your collaborations. Brands can keep paying it their way, but now you can control how and when you get paid.</p>
-                </div>
-            </div>
-            <div class="graph-container">
-                <div class="graph-item">
-                    <div class="graph-node">
-                        <img style="padding-left: 389px; padding-top: 16px;" src="https://storage.googleapis.com/gemm-marketing/avatar_1.png">
-                    </div>
-                    <div class="graph-node">
-                        <img style="padding-left: 409px; padding-top: 160px;" src="https://storage.googleapis.com/gemm-marketing/avatar_2.png">
-                    </div>
-                    <div class="graph-node">
-                        <img style="padding-left: 366px; padding-top: 349px;" src="https://storage.googleapis.com/gemm-marketing/avatar_3.png">
-                    </div>
-                    <div class="graph-node">
-                        <img style="padding-left: 167px; padding-top: 349px;" src="https://storage.googleapis.com/gemm-marketing/avatar_4.png">
-                    </div>
-                    <div class="graph-node">
-                        <img style="padding-left: 0px; padding-top: 260px;" src="https://storage.googleapis.com/gemm-marketing/avatar_5.png">
-                    </div>
-                    <div class="graph-node">
-                        <img style="padding-left: 20px; padding-top: 85px;" src="https://storage.googleapis.com/gemm-marketing/avatar_6.png">
-                    </div>
-                    <div class="graph-node">
-                        <img style="padding-left: 196px; padding-top: 0px;" src="https://storage.googleapis.com/gemm-marketing/avatar_7.png">
-                    </div>
-                    <svg width="441" height="375" viewBox="0 0 441 375" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M386 27.5L1.5 271M386 27.5L188 1.5M386 27.5L440 185.5M386 27.5L181 373.5M1.5 271L31.5 91M1.5 271L181 373.5M31.5 91L181 373.5M31.5 91L440 185.5M31.5 91L188 1.5M181 373.5L365 355.5M365 355.5L188 1.5M365 355.5L440 185.5M188 1.5L440 185.5" stroke="#CAFFD0" stroke-width="1.5"/>
-                    </svg>
-                </div>
-                <div class="graph-line">
-                </div>
-                <div class="graph-item">
-                    <svg width="221" height="221" viewBox="0 0 221 221" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_d_301_650)">
-                            <rect x="16" y="12" width="189" height="189" rx="94.5" fill="white"/>
-                            <path d="M125.905 65.6731H147.02V135.515C147.02 136.253 146.873 136.991 146.873 137.729C145.839 155.448 130.778 169.18 112.616 169.18H103.314V148.213H112.616C119.556 148.213 125.463 142.897 125.905 136.4C125.905 136.105 125.905 128.575 125.905 128.575C123.1 131.528 119.852 133.3 118.523 133.743C114.684 135.219 110.549 135.958 106.12 135.958C86.3336 135.958 70.3867 120.011 70.3867 100.225C70.3867 80.4388 86.3336 64.3442 106.12 64.3442C110.549 64.3442 114.684 65.2302 118.523 66.7067C120.147 67.445 125.462 70.1028 128.416 75.1231C128.563 75.5661 129.006 75.7138 129.449 75.7138C130.63 75.7138 131.221 74.5325 130.63 73.6466C129.597 72.17 128.12 69.9552 125.905 68.0356V65.6731ZM108.63 117.5C118.227 117.5 125.905 109.822 125.905 100.225C125.905 90.6271 118.227 82.9489 108.63 82.9489C99.032 82.9489 91.3539 90.6271 91.3539 100.225C91.3539 109.822 99.032 117.5 108.63 117.5Z" fill="#250F7F"/>
-                        </g>
-                        <defs>
-                            <filter id="filter0_d_301_650" x="0" y="0" width="221" height="221" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                            <feOffset dy="4"/>
-                            <feGaussianBlur stdDeviation="8"/>
-                            <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_301_650"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_301_650" result="shape"/>
-                            </filter>
-                        </defs>
-                    </svg>
-                </div>
-            </div>
-        </section>
+        <div class="hero-bg-wrapper">
+          <picture>
+            <source
+              srcset="
+                https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/hero-background.webp
+              "
+              type="image/webp"
+            />
+            <img
+              src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/hero-background.png"
+              alt=""
+              class="hero-bg-img"
+              loading="eager"
+            />
+          </picture>
+        </div>
+      </section>
 
-        <!-- Dashboard Section -->
-        <section class="dashboard-section">
-            <div class="dashboard-content">
-                <h2 class="title-3 title-light-background">Send & Receive Money in one UI</h2>
-                <p>Don't worry about managing multiple platforms.</p>
+      <!-- Company Section -->
+      <section class="company-section">
+        <div class="company-section-container">
+          <lottie-player
+            src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/logo_carousel_gemm_desktop_10_1_25.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+            style="width: 1200px; height: 112px"
+          >
+          </lottie-player>
+        </div>
+      </section>
+      <!-- Service Section -->
+      <section class="service-section">
+        <div class="service-section-container">
+          <div class="service-section-heading">
+            <h1 class="service-section-heading-desktop">
+              Track All of <br />Your Revenue <br />in One Place
+            </h1>
+            <h1 class="service-section-heading-mobile">
+              Track All of Your <br />
+              Revenue in One Place
+            </h1>
+          </div>
+          <div class="service-features-grid">
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M27.5 3.375V6.75C38.6881 6.75 47.75 15.8119 47.75 27C47.75 38.1881 38.6881 47.25 27.5 47.25V50.625C40.5443 50.625 51.125 40.0444 51.125 27C51.125 13.9556 40.5443 3.375 27.5 3.375ZM14.405 42.4237L12.2281 45.0056C14.3037 46.7606 16.6831 48.1613 19.2818 49.1231L20.4293 45.9506C18.2018 45.1237 16.16 43.9256 14.3881 42.4237H14.405ZM7.57059 30.375L4.24622 31.0669C4.71872 33.8175 5.66372 36.3994 7.01372 38.7281L9.93309 37.125C8.78559 35.1338 7.97559 32.7206 7.57059 30.375ZM9.93309 16.875L7.01372 15.1875C5.68059 17.5162 4.73559 20.1825 4.24622 22.9331L7.57059 23.5237C7.97559 21.1781 8.78559 18.8831 9.93309 16.8919V16.875ZM20.4462 8.0325L19.2987 4.86C16.7 5.82188 14.3206 7.2225 12.245 8.9775L14.4218 11.5594C16.1937 10.0575 18.2356 8.85938 20.4631 8.0325H20.4462Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M35.9375 20.25V16.875H29.1875V11.8125H25.8125V16.875H22.4375C20.5762 16.875 19.0625 18.3887 19.0625 20.25V25.3125C19.0625 27.1738 20.5762 28.6875 22.4375 28.6875H32.5625V33.75H19.0625V37.125H25.8125V42.1875H29.1875V37.125H32.5625C34.4238 37.125 35.9375 35.6105 35.9375 33.75V28.6875C35.9375 26.8262 34.4238 25.3125 32.5625 25.3125H22.4375V20.25H35.9375Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Automated <br />
+                Payments & Reminders</span
+              >
             </div>
-        </section>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M37.625 28.6875H41V32.0625H37.625V28.6875Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M47.75 13.5H7.25V8.4375H44.375V5.0625H7.25C6.35489 5.0625 5.49645 5.41808 4.86351 6.05101C4.23058 6.68395 3.875 7.54239 3.875 8.4375V43.875C3.875 44.7701 4.23058 45.6285 4.86351 46.2615C5.49645 46.8944 6.35489 47.25 7.25 47.25H47.75C48.6451 47.25 49.5035 46.8944 50.1365 46.2615C50.7694 45.6285 51.125 44.7701 51.125 43.875V16.875C51.125 15.9799 50.7694 15.1215 50.1365 14.4885C49.5035 13.8556 48.6451 13.5 47.75 13.5ZM7.25 43.875V16.875H47.75V21.9375H34.25C33.3549 21.9375 32.4965 22.2931 31.8635 22.926C31.2306 23.559 30.875 24.4174 30.875 25.3125V35.4375C30.875 36.3326 31.2306 37.191 31.8635 37.824C32.4965 38.4569 33.3549 38.8125 34.25 38.8125H47.75V43.875H7.25ZM47.75 25.3125V35.4375H34.25V25.3125H47.75Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span>Centralized <br />Earnings</span>
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.75 16.875H41.25V20.25H13.75V16.875ZM13.75 25.3125H41.25V28.6875H13.75V25.3125ZM13.75 33.75H27.5V37.125H13.75V33.75Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M6.875 3.375V50.625H48.125V3.375H6.875ZM44.75 47.25H10.25V6.75H44.75V47.25Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Split <br />
+                Transactions</span
+              >
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M27.5 5.0625C15.6744 5.0625 6.1875 14.5494 6.1875 26.375C6.1875 38.2006 15.6744 47.6875 27.5 47.6875C39.3256 47.6875 48.8125 38.2006 48.8125 26.375C48.8125 14.5494 39.3256 5.0625 27.5 5.0625ZM27.5 44.3125C17.5406 44.3125 9.5625 36.3344 9.5625 26.375C9.5625 16.4156 17.5406 8.4375 27.5 8.4375C37.4594 8.4375 45.4375 16.4156 45.4375 26.375C45.4375 36.3344 37.4594 44.3125 27.5 44.3125Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M29.1875 13.5H25.8125V24.6875H16.875V28.0625H25.8125V39.25H29.1875V28.0625H38.125V24.6875H29.1875V13.5Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Track <br />
+                Brand Deals</span
+              >
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M41.25 10.125H38.75V6.75C38.75 5.85489 38.3944 4.99645 37.7615 4.36351C37.1285 3.73058 36.2701 3.375 35.375 3.375H19.625C18.7299 3.375 17.8715 3.73058 17.2385 4.36351C16.6056 4.99645 16.25 5.85489 16.25 6.75V10.125H13.75C12.8549 10.125 11.9965 10.4806 11.3635 11.1135C10.7306 11.7465 10.375 12.6049 10.375 13.5V45.5625C10.375 46.4576 10.7306 47.316 11.3635 47.949C11.9965 48.5819 12.8549 48.9375 13.75 48.9375H41.25C42.1451 48.9375 43.0035 48.5819 43.6365 47.949C44.2694 47.316 44.625 46.4576 44.625 45.5625V13.5C44.625 12.6049 44.2694 11.7465 43.6365 11.1135C43.0035 10.4806 42.1451 10.125 41.25 10.125ZM19.625 6.75H35.375V10.125H19.625V6.75ZM41.25 45.5625H13.75V13.5H41.25V45.5625Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M18.5625 18.5625H36.4375V21.9375H18.5625V18.5625ZM18.5625 25.3125H36.4375V28.6875H18.5625V25.3125ZM18.5625 32.0625H30.875V35.4375H18.5625V32.0625Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span
+                >Auto <br />
+                Reconciliation</span
+              >
+            </div>
+            <div class="service-feature-item">
+              <div class="service-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M48.125 8.4375H6.875C5.98 8.4375 5.125 9.29 5.125 10.1875V43.8125C5.125 44.71 5.98 45.5625 6.875 45.5625H48.125C49.02 45.5625 49.875 44.71 49.875 43.8125V10.1875C49.875 9.29 49.02 8.4375 48.125 8.4375ZM46.375 42.0625H8.625V11.8125H46.375V42.0625Z"
+                    fill="#250F7F"
+                  />
+                  <path
+                    d="M15.5 20.25C15.5 18.88 16.63 17.75 18 17.75C19.37 17.75 20.5 18.88 20.5 20.25C20.5 21.62 19.37 22.75 18 22.75C16.63 22.75 15.5 21.62 15.5 20.25ZM23.125 33.75V31H12.875V33.75C12.875 34.6975 13.6775 35.5 14.625 35.5H21.375C22.3225 35.5 23.125 34.6975 23.125 33.75ZM39.5 17.75H26.5V20.25H39.5V17.75ZM39.5 22.75H26.5V25.25H39.5V22.75ZM33.5 27.75H26.5V30.25H33.5V27.75Z"
+                    fill="#250F7F"
+                  />
+                </svg>
+              </div>
+              <span>W-9 & <br />Tax Automation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="square-section-gradient">
+        <div class="info-container-square-section-gradient">
+          <div class="text-info-container-square-section-gradient">
+            <h1>
+              Connect<span>,</span> Collaborate <br />
+              <span> and</span> Collect
+            </h1>
+            <div>
+              <p style="margin-bottom: 20px">
+                Gemm unifies tracking and payments in one platform, replacing
+                spreadsheets and scattered apps like PayPal, Stripe, and
+                Bill.com.
+              </p>
 
-        <section class="platform-teaser-section">
-            <div class="mobile-content">
-                <div class="platform-teaser-image-container">
-                    <img src="https://storage.googleapis.com/gemm-marketing/dashboard.png" alt="Mobile App Interface" style="height: 420px">
-                </div>
-                <div class="platform-teaser-features">
-                    <div class="platform-teaser-feature">Unified dashboard for<br>brand deals</div>
-                    <div class="dashed-vertical-line"></div>
-                    <div class="platform-teaser-feature">W-9 & tax automation</div>
-                </div>
+              <p>
+                Purpose-built for the creator economy, everything you need lives
+                in one place.
+              </p>
             </div>
-        </section>
+          </div>
+          <img
+            src="https://storage.googleapis.com/gemm-marketing/images/image%201.png"
+            alt="Image1"
+          />
+        </div>
+      </section>
 
-        <section class="platform-teaser-section">
-            <div class="mobile-content">
-                <div class="platform-teaser-features">
-                    <div class="platform-teaser-feature">Real-time<br>split payments</div>
-                    <div class="dashed-vertical-line"></div>
-                    <div class="platform-teaser-feature">Instant ACH &<br>wire payouts</div>
-                </div>
-                <div class="platform-teaser-image-container">
-                    <img src="https://storage.googleapis.com/gemm-marketing/phone_notification.png" alt="Mobile App Interface" style="height: 500px">
-                </div>
+      <section class="solution-section">
+        <div class="solution-section-container">
+          <div class="solution-section-item">
+            <div class="solution-section-item-content">
+              <img
+                src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Dashboard_Icon.svg"
+                alt="Dashboard_Icon"
+              />
+              <div class="solution-section-item-content-text">
+                <h1>We Do It All:</h1>
+                <p>
+                  Connecting brands, <br />
+                  agencies and creators.
+                </p>
+              </div>
             </div>
-        </section>
+            <div class="solution-section-item-animation" id="animation">
+              <lottie-player
+                src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/gemm_features_word_animation.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                style="width: 688px; height: 387px; aspect-ratio: 16/9"
+              >
+              </lottie-player>
+            </div>
+          </div>
+          <div class="solution-section-item">
+            <div class="solution-section-item-content">
+              <img
+                src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Lightning_Icon.svg"
+                alt="Lightning_Icon"
+              />
+              <div class="solution-section-item-content-text">
+                <h1>Instant Payments:</h1>
+                <p>Get paid and payout, globally.</p>
+              </div>
+            </div>
+            <div class="solution-section-item-animation">
+              <lottie-player
+                src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/re_designed_gemm_pay_notification.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                style="width: 688px; height: 516px; aspect-ratio: 4/3"
+              >
+              </lottie-player>
+            </div>
+          </div>
+          <div class="solution-section-item">
+            <div class="solution-section-item-content">
+              <img
+                src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Cursor_Icon.svg"
+                alt="Cursor_Icon"
+              />
+              <div class="solution-section-item-content-text">
+                <h1>
+                  Pay Everyone in <br />
+                  One-Click
+                </h1>
+                <p>
+                  Your roster doesn't have to 
+                  wait, create more value by 
+                  automating the admin tasks 
+                  and eliminate fees.
+                </p>
+              </div>
+            </div>
+            <div class="solution-section-item-animation">
+              <lottie-player
+                src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/card_arrow_only_animation.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                style="width: 688px; height: 500px; aspect-ratio: 172/125"
+              >
+              </lottie-player>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Final CTA Section -->
-        <section class="final-cta">
-            <h2 class="title-dark-background title-2">Give your team the freedom to get paid their way</h2>
-            <p>You save time and money – <span class="money-strong">everyone wins</span></p>
-            <button class="cta-button light">Get Started</button>
-        </section>
+      <section class="faq-section">
+        <h1>FAQ</h1>
+        <div class="faq-section-details">
+          <div class="faq-section-details-item">
+            <div class="rectangle"></div>
+            <div class="faq-section-details-item-heading">
+              <h1>What is Gemm?</h1>
+              <button>
+                <img
+                  src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Arrow_Down_Icon.svg"
+                  alt="Arrow_Down_Icon"
+                />
+              </button>
+            </div>
+            <div class="faq-section-details-item-answer">
+              Gemm is for brands, agencies and their creators to track
+              influencer brand deals and budgets. Eliminate all the operational
+              chaos of spreadsheets, deal trackers and payment apps that don’t
+              talk to each other.
+            </div>
+          </div>
+          <div class="faq-section-details-item">
+            <div class="rectangle"></div>
+            <div class="faq-section-details-item-heading">
+              <h1>How to get started?</h1>
+              <button>
+                <img
+                  src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Arrow_Down_Icon.svg"
+                  alt="Arrow_Down_Icon"
+                />
+              </button>
+            </div>
+            <div class="faq-section-details-item-answer">
+              It’s as easy as signing up and setting up your first brand deal!
+            </div>
+          </div>
+          <div class="faq-section-details-item">
+            <div class="rectangle"></div>
+            <div class="faq-section-details-item-heading">
+              <h1>How does Gemm help agencies make more margin?</h1>
+              <button>
+                <img
+                  src="https://storage.googleapis.com/gemm-marketing/images/gemm_icons/Arrow_Down_Icon.svg"
+                  alt="Arrow_Down_Icon"
+                />
+              </button>
+            </div>
+            <div class="faq-section-details-item-answer">
+              Gemm allows agencies to scale with growing operational costs. We
+              automate everything from contacts to taxes, paying out your entire
+              roster in one-click without the need for any more spreadsheets or
+              manual follow-ups.
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <div class="faq-content">
-                <h2 class="title-light-background title-1">FAQs</h2>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <div class="faq-question">What is gemm?</div>
-                        <div class="faq-answer">A payment platform designed for creators, streamlining all your earnings, receivables, and payouts in one place.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">What does gemm offer?</div>
-                        <div class="faq-answer">W-9 management, and secure payment handling, all in one platform tailored to the unique needs of the creator economy.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section class="cta-section">
+        <div class="cta-section-container">
+          <picture>
+            <source srcset="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/cta.webp" type="image/webp" />
+            <img src="https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/cta.png" alt="" class="cta-img" loading="eager" />
+          </picture>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-left">
-                <div>
-                    <img width="120" src="https://storage.googleapis.com/gemm-marketing/logo-text-small.png" alt="gemm">
-                </div>
-                <div class="footer-tagline">Everything from payment links to invoice</div>
-                <div class="footer-tagline">gemm Inc. 2025</div>
+          <div class="cta-section-content">
+            <div class="cta-section-content-details">
+              Get Started with Gemm Today
             </div>
-            <div class="footer-right">
-                <a href="#" class="social-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    @gemm.app
-                </a>
-                <a href="mailto:info@gemm.app" class="email-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    info@gemm.app
-                </a>
-            </div>
-        </footer>
+            <button
+              class="get-a-demo-button"
+              onclick="window.open('https://calendly.com/gemm-info/30min')"
+            >
+              Get A Demo
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
+
+    <section class="footer-section">
+      <div class="footer-container">
+        <div class="footer-section-company">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="186"
+            height="47"
+            viewBox="0 0 186 47"
+            fill="none"
+          >
+            <path
+              d="M25.3322 1.04881H34.9666V32.0544C34.9666 32.3821 34.8992 32.7099 34.8992 33.0377C34.4276 40.9038 27.5556 47 19.2687 47H15.0242V37.6918H19.2687C22.4352 37.6918 25.1301 35.3319 25.3322 32.4477C25.3322 32.3166 25.3322 28.9735 25.3322 28.9735C24.0522 30.2845 22.57 31.0711 21.9636 31.2678C20.2119 31.9233 18.3255 32.251 16.3043 32.251C7.27628 32.251 0 25.1715 0 16.3877C0 7.6039 7.27628 0.458856 16.3043 0.458856C18.3255 0.458856 20.2119 0.852161 21.9636 1.50767C22.7047 1.83543 25.1301 3.01534 26.4776 5.24407C26.545 5.44073 26.7471 5.50628 26.9492 5.50628C27.4882 5.50628 27.7577 4.98187 27.4882 4.58856C27.0166 3.93305 26.3428 2.94979 25.3322 2.09763V1.04881ZM17.4496 24.0572C21.8288 24.0572 25.3322 20.6485 25.3322 16.3877C25.3322 12.1269 21.8288 8.71827 17.4496 8.71827C13.0704 8.71827 9.56697 12.1269 9.56697 16.3877C9.56697 20.6485 13.0704 24.0572 17.4496 24.0572Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M73.2397 16.5844C73.2397 16.9777 73.2397 17.371 73.1723 17.6987H47.9075C48.5138 21.6318 51.9498 24.7127 56.1943 24.7127C58.6198 24.7127 60.8431 23.6639 62.3253 22.0251H72.2965C70.0058 28.5146 63.6727 33.1688 56.1943 33.1688C46.7621 33.1688 39.149 25.7615 39.149 16.5844C39.149 7.40725 46.7621 0 56.1943 0C65.6266 0 73.2397 7.40725 73.2397 16.5844ZM48.6486 13.1757H63.7401C62.3927 10.4226 59.4956 8.52162 56.1943 8.52162C52.8257 8.52162 49.996 10.4226 48.6486 13.1757Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M128.885 12.9791C129.019 13.9623 129.154 14.9456 129.154 15.9289V32.1199H119.654V16.2566C119.654 12.258 117.768 9.89819 115.275 9.24268C114.804 9.11158 114.332 9.11158 113.793 9.11158C113.658 9.11158 113.523 9.11158 113.321 9.11158C111.704 9.24268 110.29 9.96374 109.346 11.4059C108.471 12.6513 107.999 14.3556 107.999 16.5844V32.1199H98.4319V16.2566C98.4319 13.7001 97.6908 11.7992 96.4781 10.6192C95.5349 9.70153 94.3896 9.17712 93.1095 9.11158C92.9747 9.11158 92.7726 9.11158 92.6379 9.11158C89.404 9.11158 86.8438 11.537 86.8438 16.5844V32.1199H77.2768V1.04881H86.8438V2.22873C85.8332 3.08089 85.0921 4.06415 84.6879 4.71967C84.6205 4.85077 84.5531 4.98187 84.5531 5.04742C84.5531 5.04742 84.5531 5.04742 84.5531 5.11297C84.6205 5.37517 84.8226 5.57183 85.1595 5.57183C85.3616 5.57183 85.5637 5.44073 85.6984 5.24407C85.6984 5.24407 85.7658 5.17852 85.9006 5.04742C87.5849 3.21199 89.7408 1.83543 92.2336 1.17991C92.9747 0.983263 93.7832 0.852161 94.6591 0.78661C95.737 0.721058 96.8824 0.78661 98.0277 0.983263H98.0951C101.531 1.83543 103.889 3.80195 105.439 6.35844V6.22734C105.641 5.89958 105.843 5.57183 106.045 5.30962C107.527 3.14644 109.885 1.70432 112.176 1.04881C112.715 0.917713 113.254 0.852161 113.86 0.78661C114.736 0.721058 115.545 0.721058 116.421 0.852161C119.183 1.17991 121.945 2.29428 124.101 4.19526C126.661 6.35844 128.211 9.43933 128.817 12.6513C128.817 12.7824 128.885 12.9135 128.885 12.9791Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M185.731 12.9791C185.865 13.9623 186 14.9456 186 15.9289V32.1199H176.5V16.2566C176.5 12.258 174.614 9.89819 172.121 9.24268C171.65 9.11158 171.178 9.11158 170.639 9.11158C170.504 9.11158 170.369 9.11158 170.167 9.11158C168.55 9.24268 167.136 9.96374 166.192 11.4059C165.316 12.6513 164.845 14.3556 164.845 16.5844V32.1199H155.278V16.2566C155.278 13.7001 154.537 11.7992 153.324 10.6192C152.381 9.70153 151.236 9.17712 149.955 9.11158C149.821 9.11158 149.619 9.11158 149.484 9.11158C146.25 9.11158 143.69 11.537 143.69 16.5844V32.1199H134.123V1.04881H143.69V2.22873C142.679 3.08089 141.938 4.06415 141.534 4.71967C141.466 4.85077 141.399 4.98187 141.399 5.04742C141.399 5.04742 141.399 5.04742 141.399 5.11297C141.466 5.37517 141.669 5.57183 142.005 5.57183C142.208 5.57183 142.41 5.44073 142.544 5.24407C142.544 5.24407 142.612 5.17852 142.747 5.04742C144.431 3.21199 146.587 1.83543 149.08 1.17991C149.821 0.983263 150.629 0.852161 151.505 0.78661C152.583 0.721058 153.728 0.78661 154.874 0.983263H154.941C158.377 1.83543 160.735 3.80195 162.285 6.35844V6.22734C162.487 5.89958 162.689 5.57183 162.891 5.30962C164.373 3.14644 166.731 1.70432 169.022 1.04881C169.561 0.917713 170.1 0.852161 170.706 0.78661C171.582 0.721058 172.391 0.721058 173.267 0.852161C176.029 1.17991 178.791 2.29428 180.947 4.19526C183.507 6.35844 185.057 9.43933 185.663 12.6513C185.663 12.7824 185.731 12.9135 185.731 12.9791Z"
+              fill="#F9F9F9"
+            />
+          </svg>
+          <p>Teal Pay Global Inc.</p>
+        </div>
+        <div class="footer-section-content-container">
+          <div class="footer-section-content">
+            <div class="footer-section-content-menu">
+              <p class="footer-section-content-menu-tem text-link">Features</p>
+              <p class="footer-section-content-menu-tem text-link">About</p>
+              <p class="footer-section-content-menu-tem text-link">FAQ</p>
+              <p class="footer-section-content-menu-tem text-link" onclick="window.location.href='mailto:info@gemm.app'">Contact</p>
+            </div>
+            <div class="footer-section-content-contact-info">
+              <a href="mailto:info@gemm.app" aria-label="Email">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="25"
+                  viewBox="0 0 32 25"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9299)">
+                    <path
+                      d="M3.2 25.8031C2.32 25.8031 1.56667 25.4898 0.94 24.8631C0.313333 24.2365 0 23.4831 0 22.6031V3.40313C0 2.52312 0.313333 1.76979 0.94 1.14313C1.56667 0.516458 2.32 0.203125 3.2 0.203125H28.8C29.68 0.203125 30.4333 0.516458 31.06 1.14313C31.6867 1.76979 32 2.52312 32 3.40313V22.6031C32 23.4831 31.6867 24.2365 31.06 24.8631C30.4333 25.4898 29.68 25.8031 28.8 25.8031H3.2ZM16 14.6031L3.2 6.60313V22.6031H28.8V6.60313L16 14.6031ZM16 11.4031L28.8 3.40313H3.2L16 11.4031ZM3.2 6.60313V3.40313V22.6031V6.60313Z"
+                      fill="#F9F9F9"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9299">
+                      <rect width="32" height="25" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/gemmapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9301)">
+                    <path
+                      d="M29.6313 0H2.3625C1.05625 0 0 1.03125 0 2.30625V29.6875C0 30.9625 1.05625 32 2.3625 32H29.6313C30.9375 32 32 30.9625 32 29.6938V2.30625C32 1.03125 30.9375 0 29.6313 0ZM9.49375 27.2687H4.74375V11.9937H9.49375V27.2687ZM7.11875 9.9125C5.59375 9.9125 4.3625 8.68125 4.3625 7.1625C4.3625 5.64375 5.59375 4.4125 7.11875 4.4125C8.6375 4.4125 9.86875 5.64375 9.86875 7.1625C9.86875 8.675 8.6375 9.9125 7.11875 9.9125ZM27.2687 27.2687H22.525V19.8438C22.525 18.075 22.4937 15.7937 20.0562 15.7937C17.5875 15.7937 17.2125 17.725 17.2125 19.7188V27.2687H12.475V11.9937H17.025V14.0813H17.0875C17.7187 12.8813 19.2688 11.6125 21.575 11.6125C26.3813 11.6125 27.2687 14.775 27.2687 18.8875V27.2687Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9301">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/gemm.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9303)">
+                    <path
+                      d="M16 2.88125C20.275 2.88125 20.7813 2.9 22.4625 2.975C24.025 3.04375 24.8688 3.30625 25.4313 3.525C26.175 3.8125 26.7125 4.1625 27.2688 4.71875C27.8313 5.28125 28.175 5.8125 28.4625 6.55625C28.6813 7.11875 28.9438 7.96875 29.0125 9.525C29.0875 11.2125 29.1063 11.7188 29.1063 15.9875C29.1063 20.2625 29.0875 20.7688 29.0125 22.45C28.9438 24.0125 28.6813 24.8563 28.4625 25.4188C28.175 26.1625 27.825 26.7 27.2688 27.2563C26.7063 27.8188 26.175 28.1625 25.4313 28.45C24.8688 28.6688 24.0188 28.9313 22.4625 29C20.775 29.075 20.2688 29.0938 16 29.0938C11.725 29.0938 11.2188 29.075 9.5375 29C7.975 28.9313 7.13125 28.6688 6.56875 28.45C5.825 28.1625 5.2875 27.8125 4.73125 27.2563C4.16875 26.6938 3.825 26.1625 3.5375 25.4188C3.31875 24.8563 3.05625 24.0063 2.9875 22.45C2.9125 20.7625 2.89375 20.2563 2.89375 15.9875C2.89375 11.7125 2.9125 11.2063 2.9875 9.525C3.05625 7.9625 3.31875 7.11875 3.5375 6.55625C3.825 5.8125 4.175 5.275 4.73125 4.71875C5.29375 4.15625 5.825 3.8125 6.56875 3.525C7.13125 3.30625 7.98125 3.04375 9.5375 2.975C11.2188 2.9 11.725 2.88125 16 2.88125ZM16 0C11.6563 0 11.1125 0.01875 9.40625 0.09375C7.70625 0.16875 6.5375 0.44375 5.525 0.8375C4.46875 1.25 3.575 1.79375 2.6875 2.6875C1.79375 3.575 1.25 4.46875 0.8375 5.51875C0.44375 6.5375 0.16875 7.7 0.09375 9.4C0.01875 11.1125 0 11.6562 0 16C0 20.3438 0.01875 20.8875 0.09375 22.5938C0.16875 24.2938 0.44375 25.4625 0.8375 26.475C1.25 27.5313 1.79375 28.425 2.6875 29.3125C3.575 30.2 4.46875 30.75 5.51875 31.1562C6.5375 31.55 7.7 31.825 9.4 31.9C11.1063 31.975 11.65 31.9937 15.9938 31.9937C20.3375 31.9937 20.8813 31.975 22.5875 31.9C24.2875 31.825 25.4563 31.55 26.4688 31.1562C27.5188 30.75 28.4125 30.2 29.3 29.3125C30.1875 28.425 30.7375 27.5313 31.1438 26.4813C31.5375 25.4625 31.8125 24.3 31.8875 22.6C31.9625 20.8938 31.9813 20.35 31.9813 16.0063C31.9813 11.6625 31.9625 11.1188 31.8875 9.4125C31.8125 7.7125 31.5375 6.54375 31.1438 5.53125C30.75 4.46875 30.2063 3.575 29.3125 2.6875C28.425 1.8 27.5313 1.25 26.4813 0.84375C25.4625 0.45 24.3 0.175 22.6 0.1C20.8875 0.01875 20.3438 0 16 0Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M16 7.78125C11.4625 7.78125 7.78125 11.4625 7.78125 16C7.78125 20.5375 11.4625 24.2188 16 24.2188C20.5375 24.2188 24.2188 20.5375 24.2188 16C24.2188 11.4625 20.5375 7.78125 16 7.78125ZM16 21.3312C13.0563 21.3312 10.6687 18.9438 10.6687 16C10.6687 13.0563 13.0563 10.6687 16 10.6687C18.9438 10.6687 21.3312 13.0563 21.3312 16C21.3312 18.9438 18.9438 21.3312 16 21.3312Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M26.4625 7.45781C26.4625 8.52032 25.6 9.37657 24.5438 9.37657C23.4813 9.37657 22.625 8.51407 22.625 7.45781C22.625 6.39531 23.4875 5.53906 24.5438 5.53906C25.6 5.53906 26.4625 6.40156 26.4625 7.45781Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9303">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+            </div>
+            <div class="footer-section-content-legal">
+              <p class="text-link" onclick="window.open('https://my.gemm.app/legal/privacy')">
+                Privacy Policy
+              </p>
+              <p class="text-link" onclick="window.open('https://my.gemm.app/legal/tos')">
+                Terms of Service
+              </p>
+
+              <p class="text-link" onclick="window.open('https://my.gemm.app/legal/glba-notice')">
+                Gemm Privacy Notice
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="privacy-policy-placeholder"></div>
+    <div id="terms-of-service-placeholder"></div>
+    <div id="gemm-privacy-notice-placeholder"></div>
 
     <script>
-        // Add smooth scrolling for any internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
 
-        // Add click handlers for CTA buttons
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function() {
-                window.location.href = 'start.html'
-            });
+      // Get all FAQ items
+      const faqItems = document.querySelectorAll(".faq-section-details-item");
+
+      faqItems.forEach((item) => {
+        const button = item.querySelector("button");
+        const answer = item.querySelector(".faq-section-details-item-answer");
+
+        if (answer) {
+          answer.style.display = "none";
+        }
+
+        // Add click event to button
+        button.addEventListener("click", () => {
+          if (answer) {
+            if (answer.style.display === "none") {
+              answer.style.display = "flex";
+            } else {
+              answer.style.display = "none";
+            }
+          }
+        });
+      });
+
+      const hamburgerMenu = document.querySelector(".hamburger-menu");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      hamburgerMenu.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+        hamburgerMenu.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          !hamburgerMenu.contains(e.target) &&
+          !mobileMenu.contains(e.target)
+        ) {
+          mobileMenu.classList.remove("active");
+          hamburgerMenu.classList.remove("active");
+        }
+      });
+
+      // square gradient animation
+      const animation = lottie.loadAnimation({
+        container: document.getElementById("lottie-container"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        preserveAspectRatio: "xMidYMid slice",
+        path: "https://storage.googleapis.com/gemm-marketing/gemm_animations_json_files/Gemm_Gradient-background.json",
+      });
+
+      // Scroll to sections when menu items are clicked
+      document
+        .querySelectorAll(
+          ".menu-item, .mobile-menu-item, .footer-section-content-menu-tem"
+        )
+        .forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            const text = this.textContent.trim().toLowerCase();
+
+            let targetSection;
+            if (text === "about") {
+              targetSection = document.querySelector(
+                ".square-section-gradient"
+              );
+            } else if (text === "features") {
+              targetSection = document.querySelector(".solution-section");
+            } else if (text === "faq") {
+              targetSection = document.querySelector(".faq-section");
+            } else {
+              return;
+            }
+
+            if (targetSection) {
+              targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+
+            // Close mobile menu if open
+            const mobileMenu = document.querySelector(".mobile-menu");
+            const hamburgerMenu = document.querySelector(".hamburger-menu");
+            if (mobileMenu && hamburgerMenu) {
+              mobileMenu.classList.remove("active");
+              hamburgerMenu.classList.remove("active");
+            }
+          });
         });
     </script>
-</body>
+
+    <script>
+      function showPage(page) {
+        fetch(page)
+          .then((response) => response.text())
+          .then((html) => {
+            document.getElementById("privacy-policy-placeholder").innerHTML =
+              "";
+            document.getElementById("terms-of-service-placeholder").innerHTML =
+              "";
+            document.getElementById(
+              "gemm-privacy-notice-placeholder"
+            ).innerHTML = "";
+
+            document.querySelector(".menu-item-container").style.display =
+              "none";
+            document.querySelector(".mobile-menu").style.display = "none";
+            document.querySelector(".hamburger-menu").style.display = "none";
+            document.querySelector(".main-content").style.display = "none";
+            document.querySelector(".footer-section").style.display = "none";
+
+            document.body.setAttribute("data-current-page", page);
+
+            if (page === "privacy-policy-content.html") {
+              document.getElementById("privacy-policy-placeholder").innerHTML =
+                html;
+            } else if (page === "terms-of-service.html") {
+              document.getElementById(
+                "terms-of-service-placeholder"
+              ).innerHTML = html;
+            } else if (page === "gemm-privacy-notice.html") {
+              document.getElementById(
+                "gemm-privacy-notice-placeholder"
+              ).innerHTML = html;
+            }
+
+            window.scrollTo(0, 0);
+          })
+          .catch((error) => {
+            console.error("Error loading privacy policy:", error);
+          });
+      }
+
+    </script>
+  </body>
 </html>
