@@ -173,7 +173,7 @@
         align-items: flex-start;
         gap: 32px;
         flex: 0 0 auto;
-        width: 50%;
+        width: 100%;
         max-width: 550px;
         padding-top: 30px;
       }
@@ -185,7 +185,7 @@
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        width: 45%;
+        width: 100%;
         right: -60px;
         transform: scale(1);
       }
@@ -229,7 +229,7 @@
         font-style: normal;
         font-weight: 600;
         line-height: clamp(3rem, 5.5vw, 5rem);
-        letter-spacing: -2.88px;
+        letter-spacing: -2px;
       }
 
       .details-text-info-hero-section p {
@@ -324,7 +324,7 @@
         grid-template-rows: repeat(3, 1fr);
         gap: 40px 32px;
         flex: 1;
-        max-width: 650px;
+        max-width: 670px;
         padding: 5px;
       }
 
@@ -334,7 +334,7 @@
         align-items: center;
         text-align: center;
         gap: 16px;
-        min-width: 180px;
+        min-width: 235px;
       }
 
       .service-icon {
@@ -744,11 +744,6 @@
         letter-spacing: 0.2px;
       }
 
-      .px-2 {
-        padding-right: 0.5rem;
-        padding-left: 0.5rem;
-      }
-
       @media (min-width: 1920px) {
         .hero-bg-svg {
           /* right: -200px;
@@ -978,7 +973,7 @@
           position: relative;
           flex-direction: column;
           gap: 40px;
-          padding: 60px 24px 80px 24px;
+          padding: 40px 0px 80px 0px;
         }
 
         .hero-bg-svg {
@@ -1003,7 +998,6 @@
         .details-text-info-hero-section h1 {
           font-size: 1.75rem;
           line-height: 2rem;
-          letter-spacing: -0.08rem;
         }
 
         .details-text-info-hero-section p {
@@ -1085,7 +1079,7 @@
 
         .service-features-grid {
           /* grid-template-columns: 1fr; */
-          gap: 32px;
+          gap: 20px 15px;
         }
 
         .service-feature-item {
@@ -1405,7 +1399,7 @@
           <div class="mobile-menu-item">About</div>
           <div class="mobile-menu-item">Features</div>
           <div class="mobile-menu-item">FAQ</div>
-          <button class="mobile-join-button">Join Now</button>
+          <button class="mobile-join-button" onclick="window.open('https://my.gemm.app/')">Join Now</button>
         </div>
       </div>
     </div>
