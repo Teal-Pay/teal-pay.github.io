@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemm Privacy Notice</title>
+    <style>
+      .gemm-privacy-section {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #F9F9F9;
+      }
+
+      .heading-container {
+        display: flex;
+        width: 100%;
+        max-width: 1512px;
+        padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 7vw, 6.25rem);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+        background: #FFF;
+        box-sizing: border-box;
+      }
+
+      .heading-container h1 {
+        color: var(--Metal-400, #3B3A3A);
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 70px;
+        letter-spacing: -2.88px;
+        margin: 0;
+      }
+
+      .gemm-privacy-container {
+        display: flex;
+        width: 100%;
+        max-width: 1512px;
+        padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 10vw, 9.375rem);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: clamp(1.5rem, 2.5vw, 2.5rem);
+        box-sizing: border-box;
+      }
+
+      .gemm-privacy-content {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2rem, 3vw, 3rem);
+        width: 100%;
+      }
+
+      .notice-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .notice-section h2 {
+        color: var(--Metal-400, #3B3A3A);
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1.25rem, 2vw, 2rem);
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -1.28px;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .notice-section p {
+        color: var(--Metal-400, #3B3A3A);
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.24px;
+        margin-bottom: 1rem;
+      }
+
+      /* Table styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        font-family: "Inter", sans-serif;
+        table-layout: fixed;
+      }
+
+      table th {
+        background-color: transparent;
+        color: var(--Metal-400, #3B3A3A);
+        padding: 1rem;
+        text-align: left;
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        font-weight: 600;
+        border: 1px solid #D0D0D0;
+        width: 33.33%;
+      }
+
+      table td {
+        padding: 1rem;
+        color: var(--Metal-400, #3B3A3A);
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        font-weight: 400;
+        line-height: 1.5;
+        border: 1px solid #D0D0D0;
+        width: 33.33%;
+      }
+
+      table tbody tr:nth-child(even) {
+        background-color: #FAFAFA;
+      }
+
+      table tbody tr:hover {
+        background-color: #F0F0F0;
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .heading-container {
+          padding: 3rem 1.5rem;
+        }
+
+        .heading-container h1 {
+          font-size: 2.5rem;
+          line-height: 1.2;
+          letter-spacing: -1.5px;
+        }
+
+        .gemm-privacy-container {
+          padding: 2rem 1.5rem;
+          gap: 1.5rem;
+        }
+
+        .gemm-privacy-content {
+          gap: 1.5rem;
+        }
+
+        .notice-section h2 {
+          font-size: 1.25rem;
+          margin-top: 1rem;
+          letter-spacing: -0.5px;
+        }
+
+        .notice-section p {
+          font-size: 1rem;
+          letter-spacing: 0.12px;
+        }
+
+        table {
+          font-size: 0.875rem;
+        }
+
+        table th,
+        table td {
+          padding: 0.75rem 0.5rem;
+          font-size: 0.875rem;
+        }
+      }
+
+      /* Tablet responsiveness */
+      @media (max-width: 1024px) {
+        .heading-container {
+          padding: 4rem 3rem;
+        }
+
+        .gemm-privacy-container {
+          padding: 3rem 2rem;
+        }
+
+        .notice-section h2 {
+          font-size: 1.5rem;
+        }
+
+        .notice-section p {
+          font-size: 1.125rem;
+        }
+      }
+
+      /* Footer styling */
+      .footer-section {
+        display: flex;
+        width: 100%;
+        padding: 64px 100px;
+        justify-content: space-between;
+        align-items: center;
+
+        background: #250f7f;
+        box-sizing: border-box;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1 0 0;
+      }
+
+      .footer-section-company {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 16px;
+        align-self: stretch;
+      }
+
+      .footer-section-company p {
+        color: #fff;
+
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.12px;
+      }
+
+      .footer-section-content-container {
+        display: flex;
+        height: 173px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .footer-section-content {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 64px;
+        flex: 1 0 0;
+        align-self: stretch;
+      }
+
+      .footer-section-content-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        color: white;
+      }
+
+      .footer-section-content-contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .footer-section-content-legal {
+        display: flex;
+        width: 163px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        align-self: stretch;
+
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.2px;
+      }
+
+      @media (max-width: 1024px) {
+        .footer-section {
+          display: flex;
+          width: 100%;
+          padding: 40px 24px;
+          justify-content: center;
+          /* align-items: flex-start; */
+          background: #250f7f;
+          box-sizing: border-box;
+          flex-direction: column;
+          gap: 32px;
+        }
+
+        .footer-container {
+          display: flex;
+          flex-direction: column;
+          /* align-items: flex-start; */
+          gap: 48px;
+          width: 100%;
+        }
+
+        .footer-section-company {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 16px;
+          order: 3;
+          align-self: flex-start;
+        }
+
+        .footer-section-content-container {
+          display: flex;
+          flex-direction: column;
+          /* align-items: flex-start; */
+          gap: 32px;
+          width: 100%;
+          height: auto;
+        }
+
+        .footer-section-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 32px;
+          width: 100%;
+        }
+
+        .footer-section-content-menu {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+          color: white;
+          order: 1;
+        }
+
+        .footer-section-content-contact-info {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 24px;
+          order: 2;
+        }
+
+        .footer-section-content-legal {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+          color: #fff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 0.2px;
+          order: 3;
+          width: auto;
+          align-self: flex-start;
+        }
+      }
+    </style>
+</head>
+<body>
+    <section class="gemm-privacy-section">
+        <div class="heading-container">
+            <h1>Gemm Privacy Notice for Financial Customers</h1>
+          </div>
+
+          <div class="gemm-privacy-container">
+            <div class="gemm-privacy-content">
+                <div class="notice-section">
+                    <p>As Required by the Gramm-Leach-Bliley Act<br>
+                        Effective Date: September 1, 2025</p>
+
+                    <h2>Facts</h2>
+
+                    <h2>What Does Gemm Do With Your Personal Information?</h2>
+
+                    <p>Financial companies choose how they share your personal information. Federal law gives consumers the right to limit some but not all sharing. It also requires us to tell you how we collect, share, and protect your personal information. Please read this notice carefully to understand what we do.</p>
+
+                    <p>The types of personal information we collect and share depend on the product or service you have with us. This information can include:</p>
+
+                    <p>• Name, email address, and government-issued identification<br>
+                    • Social Security number or other tax identification numbers<br>
+                    • Financial account details and transaction history<br>
+                    • Contact information and IP address<br>
+                    • Information about us through our platform or during onboarding</p>
+
+                    <p>When you are no longer our customer, we continue to share your information as described in this notice.</p>
+
+                    <p>All financial companies need to share customers' personal information to run their everyday business. In the section below, we list the reasons financial companies can share their customers' personal information, the reasons Gemm chooses to share, and whether you can limit this sharing.</p>
+
+                    <h2>Reasons We Can Share Your Personal Information</h2>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Reason</th>
+                                <th>Does Gemm Share?</th>
+                                <th>Can you limit this sharing?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>For our everyday business purposes—such as to process your transactions, maintain your account(s), respond to court orders and legal investigations, or report to credit bureaus</td>
+                                <td>Yes</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>For our marketing purposes—to offer our products and services to you</td>
+                                <td>No</td>
+                                <td>We don't share</td>
+                            </tr>
+                            <tr>
+                                <td>For joint marketing with other financial companies</td>
+                                <td>No</td>
+                                <td>We don't share</td>
+                            </tr>
+                            <tr>
+                                <td>For our affiliates' everyday business purposes—information about your transactions and experiences</td>
+                                <td>No</td>
+                                <td>We don't share</td>
+                            </tr>
+                            <tr>
+                                <td>For our affiliates' everyday business purposes—information about your creditworthiness.</td>
+                                <td>No</td>
+                                <td>We don't share</td>
+                            </tr>
+                            <tr>
+                                <td>For our affiliates to market to you</td>
+                                <td>No</td>
+                                <td>We don't share</td>
+                            </tr>
+                            <tr>
+                                <td>For nonaffiliates to market to you</td>
+                                <td>No</td>
+                                <td>We don't share</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Who We Are</h2>
+
+                    <h2>Who is providing this notice?</h2>
+
+                    <p>Gemm, a platform that partners with regulated financial institutions to facilitate account creation and payments for creators and agencies.</p>
+
+                    <h2>What We Do</h2>
+
+                    <h2>How does Gemm protect my personal information?</h2>
+
+                    <p>To protect your personal information from unauthorized access and use, we use security measures that comply with federal law. These measures include computer safeguards and secured files and buildings.</p>
+
+                    <h2>How does Gemm collect my personal information?</h2>
+
+                    <p>We collect your personal information, for example, when you:</p>
+
+                    <p>• Create or access an account through our platform<br>
+                    • Provide identifying documents or verification<br>
+                    • Use our services for payments or deposits</p>
+
+                    <p>We may also collect information from our banking or payment processing partners.</p>
+
+                    <h2>Why can't I limit all sharing?</h2>
+
+                    <p>Federal law gives you the right to limit only:</p>
+
+                    <p>• Sharing for affiliates' everyday business purposes—information about your creditworthiness<br>
+                    • Affiliates from using your information to market to you<br>
+                    • Sharing for non-affiliates to market to you</p>
+
+                    <p>State laws and individual companies may give you additional rights to limit sharing.</p>
+
+                    <h2>Definitions</h2>
+
+                    <p>Affiliates: Companies related by common ownership or control. They can be financial and nonfinancial companies. Gemm is a subsidiary of Teal Pay Global, Inc.</p>
+
+                    <p>Nonaffiliates: Companies not related by common ownership or control. They can be financial and nonfinancial companies.</p>
+
+                    <p>Gemm does not share with nonaffiliates for marketing purposes.</p>
+
+                    <p>Joint marketing: A formal agreement between nonaffiliated financial companies that together market financial products or services to you.<br>
+                    Gemm does not jointly market.</p>
+
+                    <h2>Other Important Information</h2>
+
+                    <h2>Do Not Call Policy</h2>
+
+                    <p>This notice serves as Gemm's Do Not Call Policy under the Telephone Consumer Protection Act. We do not solicit via telephone numbers listed on the state or federal Do Not Call lists, unless the law allows.</p>
+
+                    <h2>Questions?</h2>
+
+                    <p>Email us at: info@gemm.app</p>
+
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="footer-section">
+      <div class="footer-container">
+        <div class="footer-section-company">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="186"
+            height="47"
+            viewBox="0 0 186 47"
+            fill="none"
+          >
+            <path
+              d="M25.3322 1.04881H34.9666V32.0544C34.9666 32.3821 34.8992 32.7099 34.8992 33.0377C34.4276 40.9038 27.5556 47 19.2687 47H15.0242V37.6918H19.2687C22.4352 37.6918 25.1301 35.3319 25.3322 32.4477C25.3322 32.3166 25.3322 28.9735 25.3322 28.9735C24.0522 30.2845 22.57 31.0711 21.9636 31.2678C20.2119 31.9233 18.3255 32.251 16.3043 32.251C7.27628 32.251 0 25.1715 0 16.3877C0 7.6039 7.27628 0.458856 16.3043 0.458856C18.3255 0.458856 20.2119 0.852161 21.9636 1.50767C22.7047 1.83543 25.1301 3.01534 26.4776 5.24407C26.545 5.44073 26.7471 5.50628 26.9492 5.50628C27.4882 5.50628 27.7577 4.98187 27.4882 4.58856C27.0166 3.93305 26.3428 2.94979 25.3322 2.09763V1.04881ZM17.4496 24.0572C21.8288 24.0572 25.3322 20.6485 25.3322 16.3877C25.3322 12.1269 21.8288 8.71827 17.4496 8.71827C13.0704 8.71827 9.56697 12.1269 9.56697 16.3877C9.56697 20.6485 13.0704 24.0572 17.4496 24.0572Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M73.2397 16.5844C73.2397 16.9777 73.2397 17.371 73.1723 17.6987H47.9075C48.5138 21.6318 51.9498 24.7127 56.1943 24.7127C58.6198 24.7127 60.8431 23.6639 62.3253 22.0251H72.2965C70.0058 28.5146 63.6727 33.1688 56.1943 33.1688C46.7621 33.1688 39.149 25.7615 39.149 16.5844C39.149 7.40725 46.7621 0 56.1943 0C65.6266 0 73.2397 7.40725 73.2397 16.5844ZM48.6486 13.1757H63.7401C62.3927 10.4226 59.4956 8.52162 56.1943 8.52162C52.8257 8.52162 49.996 10.4226 48.6486 13.1757Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M128.885 12.9791C129.019 13.9623 129.154 14.9456 129.154 15.9289V32.1199H119.654V16.2566C119.654 12.258 117.768 9.89819 115.275 9.24268C114.804 9.11158 114.332 9.11158 113.793 9.11158C113.658 9.11158 113.523 9.11158 113.321 9.11158C111.704 9.24268 110.29 9.96374 109.346 11.4059C108.471 12.6513 107.999 14.3556 107.999 16.5844V32.1199H98.4319V16.2566C98.4319 13.7001 97.6908 11.7992 96.4781 10.6192C95.5349 9.70153 94.3896 9.17712 93.1095 9.11158C92.9747 9.11158 92.7726 9.11158 92.6379 9.11158C89.404 9.11158 86.8438 11.537 86.8438 16.5844V32.1199H77.2768V1.04881H86.8438V2.22873C85.8332 3.08089 85.0921 4.06415 84.6879 4.71967C84.6205 4.85077 84.5531 4.98187 84.5531 5.04742C84.5531 5.04742 84.5531 5.04742 84.5531 5.11297C84.6205 5.37517 84.8226 5.57183 85.1595 5.57183C85.3616 5.57183 85.5637 5.44073 85.6984 5.24407C85.6984 5.24407 85.7658 5.17852 85.9006 5.04742C87.5849 3.21199 89.7408 1.83543 92.2336 1.17991C92.9747 0.983263 93.7832 0.852161 94.6591 0.78661C95.737 0.721058 96.8824 0.78661 98.0277 0.983263H98.0951C101.531 1.83543 103.889 3.80195 105.439 6.35844V6.22734C105.641 5.89958 105.843 5.57183 106.045 5.30962C107.527 3.14644 109.885 1.70432 112.176 1.04881C112.715 0.917713 113.254 0.852161 113.86 0.78661C114.736 0.721058 115.545 0.721058 116.421 0.852161C119.183 1.17991 121.945 2.29428 124.101 4.19526C126.661 6.35844 128.211 9.43933 128.817 12.6513C128.817 12.7824 128.885 12.9135 128.885 12.9791Z"
+              fill="#F9F9F9"
+            />
+            <path
+              d="M185.731 12.9791C185.865 13.9623 186 14.9456 186 15.9289V32.1199H176.5V16.2566C176.5 12.258 174.614 9.89819 172.121 9.24268C171.65 9.11158 171.178 9.11158 170.639 9.11158C170.504 9.11158 170.369 9.11158 170.167 9.11158C168.55 9.24268 167.136 9.96374 166.192 11.4059C165.316 12.6513 164.845 14.3556 164.845 16.5844V32.1199H155.278V16.2566C155.278 13.7001 154.537 11.7992 153.324 10.6192C152.381 9.70153 151.236 9.17712 149.955 9.11158C149.821 9.11158 149.619 9.11158 149.484 9.11158C146.25 9.11158 143.69 11.537 143.69 16.5844V32.1199H134.123V1.04881H143.69V2.22873C142.679 3.08089 141.938 4.06415 141.534 4.71967C141.466 4.85077 141.399 4.98187 141.399 5.04742C141.399 5.04742 141.399 5.04742 141.399 5.11297C141.466 5.37517 141.669 5.57183 142.005 5.57183C142.208 5.57183 142.41 5.44073 142.544 5.24407C142.544 5.24407 142.612 5.17852 142.747 5.04742C144.431 3.21199 146.587 1.83543 149.08 1.17991C149.821 0.983263 150.629 0.852161 151.505 0.78661C152.583 0.721058 153.728 0.78661 154.874 0.983263H154.941C158.377 1.83543 160.735 3.80195 162.285 6.35844V6.22734C162.487 5.89958 162.689 5.57183 162.891 5.30962C164.373 3.14644 166.731 1.70432 169.022 1.04881C169.561 0.917713 170.1 0.852161 170.706 0.78661C171.582 0.721058 172.391 0.721058 173.267 0.852161C176.029 1.17991 178.791 2.29428 180.947 4.19526C183.507 6.35844 185.057 9.43933 185.663 12.6513C185.663 12.7824 185.731 12.9135 185.731 12.9791Z"
+              fill="#F9F9F9"
+            />
+          </svg>
+          <p>Teal Pay Global Inc.</p>
+        </div>
+        <div class="footer-section-content-container">
+          <div class="footer-section-content">
+            <!-- <div class="footer-section-content-menu">
+              <p class="footer-section-content-menu-tem">Features</p>
+              <p class="footer-section-content-menu-tem">About</p>
+              <p class="footer-section-content-menu-tem">FAQ</p>
+              <p class="footer-section-content-menu-tem">Contact</p>
+            </div> -->
+            <div class="footer-section-content-contact-info">
+              <a href="info@gemm.app" aria-label="Email">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="25"
+                  viewBox="0 0 32 25"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9299)">
+                    <path
+                      d="M3.2 25.8031C2.32 25.8031 1.56667 25.4898 0.94 24.8631C0.313333 24.2365 0 23.4831 0 22.6031V3.40313C0 2.52312 0.313333 1.76979 0.94 1.14313C1.56667 0.516458 2.32 0.203125 3.2 0.203125H28.8C29.68 0.203125 30.4333 0.516458 31.06 1.14313C31.6867 1.76979 32 2.52312 32 3.40313V22.6031C32 23.4831 31.6867 24.2365 31.06 24.8631C30.4333 25.4898 29.68 25.8031 28.8 25.8031H3.2ZM16 14.6031L3.2 6.60313V22.6031H28.8V6.60313L16 14.6031ZM16 11.4031L28.8 3.40313H3.2L16 11.4031ZM3.2 6.60313V3.40313V22.6031V6.60313Z"
+                      fill="#F9F9F9"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9299">
+                      <rect width="32" height="25" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/gemmapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9301)">
+                    <path
+                      d="M29.6313 0H2.3625C1.05625 0 0 1.03125 0 2.30625V29.6875C0 30.9625 1.05625 32 2.3625 32H29.6313C30.9375 32 32 30.9625 32 29.6938V2.30625C32 1.03125 30.9375 0 29.6313 0ZM9.49375 27.2687H4.74375V11.9937H9.49375V27.2687ZM7.11875 9.9125C5.59375 9.9125 4.3625 8.68125 4.3625 7.1625C4.3625 5.64375 5.59375 4.4125 7.11875 4.4125C8.6375 4.4125 9.86875 5.64375 9.86875 7.1625C9.86875 8.675 8.6375 9.9125 7.11875 9.9125ZM27.2687 27.2687H22.525V19.8438C22.525 18.075 22.4937 15.7937 20.0562 15.7937C17.5875 15.7937 17.2125 17.725 17.2125 19.7188V27.2687H12.475V11.9937H17.025V14.0813H17.0875C17.7187 12.8813 19.2688 11.6125 21.575 11.6125C26.3813 11.6125 27.2687 14.775 27.2687 18.8875V27.2687Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9301">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/gemm.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_1001_9303)">
+                    <path
+                      d="M16 2.88125C20.275 2.88125 20.7813 2.9 22.4625 2.975C24.025 3.04375 24.8688 3.30625 25.4313 3.525C26.175 3.8125 26.7125 4.1625 27.2688 4.71875C27.8313 5.28125 28.175 5.8125 28.4625 6.55625C28.6813 7.11875 28.9438 7.96875 29.0125 9.525C29.0875 11.2125 29.1063 11.7188 29.1063 15.9875C29.1063 20.2625 29.0875 20.7688 29.0125 22.45C28.9438 24.0125 28.6813 24.8563 28.4625 25.4188C28.175 26.1625 27.825 26.7 27.2688 27.2563C26.7063 27.8188 26.175 28.1625 25.4313 28.45C24.8688 28.6688 24.0188 28.9313 22.4625 29C20.775 29.075 20.2688 29.0938 16 29.0938C11.725 29.0938 11.2188 29.075 9.5375 29C7.975 28.9313 7.13125 28.6688 6.56875 28.45C5.825 28.1625 5.2875 27.8125 4.73125 27.2563C4.16875 26.6938 3.825 26.1625 3.5375 25.4188C3.31875 24.8563 3.05625 24.0063 2.9875 22.45C2.9125 20.7625 2.89375 20.2563 2.89375 15.9875C2.89375 11.7125 2.9125 11.2063 2.9875 9.525C3.05625 7.9625 3.31875 7.11875 3.5375 6.55625C3.825 5.8125 4.175 5.275 4.73125 4.71875C5.29375 4.15625 5.825 3.8125 6.56875 3.525C7.13125 3.30625 7.98125 3.04375 9.5375 2.975C11.2188 2.9 11.725 2.88125 16 2.88125ZM16 0C11.6563 0 11.1125 0.01875 9.40625 0.09375C7.70625 0.16875 6.5375 0.44375 5.525 0.8375C4.46875 1.25 3.575 1.79375 2.6875 2.6875C1.79375 3.575 1.25 4.46875 0.8375 5.51875C0.44375 6.5375 0.16875 7.7 0.09375 9.4C0.01875 11.1125 0 11.6562 0 16C0 20.3438 0.01875 20.8875 0.09375 22.5938C0.16875 24.2938 0.44375 25.4625 0.8375 26.475C1.25 27.5313 1.79375 28.425 2.6875 29.3125C3.575 30.2 4.46875 30.75 5.51875 31.1562C6.5375 31.55 7.7 31.825 9.4 31.9C11.1063 31.975 11.65 31.9937 15.9938 31.9937C20.3375 31.9937 20.8813 31.975 22.5875 31.9C24.2875 31.825 25.4563 31.55 26.4688 31.1562C27.5188 30.75 28.4125 30.2 29.3 29.3125C30.1875 28.425 30.7375 27.5313 31.1438 26.4813C31.5375 25.4625 31.8125 24.3 31.8875 22.6C31.9625 20.8938 31.9813 20.35 31.9813 16.0063C31.9813 11.6625 31.9625 11.1188 31.8875 9.4125C31.8125 7.7125 31.5375 6.54375 31.1438 5.53125C30.75 4.46875 30.2063 3.575 29.3125 2.6875C28.425 1.8 27.5313 1.25 26.4813 0.84375C25.4625 0.45 24.3 0.175 22.6 0.1C20.8875 0.01875 20.3438 0 16 0Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M16 7.78125C11.4625 7.78125 7.78125 11.4625 7.78125 16C7.78125 20.5375 11.4625 24.2188 16 24.2188C20.5375 24.2188 24.2188 20.5375 24.2188 16C24.2188 11.4625 20.5375 7.78125 16 7.78125ZM16 21.3312C13.0563 21.3312 10.6687 18.9438 10.6687 16C10.6687 13.0563 13.0563 10.6687 16 10.6687C18.9438 10.6687 21.3312 13.0563 21.3312 16C21.3312 18.9438 18.9438 21.3312 16 21.3312Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M26.4625 7.45781C26.4625 8.52032 25.6 9.37657 24.5438 9.37657C23.4813 9.37657 22.625 8.51407 22.625 7.45781C22.625 6.39531 23.4875 5.53906 24.5438 5.53906C25.6 5.53906 26.4625 6.40156 26.4625 7.45781Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1001_9303">
+                      <rect width="32" height="32" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+            </div>
+            <div class="footer-section-content-legal">
+              <p onclick="showPage('privacy-policy-content.html')">
+                Privacy Policy
+              </p>
+              <p onclick="showPage('terms-of-service.html')">
+                Terms of Service
+              </p>
+              <p onclick="showPage('gemm-privacy-notice.html')">
+                Gemm Privacy Notice
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Only define showPage if it doesn't exist on window
+      if (typeof window.showPage === 'undefined') {
+        window.showPage = function(page) {
+          fetch(page)
+            .then((response) => response.text())
+            .then((html) => {
+              // Clear all placeholders
+              const privacyPlaceholder = document.getElementById("privacy-policy-placeholder");
+              const termsPlaceholder = document.getElementById("terms-of-service-placeholder");
+              const gemmPrivacyPlaceholder = document.getElementById("gemm-privacy-notice-placeholder");
+              
+              if (privacyPlaceholder) privacyPlaceholder.innerHTML = "";
+              if (termsPlaceholder) termsPlaceholder.innerHTML = "";
+              if (gemmPrivacyPlaceholder) gemmPrivacyPlaceholder.innerHTML = "";
+              
+              // Hide main content
+              const menuContainer = document.querySelector(".menu-item-container");
+              const mobileMenu = document.querySelector(".mobile-menu");
+              const mainContent = document.querySelector(".main-content");
+              const footerSection = document.querySelector(".footer-section");
+
+              if (menuContainer) menuContainer.style.display = "none";
+              if (mobileMenu) mobileMenu.style.display = "none";
+              if (mainContent) mainContent.style.display = "none";
+              if (footerSection) footerSection.style.display = "none";
+
+              document.body.setAttribute("data-current-page", page);
+
+              // Load content into appropriate placeholder
+              if (page === 'privacy-policy-content.html' && privacyPlaceholder) {
+                privacyPlaceholder.innerHTML = html;
+              } else if (page === 'terms-of-service.html' && termsPlaceholder) {
+                termsPlaceholder.innerHTML = html;
+              } else if (page === 'gemm-privacy-notice.html' && gemmPrivacyPlaceholder) {
+                gemmPrivacyPlaceholder.innerHTML = html;
+              }
+
+              window.scrollTo(0, 0);
+            })
+            .catch((error) => {
+              console.error("Error loading page:", error);
+            });
+        };
+      }
+
+    </script>
+</body>
+</html>
