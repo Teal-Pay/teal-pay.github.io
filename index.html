@@ -132,13 +132,14 @@
 
       .hero-bg-img {
         position: absolute;
-        top: 0;
-        right: 0;
+        /* top: 0;
+        right: 0; */
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: right top;
         display: block;
+        /* transform: translateY(10%); */
       }
 
       .hero-section {
@@ -192,6 +193,7 @@
 
       .desktop-image-wrapper {
         position: relative;
+        left: 18px;
         display: inline-block;
       }
 
@@ -224,20 +226,25 @@
       }
 
       .details-text-info-hero-section h1 {
+        display: block;
+        min-width: 315px;
         /* color: var(--Metal-400, #3b3a3a); */
-        font-size: clamp(2.5rem, 5vw, 5rem);
+        font-size: clamp(2rem, 5vw, 5rem);
+        /* font-size: clamp(2rem, 4vw, 3.5rem); */
         font-style: normal;
         font-weight: 600;
-        line-height: clamp(3rem, 5.5vw, 5rem);
+        line-height: clamp(2.5rem, 5vw, 5rem);
         letter-spacing: -2px;
       }
 
       .details-text-info-hero-section p {
         position: relative;
+        display: block;
+        min-width: 300px;
         /* this might need to be changed */
         top: -1rem;
         /* color: var(--Metal-400, #3b3a3a); */
-        font-size: clamp(1.125rem, 2.5vw, 2rem);
+        font-size: clamp(1rem, 2.5vw, 2rem);
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -480,7 +487,7 @@
         box-sizing: border-box;
       }
 
-      .faq-section h1 {
+      .faq-section-heading {
         align-self: stretch;
         /* color: var(--Metal-400, #3b3a3a); */
         text-align: center;
@@ -498,6 +505,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 24px;
+
       }
 
       .faq-section-details-item {
@@ -995,18 +1003,16 @@
           text-align: center;
         }
 
-        .details-text-info-hero-section h1 {
+        /* .details-text-info-hero-section h1 {
           font-size: 1.75rem;
           line-height: 2rem;
-        }
+        } */
 
         .details-text-info-hero-section p {
-          font-size: 1rem;
           top: 0;
           text-align: center;
           width: 100%;
           margin: 0 auto 2rem auto;
-          display: block;
           max-width: 90%;
         }
 
@@ -1098,13 +1104,13 @@
           align-items: flex-start;
         }
 
-        .text-info-container-square-section-gradient h1,
+        /* .text-info-container-square-section-gradient h1,
         .text-info-container-square-section-gradient span {
           font-size: 2.25rem;
           line-height: 2.75rem;
           text-align: left;
           letter-spacing: -0.06rem;
-        }
+        } */
 
         .text-info-container-square-section-gradient h1,
         .text-info-container-square-section-gradient > div {
@@ -1308,12 +1314,26 @@
       }
 
       @media (max-width: 480px) {
-        .text-info-container-square-section-gradient h1,
+        .info-hero-section {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          gap: 0px;
+        }
+      .text-info-hero-section {
+        gap: 14px;
+        padding: 0;
+      }
+
+      .service-features-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+        /* .text-info-container-square-section-gradient h1,
         .text-info-container-square-section-gradient span {
           font-size: 1.125rem;
           line-height: 1.5rem;
           letter-spacing: -0.04rem;
-        }
+        } */
 
         .text-info-container-square-section-gradient p {
           font-size: 0.875rem;
@@ -1738,7 +1758,7 @@
       </section>
 
       <section class="faq-section">
-        <h1>FAQ</h1>
+        <h1 class="faq-section-heading">FAQ</h1>
         <div class="faq-section-details">
           <div class="faq-section-details-item">
             <div class="rectangle"></div>
