@@ -304,7 +304,7 @@
 
       .service-section-heading {
         flex: 0 0 auto;
-        min-width: 300px;
+        min-width: 250px;
       }
 
       .service-section-heading h1 {
@@ -1085,7 +1085,7 @@
 
         .service-features-grid {
           /* grid-template-columns: 1fr; */
-          gap: 20px 15px;
+          gap: 20px 30px;
         }
 
         .service-feature-item {
@@ -1319,21 +1319,31 @@
           padding-bottom: 10px;
           gap: 0px;
         }
-      .text-info-hero-section {
-        gap: 14px;
-        padding: 0;
-      }
+        .text-info-hero-section {
+          gap: 14px;
+          padding: 0;
+        }
 
       .service-features-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
       }
-        /* .text-info-container-square-section-gradient h1,
+      @media (max-width: 500px) {
+        .text-info-container-square-section-gradient h1,
         .text-info-container-square-section-gradient span {
-          font-size: 1.125rem;
-          line-height: 1.5rem;
-          letter-spacing: -0.04rem;
-        } */
+          font-size: clamp(2rem, 4vw, 3.5rem);
+          text-align: center;
+        }
+
+        .service-features-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-template-rows: repeat(6, 1fr);
+        }
+
+        .service-section-container {
+          align-items: normal;
+        }
 
         .text-info-container-square-section-gradient p {
           font-size: 0.875rem;
@@ -1360,6 +1370,7 @@
           /* bottom: 2%; */
         }
       }
+    }
     </style>
     <!-- this is for all the animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
